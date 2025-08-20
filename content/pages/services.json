@@ -1,0 +1,114 @@
+{
+  "pageType": "multiple",
+  "showAllServicesPage": false,
+  "title": "Our Pool & Spa Services",
+  "subtitle": "",
+  "displayType": "images",
+  "services": [
+    {
+      "title": "Window Cleaning",
+      "description": "Crystal clear windows inside and out using professional techniques and purified water systems",
+      "icon": "droplets",
+      "image": "/uploads/service-1755721649490.webp",
+      "slug": "window-cleaning",
+      "enabled": true,
+      "showOtherServices": true,
+      "showThumbnailInHero": false,
+      "showContentInHero": false,
+      "contentImage": "",
+      "longDescription": "Our professional window cleaning service delivers streak-free, crystal clear results using advanced purified water systems and professional-grade squeegees. We clean both interior and exterior surfaces, including screens and sills, ensuring your windows provide the clearest possible view while enhancing your home's curb appeal.",
+      "benefits": [
+        {
+          "title": "Purified Water System",
+          "description": "We use advanced water purification technology for spot-free, streak-free results."
+        },
+        {
+          "title": "Interior & Exterior",
+          "description": "Complete window cleaning service including screens, sills, and frames."
+        },
+        {
+          "title": "Professional Equipment",
+          "description": "Commercial-grade squeegees and tools for superior cleaning results."
+        },
+        {
+          "title": "Satisfaction Guarantee",
+          "description": "100% satisfaction guarantee - we'll return if you're not completely happy."
+        }
+      ]
+    },
+    {
+      "title": "Gutter Cleaning",
+      "description": "Professional gutter cleaning and maintenance to protect your home from water damage and foundation issues",
+      "icon": "wrench",
+      "image": "/uploads/service-1755721787761.jpg",
+      "slug": "gutter-cleaning",
+      "enabled": true,
+      "showOtherServices": true,
+      "showThumbnailInHero": false,
+      "showContentInHero": false,
+      "contentImage": "",
+      "longDescription": "Our comprehensive gutter cleaning service removes leaves, debris, and blockages that can cause water damage to your home. We clean gutters, downspouts, and check for proper drainage while inspecting for any damage or maintenance needs. Regular gutter cleaning prevents costly water damage to your foundation, siding, and landscaping.",
+      "benefits": [
+        {
+          "title": "Complete Debris Removal",
+          "description": "We remove all leaves, twigs, and debris from gutters and downspouts for optimal water flow."
+        },
+        {
+          "title": "Downspout Cleaning",
+          "description": "Thorough cleaning of downspouts to ensure proper drainage away from your foundation."
+        },
+        {
+          "title": "Damage Inspection",
+          "description": "We inspect gutters for damage, loose brackets, and proper slope during cleaning."
+        },
+        {
+          "title": "Cleanup Included",
+          "description": "Complete cleanup of all debris with proper disposal - your property stays clean."
+        }
+      ]
+    },
+    {
+      "title": "Solar Panel Cleaning",
+      "description": "Professional solar panel cleaning to maximize energy efficiency and protect your investment",
+      "icon": "wrench",
+      "image": "/uploads/service-1755721798169.webp",
+      "slug": "solar-panel-cleaning",
+      "enabled": true,
+      "showOtherServices": true,
+      "showThumbnailInHero": false,
+      "showContentInHero": false,
+      "contentImage": "",
+      "longDescription": "Dirty solar panels can reduce energy output by up to 25%. Our specialized solar panel cleaning service uses purified water and soft-bristle brushes to safely remove dirt, dust, bird droppings, and other debris without damaging your panels. We clean panels, check connections, and ensure optimal performance to maximize your energy savings.",
+      "benefits": [
+        {
+          "title": "Maximize Energy Output",
+          "description": "Clean panels can increase energy production by up to 25% compared to dirty panels."
+        },
+        {
+          "title": "Safe Cleaning Methods",
+          "description": "We use purified water and soft brushes designed specifically for solar panels."
+        },
+        {
+          "title": "Panel Inspection",
+          "description": "Visual inspection of panels and connections to identify any potential issues."
+        },
+        {
+          "title": "Protect Your Investment",
+          "description": "Regular cleaning extends panel life and maintains warranty compliance."
+        }
+      ]
+    }
+  ],
+  "heroCta": {
+    "primary": {
+      "text": "Get Free Estimate",
+      "link": "/contact",
+      "enabled": true
+    },
+    "secondary": {
+      "text": "Call Now",
+      "link": "tel:(702) 843-7705",
+      "enabled": true
+    }
+  }
+}

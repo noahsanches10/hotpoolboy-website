@@ -1,0 +1,85 @@
+{
+  "siteName": "Mr Pane Window Cleaning",
+  "tagline": "Northern Utah's Best Window Cleaning",
+  "logo": "/uploads/1755721854470.jpg",
+  "brandColors": {
+    "primary": "#080D32",
+    "secondary": "#63D8E8",
+    "accent": "#8A58FC"
+  },
+  "headerStyle": "primary",
+  "footerStyle": "primary",
+  "contact": {
+    "phone": "(702) 843-7705",
+    "email": "matt@mrpanewindows.com",
+    "address": ""
+  },
+  "serviceAreas": [
+    "Logan",
+    "Hryum",
+    "Smithfield",
+    "Richmond",
+    "Brigham City"
+  ],
+  "socialMedia": {
+    "facebook": "",
+    "instagram": "",
+    "nextdoor": "",
+    "google": ""
+  },
+  "headerTextStyle": "auto",
+  "headerCtaStyle": "accent",
+  "bannerLayout": "contained",
+  "bannerStyle": "secondary",
+  "ctaBanner": {
+    "title": "Ready for a Sparkling Clean Exterior?",
+    "subtitle": "Contact us today for a free estimate and see the difference professional cleaning makes.",
+    "primaryText": "Get Free Estimate",
+    "secondaryText": "Call Now",
+    "primaryLink": "/contact",
+    "secondaryLink": "tel:(702) 843-7705",
+    "primaryEnabled": true,
+    "primaryButtonColor": "accent",
+    "style": "gradient",
+    "layout": "contained",
+    "secondaryButtonColor": "white",
+    "showOnPages": {
+      "home": true,
+      "services": true,
+      "servicePages": true,
+      "blog": true,
+      "blogPosts": true,
+      "about": true,
+      "reviews": true
+    }
+  },
+  "showLogoInFooter": false,
+  "logoSize": 60,
+  "favicon": "/uploads/1755721882300.jpg",
+  "footerTextColor": "auto",
+  "fontFamily": "inter",
+  "heroBackgrounds": {
+    "home": "/uploads/hero-background-1755721892721.jpeg"
+  },
+  "heroStyling": {
+    "backgroundType": "gradient",
+    "backgroundImage": ""
+  },
+  "heroOverlays": {
+    "image-hero-background-1755631598743.png": {
+      "overlayType": "primary",
+      "overlayOpacity": 50,
+      "overlayColor": "#050505"
+    },
+    "image-hero-background-1755716119493.jpeg": {
+      "overlayType": "dark",
+      "overlayOpacity": 50,
+      "overlayColor": "#000000"
+    },
+    "image-hero-background-1755721892721.jpeg": {
+      "overlayType": "dark",
+      "overlayOpacity": 50,
+      "overlayColor": "#000000"
+    }
+  }
+}

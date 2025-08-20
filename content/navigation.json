@@ -1,0 +1,32 @@
+{
+  "header": [
+    {
+      "label": "Services",
+      "href": "/services"
+    },
+    {
+      "label": "About",
+      "href": "/about"
+    }
+  ],
+  "cta": {
+    "label": "Get A Quote!",
+    "href": "/contact",
+    "external": false,
+    "openInNewTab": false
+  },
+  "footer": [
+    {
+      "label": "About",
+      "href": "/about"
+    },
+    {
+      "label": "Blog",
+      "href": "/blog"
+    },
+    {
+      "label": "Contact",
+      "href": "/contact"
+    }
+  ]
+}

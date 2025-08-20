@@ -1,0 +1,32 @@
+{
+  "hero": {
+    "title": "About Us",
+    "subtitle": "Your trusted partner for professional pool and spa services with a commitment to quality and customer satisfaction."
+  },
+  "story": {
+    "title": "Our Story",
+    "content": [
+      "Founded with a passion for helping homeowners maintain beautiful, well-cared-for properties. We understand that your home's exterior is the first impression visitors get, and we're dedicated to making sure that impression is outstanding.",
+      "What started as a small window cleaning business has grown into a comprehensive exterior cleaning service, but we've never forgotten our commitment to personal service and attention to detail. Every job, big or small, receives the same level of care and professionalism."
+    ],
+    "stats": [
+      {
+        "number": "1000+",
+        "label": "Properties Cleaned"
+      },
+      {
+        "number": "3+",
+        "label": "Years Experience"
+      },
+      {
+        "number": "100%",
+        "label": "Satisfaction Rate"
+      }
+    ]
+  },
+  "team": {
+    "title": "Meet Our Team",
+    "subtitle": "Experienced exterior cleaning professionals dedicated to serving your community",
+    "members": []
+  }
+}
