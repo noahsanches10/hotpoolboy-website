@@ -19,7 +19,14 @@ export function getNavigation() {
 export function getPageContent(page: string) {
   const filePath = path.join(contentDirectory, 'pages', `${page}.json`);
   const fileContents = fs.readFileSync(filePath, 'utf8');
-  return JSON.parse(fileContents);
+  try {
+    // Remove any BOM and normalize line endings
+    const normalizedContent = fileContents.replace(/^\uFEFF/, '').replace(/\r\n/g, '\n');
+    return JSON.parse(normalizedContent);
+  } catch (error) {
+    console.error(`Error parsing JSON in ${page}.json:`, error);
+    throw new Error(`Invalid JSON in ${page}.json: ${error.message}`);
+  }
 }
 
 export function getBlogPosts() {
