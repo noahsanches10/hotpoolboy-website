@@ -101,7 +101,7 @@ export default async function ContactPage() {
                     <div className="bg-primary-light rounded-lg p-6 text-center">
                       <CheckCircle className="h-12 w-12 text-primary mx-auto mb-4" />
                       <h3 className="text-lg font-semibold text-gray-900 mb-2">Ready to Get Started?</h3>
-                      <p className="text-gray-600">Fill out the form and we'll get back to you within 24 hours.</p>
+                      <p className="text-gray-600">Fill out the form and we'll get back to you shortly!</p>
                     </div>
                   </div>
                 )}
