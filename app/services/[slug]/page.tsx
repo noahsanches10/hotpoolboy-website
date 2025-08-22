@@ -136,7 +136,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
 
         {/* Long Description Section */}
         {service.longDescription && (
-          <section className="py-6 bg-white">
+          <section className="py-16 bg-white">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className={`${!service.showThumbnailInHero && !service.showContentInHero && service.contentImage ? 'grid grid-cols-1 lg:grid-cols-2 gap-12 items-center' : ''}`}>
                 <div className={!service.showThumbnailInHero && !service.showContentInHero && service.contentImage ? '' : 'max-w-4xl mx-auto text-center'}>
