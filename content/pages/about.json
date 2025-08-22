@@ -1,11 +1,57 @@
 {
-        "icon": "clock",
-        "title": "Reliable Service",
-        "description": "Punctual, professional service with flexible scheduling to fit your busy Northern Utah lifestyle."
+  "hero": {
+    "title": "About Mr Pane Window Cleaning",
+    "subtitle": "Your trusted partner for professional exterior cleaning services in Logan and Cache Valley, with a commitment to quality and customer satisfaction."
   },
   "story": {
     "title": "Our Story",
     "content": [
+      "Founded right here in Northern Utah with a simple mission: to provide Logan and Cache Valley homeowners with reliable, professional exterior cleaning services they can trust. We understand that your home is your most valuable investment, and we treat it with the care and respect it deserves.",
+      "What started as a small local business has grown into a trusted name in Cache Valley exterior cleaning, but we've never forgotten our roots. We still believe in old-fashioned values like showing up on time, doing quality work, and standing behind our services with a 100% satisfaction guarantee.",
+      "As an owner-operated business, we're personally invested in every job we complete. When you choose Mr Pane Window Cleaning, you're not just hiring a service company – you're partnering with your neighbors who live and work right here in Logan and the surrounding Cache Valley communities."
+    ],
+    "stats": [
+      {
+        "number": "1000+",
+        "label": "Logan & Cache Valley Properties Served"
+      },
+      {
+        "number": "3+",
+        "label": "Years Serving Northern Utah"
+      },
+      {
+        "number": "100%",
+        "label": "Satisfaction Guarantee"
+      }
+    ]
+  },
+  "values": {
+    "title": "Why Cache Valley Chooses Us",
+    "subtitle": "We're committed to excellence in every aspect of our Logan and Northern Utah exterior cleaning services",
+    "items": [
+      {
+        "icon": "shield",
+        "title": "Licensed & Insured",
+        "description": "Fully licensed Utah professionals with comprehensive insurance coverage for complete peace of mind throughout Cache Valley."
+      },
+      {
+        "icon": "clock",
+        "title": "Reliable Service",
+        "description": "Punctual, professional service with flexible scheduling to fit your busy Logan and Cache Valley lifestyle."
+      },
+      {
+        "icon": "award",
+        "title": "Satisfaction Guarantee",
+        "description": "100% satisfaction guarantee on all our Northern Utah exterior cleaning services. If you're not happy, we'll make it right."
+      },
+      {
+        "icon": "users",
+        "title": "Local Community Focus",
+        "description": "Owner-operated business deeply rooted in the Logan and Cache Valley community, invested in your satisfaction and our local reputation."
+      }
+    ]
+  },
+  "team": {
     "title": "Meet Our Team",
     "subtitle": "Experienced exterior cleaning professionals dedicated to serving the Logan and Cache Valley community",
     "members": []
