@@ -40,7 +40,7 @@ export default function ContactForm() {
 
   if (contactConfig.embedForm?.enabled && contactConfig.embedForm?.url?.trim()) {
     return (
-      <div className="relative w-full h-[600px] rounded-lg overflow-hidden">
+      <div className="relative w-full h-[500px] lg:h-[600px] rounded-lg overflow-hidden shadow-lg">
         <iframe
           src={contactConfig.embedForm.url}
           width="100%"

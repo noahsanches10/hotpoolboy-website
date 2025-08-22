@@ -108,10 +108,9 @@ export default async function ServicePage({ params }: ServicePageProps) {
     hero: {
       title: service.title,
       subtitle: service.description,
-      image: service.showThumbnailInHero ? service.image : 
-             service.showContentInHero ? service.contentImage : 
+      image: service.showThumbnailInHero === true ? service.image : 
+             service.showContentInHero === true ? service.contentImage : 
              null,
-      defaultImage: service.image, // Always pass the thumbnail as default
       showThumbnailInHero: service.showThumbnailInHero,
       showContentInHero: service.showContentInHero,
       heroCta: servicesConfig.heroCta
