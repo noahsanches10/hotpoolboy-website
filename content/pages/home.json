@@ -1,7 +1,7 @@
 {
   "hero": {
-    "title": "Northern Utah's Best Window Cleaning",
-    "subtitle": "",
+    "title": "Cache Valley's Premier Window Cleaning Service",
+    "subtitle": "Professional exterior cleaning services for Logan and Northern Utah homeowners who demand excellence",
     "image": "",
     "ctaText": "Get Free Estimate",
     "ctaLink": "/contact",
@@ -23,7 +23,7 @@
         "enabled": true
       },
       {
-        "text": "Eco-Friendly Solutions",
+        "text": "Local Northern Utah Business",
         "enabled": true
       }
     ]
@@ -39,58 +39,58 @@
     ],
     "services": {
       "enabled": true,
-      "title": "Our Services",
-      "subtitle": "Comprehensive exterior cleaning solutions to enhance your property's appearance and value",
+      "title": "Professional Exterior Cleaning Services",
+      "subtitle": "Comprehensive exterior cleaning solutions for Cache Valley homeowners to enhance your property's appearance and value",
       "showSection": true,
       "hiddenServices": [],
       "background": "white"
     },
     "whyChooseUs": {
       "enabled": true,
-      "title": "Why Choose Us",
-      "subtitle": "We're committed to excellence in every aspect of our exterior cleaning services",
+      "title": "Why Logan Homeowners Choose Mr Pane",
+      "subtitle": "As a local Northern Utah business, we're committed to excellence in every aspect of our exterior cleaning services",
       "background": "gray",
       "items": [
         {
           "icon": "award",
-          "title": "Quality Guarantee",
-          "description": "100% satisfaction guarantee on all our exterior cleaning services. If you're not happy, we'll make it right."
+          "title": "100% Satisfaction Guarantee",
+          "description": "We stand behind our work with a complete satisfaction guarantee. If you're not happy with our service, we'll make it right."
         },
         {
-          "icon": "droplets",
-          "title": "Eco-Friendly",
-          "description": "We use environmentally safe cleaning solutions that are tough on dirt but gentle on your landscaping."
+          "icon": "users",
+          "title": "Local & Owner-Operated",
+          "description": "As a local Cache Valley business, we're invested in our community and take personal pride in every job we complete."
         },
         {
           "icon": "clock",
-          "title": "Reliable Service",
-          "description": "Punctual, professional service with flexible scheduling to fit your busy lifestyle."
+          "title": "Attention to Detail",
+          "description": "We take pride in our meticulous attention to detail, ensuring every window and surface is cleaned to perfection."
         }
       ]
     },
     "testimonials": {
       "enabled": true,
-      "title": "What Our Customers Say",
-      "subtitle": "See why homeowners trust us with their exterior cleaning needs",
+      "title": "What Cache Valley Customers Say",
+      "subtitle": "See why Logan area homeowners trust us with their exterior cleaning needs",
       "background": "white",
       "items": [
         {
           "name": "Jennifer Walsh",
-          "location": "Downtown",
+          "location": "Logan",
           "rating": 5,
           "text": "Amazing window cleaning service! My windows have never been cleaner. The team was professional and efficient.",
           "avatar": ""
         },
         {
           "name": "Robert Chen",
-          "location": "Westside",
+          "location": "Providence",
           "rating": 5,
           "text": "The pressure washing transformed our driveway and walkways. Looks like new construction again!",
           "avatar": ""
         },
         {
           "name": "Maria Rodriguez",
-          "location": "Eastside",
+          "location": "Smithfield",
           "rating": 5,
           "text": "Professional gutter cleaning service. They were thorough and cleaned up everything perfectly. Highly recommend!",
           "avatar": ""

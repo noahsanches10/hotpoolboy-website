@@ -100,26 +100,32 @@
     },
     {
       "title": "House Washing",
-      "description": "Service description",
+      "description": "Professional house washing services to restore your home's exterior beauty and protect your investment",
       "icon": "wrench",
       "image": "https://washh.com/wp-content/uploads/2019/08/Importance-of-Pressure-Washing-Before-Painting-Your-House.jpg",
       "slug": "house-washing",
+      "enabled": true,
+      "showOtherServices": true,
+      "showThumbnailInHero": false,
+      "showContentInHero": false,
+      "contentImage": "",
+      "longDescription": "Our professional house washing service transforms your home's exterior, removing years of dirt, grime, mildew, and environmental pollutants. Using safe, eco-friendly cleaning solutions and proper pressure techniques, we restore your siding, trim, and exterior surfaces to like-new condition. Regular house washing not only improves curb appeal but also protects your home's exterior materials from premature deterioration, helping maintain your property value.",
       "benefits": [
         {
-          "title": "Licensed & Insured",
-          "description": "All our technicians are fully licensed and insured for your protection."
+          "title": "Safe Cleaning Methods",
+          "description": "We use appropriate pressure levels and eco-friendly solutions that clean effectively without damaging your siding or landscaping."
         },
         {
-          "title": "24/7 Emergency Service",
-          "description": "Emergency service available around the clock."
+          "title": "Complete Exterior Cleaning",
+          "description": "We clean siding, trim, eaves, and all exterior surfaces for a comprehensive transformation."
         },
         {
           "title": "Satisfaction Guarantee",
-          "description": "100% satisfaction guarantee on all work."
+          "description": "We stand behind our work with a complete satisfaction guarantee - if you're not happy, we'll make it right."
         },
         {
-          "title": "Free Estimates",
-          "description": "Get a detailed, no-obligation estimate for your project."
+          "title": "Protect Your Investment",
+          "description": "Regular house washing prevents costly damage and extends the life of your exterior surfaces."
         }
       ]
     }

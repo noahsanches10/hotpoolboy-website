@@ -6,13 +6,13 @@
   "story": {
     "title": "Our Story",
     "content": [
-      "Founded with a passion for helping homeowners maintain beautiful, well-cared-for properties. We understand that your home's exterior is the first impression visitors get, and we're dedicated to making sure that impression is outstanding.",
-      "What started as a small window cleaning business has grown into a comprehensive exterior cleaning service, but we've never forgotten our commitment to personal service and attention to detail. Every job, big or small, receives the same level of care and professionalism."
+      "Founded right here in Northern Utah, Mr Pane Window Cleaning is a local, owner-operated business dedicated to serving the Cache Valley community. We understand that your home's exterior is the first impression visitors get, and we're committed to making sure that impression is outstanding.",
+      "What started as a passion for helping Logan area homeowners maintain beautiful properties has grown into Northern Utah's trusted exterior cleaning service. As a local business, we take pride in our attention to detail, exceptional customer service, and our 100% satisfaction guarantee. Every job, big or small, receives the same level of personal care and professionalism that has made us Cache Valley's preferred choice for exterior cleaning."
     ],
     "stats": [
       {
-        "number": "1000+",
-        "label": "Properties Cleaned"
+        "number": "500+",
+        "label": "Logan Area Homes Served"
       },
       {
         "number": "3+",
@@ -20,13 +20,13 @@
       },
       {
         "number": "100%",
-        "label": "Satisfaction Rate"
+        "label": "Satisfaction Guarantee"
       }
     ]
   },
   "team": {
     "title": "Meet Our Team",
-    "subtitle": "Experienced exterior cleaning professionals dedicated to serving your community",
+    "subtitle": "Local Northern Utah professionals dedicated to serving the Cache Valley community",
     "members": []
   }
 }
