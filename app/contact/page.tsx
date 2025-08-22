@@ -28,9 +28,7 @@ export default async function ContactPage() {
             <div className={`${contactContent.embedForm?.enabled && contactContent.embedForm?.url ? 'grid grid-cols-1 lg:grid-cols-2 gap-12 items-start' : 'max-w-4xl mx-auto'}`}>
               {/* Contact Information */}
               <div className={`space-y-8 ${contactContent.embedForm?.enabled && contactContent.embedForm?.url ? 'lg:order-2' : ''}`}>
-                <div>
-                  <h2 className="text-2xl font-bold text-gray-900 mb-6">Get In Touch</h2>
-                </div>
+               
 
                 {/* Contact Details */}
                 <div className="space-y-8">
