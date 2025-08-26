@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Textarea } from '@/components/ui/textarea';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Switch } from '@/components/ui/switch';
@@ -161,170 +162,300 @@ export default function HomeContentManager({ homeContent, setHomeContent, onSave
         </TabsList>
 
         {/* Hero Tab */}
-        <TabsContent value="hero" className="space-y-6">
-          <Card>
-            <CardHeader>
-              <CardTitle>Hero Section</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <div>
-                <Label htmlFor="heroTitle">Hero Title</Label>
-                <Input
-                  id="heroTitle"
-                  value={homeContent.hero.title}
-                  onChange={(e) => setHomeContent({
-                    ...homeContent,
-                    hero: {...homeContent.hero, title: e.target.value}
-                  })}
-                />
-              </div>
-              <div>
-                <Label htmlFor="heroSubtitle">Hero Subtitle</Label>
-                <Input
-                  id="heroSubtitle"
-                  value={homeContent.hero.subtitle}
-                  onChange={(e) => setHomeContent({
-                    ...homeContent,
-                    hero: {...homeContent.hero, subtitle: e.target.value}
-                  })}
-                />
-              </div>
-              <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <Label htmlFor="ctaText">Primary Button Text</Label>
-                  <Input
-                    id="ctaText"
-                    value={homeContent.hero.cta?.primary?.text || homeContent.hero.ctaText || 'Get Free Quote'}
-                    onChange={(e) => setHomeContent({
-                      ...homeContent,
-                      hero: {
-                        ...homeContent.hero,
-                        cta: {
-                          ...homeContent.hero.cta,
-                          primary: {
-                            ...homeContent.hero.cta?.primary,
-                            text: e.target.value,
-                            enabled: true
-                          }
-                        }
-                      }
-                    })}
-                  />
-                </div>
-                <div>
-                  <Label htmlFor="ctaLink">Primary Button Link</Label>
-                  <Input
-                    id="ctaLink"
-                    value={homeContent.hero.cta?.primary?.link || homeContent.hero.ctaLink || '/contact'}
-                    onChange={(e) => setHomeContent({
-                      ...homeContent,
-                      hero: {
-                        ...homeContent.hero,
-                        cta: {
-                          ...homeContent.hero.cta,
-                          primary: {
-                            ...homeContent.hero.cta?.primary,
-                            link: e.target.value,
-                            enabled: true
-                          }
-                        }
-                      }
-                    })}
-                  />
-                </div>
-              </div>
-              
-              <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <Label htmlFor="secondaryCtaText">Secondary Button Text</Label>
-                  <Input
-                    id="secondaryCtaText"
-                    value={homeContent.hero.cta?.secondary?.text || 'Contact Us'}
-                    onChange={(e) => setHomeContent({
-                      ...homeContent,
-                      hero: {
-                        ...homeContent.hero,
-                        cta: {
-                          ...homeContent.hero.cta,
-                          secondary: {
-                            ...homeContent.hero.cta?.secondary,
-                            text: e.target.value,
-                            enabled: true
-                          }
-                        }
-                      }
-                    })}
-                  />
-                </div>
-                <div>
-                  <Label htmlFor="secondaryCtaLink">Secondary Button Link</Label>
-                  <Input
-                    id="secondaryCtaLink"
-                    value={homeContent.hero.cta?.secondary?.link || '/contact'}
-                    onChange={(e) => setHomeContent({
-                      ...homeContent,
-                      hero: {
-                        ...homeContent.hero,
-                        cta: {
-                          ...homeContent.hero.cta,
-                          secondary: {
-                            ...homeContent.hero.cta?.secondary,
-                            link: e.target.value,
-                            enabled: true
-                          }
-                        }
-                      }
-                    })}
-                  />
-                </div>
-              </div>
-              
-              <div className="grid grid-cols-2 gap-4">
-                <div className="flex items-center space-x-2">
-                  <input
-                    type="checkbox"
-                    id="primaryCtaEnabled"
-                    checked={homeContent.hero.cta?.primary?.enabled !== false}
-                    onChange={(e) => setHomeContent({
-                      ...homeContent,
-                      hero: {
-                        ...homeContent.hero,
-                        cta: {
-                          ...homeContent.hero.cta,
-                          primary: {
-                            ...homeContent.hero.cta?.primary,
-                            enabled: e.target.checked
-                          }
-                        }
-                      }
-                    })}
-                    className="w-4 h-4 text-primary"
-                  />
-                  <Label htmlFor="primaryCtaEnabled" className="text-sm">Enable primary button</Label>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <input
-                    type="checkbox"
-                    id="secondaryCtaEnabled"
-                    checked={homeContent.hero.cta?.secondary?.enabled !== false}
-                    onChange={(e) => setHomeContent({
-                      ...homeContent,
-                      hero: {
-                        ...homeContent.hero,
-                        cta: {
-                          ...homeContent.hero.cta,
-                          secondary: {
-                            ...homeContent.hero.cta?.secondary,
-                            enabled: e.target.checked
-                          }
-                        }
-                      }
-                    })}
-                    className="w-4 h-4 text-primary"
-                  />
-                  <Label htmlFor="secondaryCtaEnabled" className="text-sm">Enable secondary button</Label>
-                </div>
-              </div>
+<TabsContent value="hero" className="space-y-6">
+  <Card>
+    <CardHeader>
+      <CardTitle>Hero Section</CardTitle>
+    </CardHeader>
+    <CardContent className="space-y-4">
+      <div>
+        <Label htmlFor="heroTitle">Hero Title</Label>
+        <Input
+          id="heroTitle"
+          value={homeContent.hero.title}
+          onChange={(e) => setHomeContent({
+            ...homeContent,
+            hero: { ...homeContent.hero, title: e.target.value }
+          })}
+        />
+      </div>
+      <div>
+        <Label htmlFor="heroSubtitle">Hero Subtitle</Label>
+        <Input
+          id="heroSubtitle"
+          value={homeContent.hero.subtitle}
+          onChange={(e) => setHomeContent({
+            ...homeContent,
+            hero: { ...homeContent.hero, subtitle: e.target.value }
+          })}
+        />
+      </div>
+
+      {/* Primary button text/link */}
+      <div className="grid grid-cols-2 gap-4">
+        <div>
+          <Label htmlFor="ctaText">Primary Button Text</Label>
+          <Input
+            id="ctaText"
+            value={homeContent.hero.cta?.primary?.text || homeContent.hero.ctaText || 'Get Free Quote'}
+            onChange={(e) => setHomeContent({
+              ...homeContent,
+              hero: {
+                ...homeContent.hero,
+                cta: {
+                  ...homeContent.hero.cta,
+                  primary: {
+                    ...homeContent.hero.cta?.primary,
+                    text: e.target.value,
+                    enabled: true
+                  }
+                }
+              }
+            })}
+          />
+        </div>
+        <div>
+          <Label htmlFor="ctaLink">Primary Button Link</Label>
+          <Input
+            id="ctaLink"
+            value={homeContent.hero.cta?.primary?.link || homeContent.hero.ctaLink || '/contact'}
+            onChange={(e) => setHomeContent({
+              ...homeContent,
+              hero: {
+                ...homeContent.hero,
+                cta: {
+                  ...homeContent.hero.cta,
+                  primary: {
+                    ...homeContent.hero.cta?.primary,
+                    link: e.target.value,
+                    enabled: true
+                  }
+                }
+              }
+            })}
+          />
+        </div>
+      </div>
+
+      {/* Secondary button text/link */}
+      <div className="grid grid-cols-2 gap-4">
+        <div>
+          <Label htmlFor="secondaryCtaText">Secondary Button Text</Label>
+          <Input
+            id="secondaryCtaText"
+            value={homeContent.hero.cta?.secondary?.text || 'Contact Us'}
+            onChange={(e) => setHomeContent({
+              ...homeContent,
+              hero: {
+                ...homeContent.hero,
+                cta: {
+                  ...homeContent.hero.cta,
+                  secondary: {
+                    ...homeContent.hero.cta?.secondary,
+                    text: e.target.value,
+                    enabled: true
+                  }
+                }
+              }
+            })}
+          />
+        </div>
+        <div>
+          <Label htmlFor="secondaryCtaLink">Secondary Button Link</Label>
+          <Input
+            id="secondaryCtaLink"
+            value={homeContent.hero.cta?.secondary?.link || '/contact'}
+            onChange={(e) => setHomeContent({
+              ...homeContent,
+              hero: {
+                ...homeContent.hero,
+                cta: {
+                  ...homeContent.hero.cta,
+                  secondary: {
+                    ...homeContent.hero.cta?.secondary,
+                    link: e.target.value,
+                    enabled: true
+                  }
+                }
+              }
+            })}
+          />
+        </div>
+      </div>
+
+      {/* ✅ Button Styles */}
+      <div>
+        <Label className="text-base font-semibold">Button Styles</Label>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
+          {/* Primary Button Colors */}
+          <div className="space-y-3">
+            <Label>Primary Button Color</Label>
+            <Select
+              value={homeContent.hero.cta?.primary?.color || 'primary'}
+              onValueChange={(value) => setHomeContent(prev => ({
+                ...prev,
+                hero: {
+                  ...prev.hero,
+                  cta: {
+                    ...prev.hero.cta,
+                    primary: {
+                      ...prev.hero.cta?.primary,
+                      color: value
+                    }
+                  }
+                }
+              }))}
+            >
+              <SelectTrigger>
+                <SelectValue placeholder="Select button color" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="primary">Primary</SelectItem>
+                <SelectItem value="secondary">Secondary</SelectItem>
+                <SelectItem value="accent">Accent</SelectItem>
+                <SelectItem value="white">White</SelectItem>
+                <SelectItem value="outline">Outline</SelectItem>
+              </SelectContent>
+            </Select>
+
+            <Label>Primary Button Text Color</Label>
+            <Select
+              value={homeContent.hero.cta?.primary?.textColor || 'white'}
+              onValueChange={(value) => setHomeContent(prev => ({
+                ...prev,
+                hero: {
+                  ...prev.hero,
+                  cta: {
+                    ...prev.hero.cta,
+                    primary: {
+                      ...prev.hero.cta?.primary,
+                      textColor: value
+                    }
+                  }
+                }
+              }))}
+            >
+              <SelectTrigger>
+                <SelectValue placeholder="Select text color" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="white">White</SelectItem>
+                <SelectItem value="black">Black</SelectItem>
+                <SelectItem value="primary">Primary</SelectItem>
+                <SelectItem value="secondary">Secondary</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+
+          {/* Secondary Button Colors */}
+          <div className="space-y-3">
+            <Label>Secondary Button Color</Label>
+            <Select
+              value={homeContent.hero.cta?.secondary?.color || 'outline'}
+              onValueChange={(value) => setHomeContent(prev => ({
+                ...prev,
+                hero: {
+                  ...prev.hero,
+                  cta: {
+                    ...prev.hero.cta,
+                    secondary: {
+                      ...prev.hero.cta?.secondary,
+                      color: value
+                    }
+                  }
+                }
+              }))}
+            >
+              <SelectTrigger>
+                <SelectValue placeholder="Select button color" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="primary">Primary</SelectItem>
+                <SelectItem value="secondary">Secondary</SelectItem>
+                <SelectItem value="accent">Accent</SelectItem>
+                <SelectItem value="white">White</SelectItem>
+                <SelectItem value="outline">Outline</SelectItem>
+              </SelectContent>
+            </Select>
+
+            <Label>Secondary Button Text Color</Label>
+            <Select
+              value={homeContent.hero.cta?.secondary?.textColor || 'primary'}
+              onValueChange={(value) => setHomeContent(prev => ({
+                ...prev,
+                hero: {
+                  ...prev.hero,
+                  cta: {
+                    ...prev.hero.cta,
+                    secondary: {
+                      ...prev.hero.cta?.secondary,
+                      textColor: value
+                    }
+                  }
+                }
+              }))}
+            >
+              <SelectTrigger>
+                <SelectValue placeholder="Select text color" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="white">White</SelectItem>
+                <SelectItem value="black">Black</SelectItem>
+                <SelectItem value="primary">Primary</SelectItem>
+                <SelectItem value="secondary">Secondary</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+        </div>
+      </div>
+
+      {/* Enable toggles */}
+      <div className="grid grid-cols-2 gap-4">
+        <div className="flex items-center space-x-2">
+          <input
+            type="checkbox"
+            id="primaryCtaEnabled"
+            checked={homeContent.hero.cta?.primary?.enabled !== false}
+            onChange={(e) => setHomeContent({
+              ...homeContent,
+              hero: {
+                ...homeContent.hero,
+                cta: {
+                  ...homeContent.hero.cta,
+                  primary: {
+                    ...homeContent.hero.cta?.primary,
+                    enabled: e.target.checked
+                  }
+                }
+              }
+            })}
+            className="w-4 h-4 text-primary"
+          />
+          <Label htmlFor="primaryCtaEnabled" className="text-sm">Enable primary button</Label>
+        </div>
+        <div className="flex items-center space-x-2">
+          <input
+            type="checkbox"
+            id="secondaryCtaEnabled"
+            checked={homeContent.hero.cta?.secondary?.enabled !== false}
+            onChange={(e) => setHomeContent({
+              ...homeContent,
+              hero: {
+                ...homeContent.hero,
+                cta: {
+                  ...homeContent.hero.cta,
+                  secondary: {
+                    ...homeContent.hero.cta?.secondary,
+                    enabled: e.target.checked
+                  }
+                }
+              }
+            })}
+            className="w-4 h-4 text-primary"
+          />
+          <Label htmlFor="secondaryCtaEnabled" className="text-sm">Enable secondary button</Label>
+        </div>
+      </div>
 
               {/* Trust Indicators */}
               <div className="space-y-4">
@@ -456,7 +587,7 @@ export default function HomeContentManager({ homeContent, setHomeContent, onSave
                       <Label htmlFor="servicesTitle">Services Section Title</Label>
                       <Input
                         id="servicesTitle"
-                        value={sections.services?.title || 'Our Services'}
+                        value={sections?.services?.title ?? 'Our Services'}
                         onChange={(e) => setHomeContent({
                           ...homeContent,
                           sections: {
@@ -470,7 +601,7 @@ export default function HomeContentManager({ homeContent, setHomeContent, onSave
                       <Label htmlFor="servicesSubtitle">Services Section Subtitle</Label>
                       <Input
                         id="servicesSubtitle"
-                        value={sections.services?.subtitle || 'Comprehensive home services'}
+                        value={sections?.services?.subtitle ?? 'Comprehensive home services'}
                         onChange={(e) => setHomeContent({
                           ...homeContent,
                           sections: {
@@ -547,7 +678,7 @@ export default function HomeContentManager({ homeContent, setHomeContent, onSave
                       <Label htmlFor="whyChooseUsTitle">Section Title</Label>
                       <Input
                         id="whyChooseUsTitle"
-                        value={sections.whyChooseUs?.title || 'Why Choose Us'}
+                        value={sections?.whyChooseUs?.title ?? 'Why Choose Us'}
                         onChange={(e) => setHomeContent({
                           ...homeContent,
                           sections: {
@@ -561,7 +692,7 @@ export default function HomeContentManager({ homeContent, setHomeContent, onSave
                       <Label htmlFor="whyChooseUsSubtitle">Section Subtitle</Label>
                       <Input
                         id="whyChooseUsSubtitle"
-                        value={sections.whyChooseUs?.subtitle || 'We\'re committed to excellence'}
+                        value={sections?.whyChooseUs?.subtitle ?? 'We\'re committed to excellence'}
                         onChange={(e) => setHomeContent({
                           ...homeContent,
                           sections: {
@@ -725,7 +856,7 @@ export default function HomeContentManager({ homeContent, setHomeContent, onSave
             <Label htmlFor="pricingTitle">Section Title</Label>
             <Input
               id="pricingTitle"
-              value={sections.pricing?.title || 'Transparent Pricing'}
+              value={sections?.pricing?.title ?? 'Transparent Pricing'}
               onChange={(e) => setHomeContent({
                 ...homeContent,
                 sections: {
@@ -739,7 +870,7 @@ export default function HomeContentManager({ homeContent, setHomeContent, onSave
             <Label htmlFor="pricingSubtitle">Section Subtitle</Label>
             <Input
               id="pricingSubtitle"
-              value={sections.pricing?.subtitle || 'No hidden fees, no surprises'}
+              value={sections?.pricing?.subtitle ?? 'No hidden fees, no surprises'}
               onChange={(e) => setHomeContent({
                 ...homeContent,
                 sections: {
@@ -990,10 +1121,51 @@ export default function HomeContentManager({ homeContent, setHomeContent, onSave
                 <>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
+                      <Label htmlFor="galleryDisplayStyle">Display Style</Label>
+                      <select
+                        id="galleryDisplayStyle"
+                        value={sections.gallery?.displayStyle || 'grid'}
+                        onChange={(e) => setHomeContent({
+                          ...homeContent,
+                          sections: {
+                            ...sections,
+                            gallery: { ...sections.gallery, displayStyle: e.target.value }
+                          }
+                        })}
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary mt-1"
+                      >
+                        <option value="grid">Grid Layout</option>
+                        <option value="carousel">Carousel</option>
+                      </select>
+                    </div>
+                    {sections.gallery?.displayStyle === 'carousel' && (
+                      <div>
+                        <Label htmlFor="carouselAutoRotate">Auto-Rotate Interval (seconds)</Label>
+                        <Input
+                          id="carouselAutoRotate"
+                          type="number"
+                          min="0"
+                          step="1"
+                          value={sections.gallery?.autoRotateInterval || '5'}
+                          onChange={(e) => setHomeContent({
+                            ...homeContent,
+                            sections: {
+                              ...sections,
+                              gallery: { ...sections.gallery, autoRotateInterval: e.target.value }
+                            }
+                          })}
+                        />
+                        <p className="text-sm text-gray-500 mt-1">Set to 0 to disable auto-rotation</p>
+                      </div>
+                    )}
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
                       <Label htmlFor="galleryTitle">Section Title</Label>
                       <Input
                         id="galleryTitle"
-                        value={sections.gallery?.title || 'Our Work'}
+                        value={sections?.gallery?.title ?? 'Our Work'}
                         onChange={(e) => setHomeContent({
                           ...homeContent,
                           sections: {
@@ -1003,20 +1175,25 @@ export default function HomeContentManager({ homeContent, setHomeContent, onSave
                         })}
                       />
                     </div>
-                    <div>
-                      <Label htmlFor="gallerySubtitle">Section Subtitle</Label>
-                      <Input
-                        id="gallerySubtitle"
-                        value={sections.gallery?.subtitle || 'See the difference our professional service makes'}
-                        onChange={(e) => setHomeContent({
-                          ...homeContent,
-                          sections: {
-                            ...sections,
-                            gallery: { ...sections.gallery, subtitle: e.target.value }
-                          }
-                        })}
-                      />
-                    </div>
+                   <div>
+  <Label htmlFor="gallerySubtitle">Section Subtitle</Label>
+  <Input
+    id="gallerySubtitle"
+    value={sections?.gallery?.subtitle ?? 'See the professional results'} 
+    onChange={(e) =>
+      setHomeContent(prev => ({
+        ...prev,
+        sections: {
+          ...prev.sections,
+          gallery: {
+            ...prev.sections?.gallery,
+            subtitle: e.target.value
+          }
+        }
+      }))
+    }
+  />
+</div>
                   </div>
 
                   <div>
@@ -1246,7 +1423,7 @@ export default function HomeContentManager({ homeContent, setHomeContent, onSave
                       <Label htmlFor="faqTitle">Section Title</Label>
                       <Input
                         id="faqTitle"
-                        value={sections.faq?.title || 'Frequently Asked Questions'}
+                        value={sections?.faq?.title ?? 'Frequently Asked Questions'}
                         onChange={(e) => setHomeContent({
                           ...homeContent,
                           sections: {
@@ -1260,7 +1437,7 @@ export default function HomeContentManager({ homeContent, setHomeContent, onSave
                       <Label htmlFor="faqSubtitle">Section Subtitle</Label>
                       <Input
                         id="faqSubtitle"
-                        value={sections.faq?.subtitle || 'Get answers to common questions'}
+                        value={sections?.faq?.subtitle ?? 'Get answers to common questions'}
                         onChange={(e) => setHomeContent({
                           ...homeContent,
                           sections: {

@@ -15,12 +15,15 @@ interface Service {
   slug: string;
   title: string;
   description: string;
+  image?: string;               // <-- added for TS correctness (used below)
   longDescription?: string;
   contentImage?: string;
   showHeroImage?: boolean;
+  showThumbnailInHero?: boolean; // <-- used to decide hero image
+  showContentInHero?: boolean;   // <-- used to decide hero image
   enabled: boolean;
   showOtherServices?: boolean;
-  benefits?: Array<{ title: string; description: string; }>;
+  benefits?: Array<{ title: string; description: string }>;
   features?: string[];
 }
 
@@ -30,11 +33,15 @@ interface ServicesPageData {
       enabled: boolean;
       text: string;
       link: string;
+      color?: string;
+      textColor?: string;
     };
     secondary?: {
       enabled: boolean;
       text: string;
       link: string;
+      color?: string;
+      textColor?: string;
     };
   };
   services: Service[];
@@ -63,12 +70,12 @@ export async function generateMetadata({ params }: ServicePageProps): Promise<Me
   try {
     const servicesConfig = getPageContent('services');
     const siteConfig = getSiteConfig();
-    const service = servicesConfig.services?.find((s: any) => s.slug === params.slug);
-    
+    const service: Service | undefined = servicesConfig.services?.find((s: any) => s.slug === params.slug);
+
     if (!service) {
       return { title: 'Service Not Found' };
     }
-    
+
     return {
       title: `${service.title} Services | ${siteConfig.siteName}`,
       description: service.longDescription || service.description,
@@ -88,40 +95,43 @@ export async function generateMetadata({ params }: ServicePageProps): Promise<Me
 export default async function ServicePage({ params }: ServicePageProps) {
   const siteConfig = getSiteConfig();
   const navigation = getNavigation();
-  const servicesConfig = getPageContent('services');
-  
+  const servicesConfig: ServicesPageData & { services: Service[] } = getPageContent('services');
+
   // Get enabled services for header dropdown
-  const enabledServices = servicesConfig.services?.filter((service: any) => service.enabled !== false) || [];
-  
+  const enabledServices = servicesConfig.services?.filter((service) => service.enabled !== false) || [];
+
   // Find the specific service
-  const service = servicesConfig.services?.find((s: any) => s.slug === params.slug);
-  
+  const service = servicesConfig.services?.find((s) => s.slug === params.slug) as Service | undefined;
+
   if (!service || service.enabled === false) {
     notFound();
   }
 
   // Get other services for "Other Services" section
-  const otherServices = enabledServices.filter((s: any) => s.slug !== params.slug);
+  const otherServices = enabledServices.filter((s) => s.slug !== params.slug);
 
   // Construct hero content structure that Hero component expects
   const heroContent = {
     hero: {
       title: service.title,
       subtitle: service.description,
-      image: service.showThumbnailInHero === true ? service.image : 
-             service.showContentInHero === true ? service.contentImage : 
-             null,
+      image:
+        service.showThumbnailInHero === true
+          ? service.image
+          : service.showContentInHero === true
+          ? service.contentImage
+          : null,
       showThumbnailInHero: service.showThumbnailInHero,
       showContentInHero: service.showContentInHero,
-      heroCta: servicesConfig.heroCta
-    }
+      cta: servicesConfig.heroCta, // <-- corrected: standardized under hero.cta
+    },
   };
 
   return (
     <div className="min-h-screen">
-      <Header 
-        siteConfig={siteConfig} 
-        navigation={navigation} 
+      <Header
+        siteConfig={siteConfig}
+        navigation={navigation}
         servicesConfig={servicesConfig}
         enabledServices={enabledServices}
       />
@@ -129,22 +139,30 @@ export default async function ServicePage({ params }: ServicePageProps) {
         {/* Hero Section */}
         <Hero content={heroContent} siteConfig={siteConfig} pageType={`service-${params.slug}`} />
         <div className="py-10">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            {/* Content moved to Hero component */}
-          </div>
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">{/* Content moved to Hero component */}</div>
         </div>
 
         {/* Long Description Section */}
         {service.longDescription && (
           <section className="py-10 bg-white">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className={`${!service.showThumbnailInHero && !service.showContentInHero && service.contentImage ? 'grid grid-cols-1 lg:grid-cols-2 gap-12 items-center' : ''}`}>
-                <div className={!service.showThumbnailInHero && !service.showContentInHero && service.contentImage ? '' : 'max-w-4xl mx-auto text-center'}>
-                  <p className="text-lg text-gray-700 leading-relaxed">
-                    {service.longDescription}
-                  </p>
+              <div
+                className={`${
+                  !service.showThumbnailInHero && !service.showContentInHero && service.contentImage
+                    ? 'grid grid-cols-1 lg:grid-cols-2 gap-12 items-center'
+                    : ''
+                }`}
+              >
+                <div
+                  className={
+                    !service.showThumbnailInHero && !service.showContentInHero && service.contentImage
+                      ? ''
+                      : 'max-w-4xl mx-auto text-center'
+                  }
+                >
+                  <p className="text-lg text-gray-700 leading-relaxed">{service.longDescription}</p>
                 </div>
-                
+
                 {/* Content Image (if not shown in hero) */}
                 {!service.showThumbnailInHero && !service.showContentInHero && service.contentImage && (
                   <div>
@@ -167,24 +185,18 @@ export default async function ServicePage({ params }: ServicePageProps) {
           <section className="py-16 bg-white">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="text-center mb-12">
-                <h2 className="text-3xl font-bold text-gray-900 mb-4">
-                  Why Choose Our {service.title} Services?
-                </h2>
+                <h2 className="text-3xl font-bold text-gray-900 mb-4">Why Choose Our {service.title} Services?</h2>
               </div>
-              
+
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-                {service.benefits.map((benefit: any, index: number) => (
+                {service.benefits.map((benefit, index) => (
                   <Card key={index} className="border-0 shadow-sm">
                     <CardContent className="p-6">
                       <div className="flex items-start space-x-3">
                         <CheckCircle className="h-6 w-6 text-accent mt-1 flex-shrink-0" />
                         <div>
-                          <h3 className="font-semibold text-gray-900 mb-2">
-                            {benefit.title}
-                          </h3>
-                          <p className="text-gray-600 text-sm">
-                            {benefit.description}
-                          </p>
+                          <h3 className="font-semibold text-gray-900 mb-2">{benefit.title}</h3>
+                          <p className="text-gray-600 text-sm">{benefit.description}</p>
                         </div>
                       </div>
                     </CardContent>
@@ -200,37 +212,34 @@ export default async function ServicePage({ params }: ServicePageProps) {
           <section className="py-16 bg-gray-50">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="text-center mb-12">
-                <h2 className="text-3xl font-bold text-gray-900 mb-4">
-                  Other Services We Offer
-                </h2>
+                <h2 className="text-3xl font-bold text-gray-900 mb-4">Other Services We Offer</h2>
               </div>
-              
+
               <div className="flex flex-wrap justify-center gap-8">
-                {otherServices.slice(0, 3).map((otherService: any) => (
-                  <Card key={otherService.slug} className="group hover:shadow-xl transition-all duration-300 border-0 shadow-lg w-full max-w-sm">
+                {otherServices.slice(0, 3).map((otherService: Service) => (
+                  <Card
+                    key={otherService.slug}
+                    className="group hover:shadow-xl transition-all duration-300 border-0 shadow-lg w-full max-w-sm"
+                  >
                     <CardContent className="p-6">
                       <div className="w-full h-32 bg-gray-100 rounded-2xl overflow-hidden mb-4">
                         <Image
-                          src={otherService.image}
+                          src={otherService.image || ''}
                           alt={otherService.title}
                           width={200}
                           height={128}
                           className="w-full h-full object-cover group-hover:scale-105 transition-transform"
                         />
                       </div>
-                      
-                      <h3 className="text-xl font-semibold text-gray-900 mb-3">
-                        {otherService.title}
-                      </h3>
-                      
-                      <p className="text-gray-600 mb-4 leading-relaxed">
-                        {otherService.description}
-                      </p>
-                      
-                      <Button 
-                        variant="outline" 
+
+                      <h3 className="text-xl font-semibold text-gray-900 mb-3">{otherService.title}</h3>
+
+                      <p className="text-gray-600 mb-4 leading-relaxed">{otherService.description}</p>
+
+                      <Button
+                        variant="outline"
                         size="sm"
-                        className="border-primary text-primary hover:bg-primary hover:text-white transition-all duration-200 group-hover:shadow-md" 
+                        className="border-primary text-primary hover:bg-primary hover:text-white transition-all duration-200 group-hover:shadow-md"
                         asChild
                       >
                         <Link href={`/services/${otherService.slug}`}>
@@ -246,11 +255,9 @@ export default async function ServicePage({ params }: ServicePageProps) {
           </section>
         )}
       </main>
-      
-      {siteConfig.ctaBanner?.showOnPages?.servicePages !== false && (
-        <CtaBanner siteConfig={siteConfig} />
-      )}
-      
+
+      {siteConfig.ctaBanner?.showOnPages?.servicePages !== false && <CtaBanner siteConfig={siteConfig} />}
+
       <Footer siteConfig={siteConfig} navigation={navigation} />
     </div>
   );

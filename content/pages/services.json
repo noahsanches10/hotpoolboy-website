@@ -77,7 +77,7 @@
       "showOtherServices": true,
       "showThumbnailInHero": false,
       "showContentInHero": false,
-      "contentImage": "/uploads/service-1755721798169.webp",
+      "contentImage": "",
       "longDescription": "Dirty solar panels can reduce energy output by up to 25%. Our specialized solar panel cleaning service uses purified water and soft-bristle brushes to safely remove dirt, dust, bird droppings, and other debris without damaging your panels. We clean panels, check connections, and ensure optimal performance to maximize your energy savings.",
       "benefits": [
         {
@@ -134,12 +134,14 @@
     "primary": {
       "text": "Get Free Estimate",
       "link": "/contact",
-      "enabled": true
+      "enabled": true,
+      "color": "accent",
+      "textColor": "primary"
     },
     "secondary": {
       "text": "Call Now",
       "link": "tel:(702) 843-7705",
-      "enabled": true
+      "enabled": false
     }
   }
 }

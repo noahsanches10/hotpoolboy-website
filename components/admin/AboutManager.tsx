@@ -7,6 +7,8 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Trash2, Plus } from 'lucide-react';
+// NEW: color pickers
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 
 interface AboutManagerProps {
   onSave: (type: string, data: any) => void;
@@ -17,79 +19,103 @@ export default function AboutManager({ onSave, isLoading }: AboutManagerProps) {
   const [aboutContent, setAboutContent] = useState({
     hero: {
       title: "About {siteName}",
-      subtitle: "Your trusted partner for professional home services with a commitment to quality and customer satisfaction."
+      subtitle:
+        "Your trusted partner for professional home services with a commitment to quality and customer satisfaction.",
+      // NEW: CTA config for About -> Hero
+      cta: {
+        primary: {
+          enabled: true,
+          text: 'Get Free Quote',
+          link: '/contact',
+          color: 'primary' as 'primary' | 'secondary' | 'accent' | 'white' | 'outline',
+          textColor: 'white' as 'white' | 'black' | 'primary' | 'secondary',
+        },
+        secondary: {
+          enabled: true,
+          text: 'Contact Us',
+          link: '/contact',
+          color: 'outline' as 'primary' | 'secondary' | 'accent' | 'white' | 'outline',
+          textColor: 'primary' as 'white' | 'black' | 'primary' | 'secondary',
+        },
+      },
     },
     story: {
-      title: "Our Story",
+      title: 'Our Story',
       content: [
-        "Founded with a simple mission: to provide homeowners with reliable, professional service they can trust. We understand that your home is your most valuable investment, and we treat it with the care and respect it deserves.",
-        "What started as a small local business has grown into a trusted name in home services, but we've never forgotten our roots. We still believe in old-fashioned values like showing up on time, doing quality work, and standing behind our services."
+        'Founded with a simple mission: to provide homeowners with reliable, professional service they can trust. We understand that your home is your most valuable investment, and we treat it with the care and respect it deserves.',
+        "What started as a small local business has grown into a trusted name in home services, but we've never forgotten our roots. We still believe in old-fashioned values like showing up on time, doing quality work, and standing behind our services.",
       ],
       stats: [
         {
-          number: "500+",
-          label: "Happy Customers"
+          number: '500+',
+          label: 'Happy Customers',
         },
         {
-          number: "10+", 
-          label: "Years Experience"
+          number: '10+',
+          label: 'Years Experience',
         },
         {
-          number: "24/7",
-          label: "Emergency Service"
-        }
-      ]
+          number: '24/7',
+          label: 'Emergency Service',
+        },
+      ],
     },
     values: {
-      title: "Why Choose Us",
+      title: 'Why Choose Us',
       subtitle: "We're committed to excellence in every aspect of our service",
       items: [
         {
-          icon: "shield",
-          title: "Licensed & Insured",
-          description: "Fully licensed professionals with comprehensive insurance coverage for your peace of mind."
+          icon: 'shield',
+          title: 'Licensed & Insured',
+          description:
+            'Fully licensed professionals with comprehensive insurance coverage for your peace of mind.',
         },
         {
-          icon: "clock",
-          title: "24/7 Emergency",
-          description: "Emergency services available around the clock because home problems don't wait for business hours."
+          icon: 'clock',
+          title: '24/7 Emergency',
+          description:
+            "Emergency services available around the clock because home problems don't wait for business hours.",
         },
         {
-          icon: "award",
-          title: "Quality Guarantee", 
-          description: "100% satisfaction guarantee on all our work. If you're not happy, we'll make it right."
+          icon: 'award',
+          title: 'Quality Guarantee',
+          description:
+            "100% satisfaction guarantee on all our work. If you're not happy, we'll make it right.",
         },
         {
-          icon: "users",
-          title: "Local Team",
-          description: "Local professionals who understand your community and are invested in your satisfaction."
-        }
-      ]
+          icon: 'users',
+          title: 'Local Team',
+          description:
+            'Local professionals who understand your community and are invested in your satisfaction.',
+        },
+      ],
     },
     team: {
-      title: "Meet Our Team",
-      subtitle: "Experienced professionals dedicated to serving your community",
+      title: 'Meet Our Team',
+      subtitle: 'Experienced professionals dedicated to serving your community',
       members: [
         {
-          name: "John Doe",
-          title: "Master Plumber",
-          description: "15+ years experience in residential and commercial plumbing systems.",
-          initials: "JD"
+          name: 'John Doe',
+          title: 'Master Plumber',
+          description: '15+ years experience in residential and commercial plumbing systems.',
+          initials: 'JD',
         },
         {
-          name: "Sarah Martinez", 
-          title: "Licensed Electrician",
-          description: "Certified electrical specialist with expertise in modern home electrical systems.",
-          initials: "SM"
+          name: 'Sarah Martinez',
+          title: 'Licensed Electrician',
+          description:
+            'Certified electrical specialist with expertise in modern home electrical systems.',
+          initials: 'SM',
         },
         {
-          name: "Mike Thompson",
-          title: "HVAC Technician", 
-          description: "Heating and cooling expert ensuring your home stays comfortable year-round.",
-          initials: "MT"
-        }
-      ]
-    }
+          name: 'Mike Thompson',
+          title: 'HVAC Technician',
+          description:
+            'Heating and cooling expert ensuring your home stays comfortable year-round.',
+          initials: 'MT',
+        },
+      ],
+    },
   });
 
   useEffect(() => {
@@ -101,7 +127,37 @@ export default function AboutManager({ onSave, isLoading }: AboutManagerProps) {
       const response = await fetch('/api/admin/content?type=about');
       if (response.ok) {
         const data = await response.json();
-        setAboutContent(data);
+        // Ensure defaults for new CTA fields if older content exists
+        setAboutContent((prev) => ({
+          ...prev,
+          ...data,
+          hero: {
+            ...prev.hero,
+            ...(data.hero || {}),
+            cta: {
+              primary: {
+                enabled:
+                  data.hero?.cta?.primary?.enabled ?? prev.hero.cta.primary.enabled,
+                text: data.hero?.cta?.primary?.text ?? prev.hero.cta.primary.text,
+                link: data.hero?.cta?.primary?.link ?? prev.hero.cta.primary.link,
+                color: (data.hero?.cta?.primary?.color ??
+                  prev.hero.cta.primary.color) as any,
+                textColor: (data.hero?.cta?.primary?.textColor ??
+                  prev.hero.cta.primary.textColor) as any,
+              },
+              secondary: {
+                enabled:
+                  data.hero?.cta?.secondary?.enabled ?? prev.hero.cta.secondary.enabled,
+                text: data.hero?.cta?.secondary?.text ?? prev.hero.cta.secondary.text,
+                link: data.hero?.cta?.secondary?.link ?? prev.hero.cta.secondary.link,
+                color: (data.hero?.cta?.secondary?.color ??
+                  prev.hero.cta.secondary.color) as any,
+                textColor: (data.hero?.cta?.secondary?.textColor ??
+                  prev.hero.cta.secondary.textColor) as any,
+              },
+            },
+          },
+        }));
       }
     } catch (error) {
       console.error('Failed to load about content:', error);
@@ -117,8 +173,8 @@ export default function AboutManager({ onSave, isLoading }: AboutManagerProps) {
       ...aboutContent,
       story: {
         ...aboutContent.story,
-        content: [...aboutContent.story.content, ""]
-      }
+        content: [...aboutContent.story.content, ''],
+      },
     });
   };
 
@@ -127,8 +183,8 @@ export default function AboutManager({ onSave, isLoading }: AboutManagerProps) {
       ...aboutContent,
       story: {
         ...aboutContent.story,
-        content: aboutContent.story.content.filter((_, i) => i !== index)
-      }
+        content: aboutContent.story.content.filter((_, i) => i !== index),
+      },
     });
   };
 
@@ -139,8 +195,8 @@ export default function AboutManager({ onSave, isLoading }: AboutManagerProps) {
       ...aboutContent,
       story: {
         ...aboutContent.story,
-        content: newContent
-      }
+        content: newContent,
+      },
     });
   };
 
@@ -152,13 +208,13 @@ export default function AboutManager({ onSave, isLoading }: AboutManagerProps) {
         members: [
           ...aboutContent.team.members,
           {
-            name: "",
-            title: "",
-            description: "",
-            initials: ""
-          }
-        ]
-      }
+            name: '',
+            title: '',
+            description: '',
+            initials: '',
+          },
+        ],
+      },
     });
   };
 
@@ -167,27 +223,31 @@ export default function AboutManager({ onSave, isLoading }: AboutManagerProps) {
       ...aboutContent,
       team: {
         ...aboutContent.team,
-        members: aboutContent.team.members.filter((_, i) => i !== index)
-      }
+        members: aboutContent.team.members.filter((_, i) => i !== index),
+      },
     });
   };
 
   const updateTeamMember = (index: number, field: string, value: string) => {
     const newMembers = [...aboutContent.team.members];
     newMembers[index] = { ...newMembers[index], [field]: value };
-    
+
     // Auto-generate initials from name
     if (field === 'name') {
-      const initials = value.split(' ').map(n => n[0]).join('').toUpperCase();
+      const initials = value
+        .split(' ')
+        .map((n) => n[0])
+        .join('')
+        .toUpperCase();
       newMembers[index].initials = initials;
     }
-    
+
     setAboutContent({
       ...aboutContent,
       team: {
         ...aboutContent.team,
-        members: newMembers
-      }
+        members: newMembers,
+      },
     });
   };
 
@@ -209,33 +269,356 @@ export default function AboutManager({ onSave, isLoading }: AboutManagerProps) {
         <CardHeader>
           <CardTitle>About Page Hero</CardTitle>
         </CardHeader>
-        <CardContent className="space-y-4">
+        <CardContent className="space-y-6">
           <div>
             <Label htmlFor="heroTitle">Hero Title</Label>
             <Input
               id="heroTitle"
               value={aboutContent.hero.title}
-              onChange={(e) => setAboutContent({
-                ...aboutContent,
-                hero: { ...aboutContent.hero, title: e.target.value }
-              })}
+              onChange={(e) =>
+                setAboutContent({
+                  ...aboutContent,
+                  hero: { ...aboutContent.hero, title: e.target.value },
+                })
+              }
               placeholder="About {siteName}"
             />
             <p className="text-sm text-gray-500 mt-1">
               Use {`{siteName}`} to automatically insert your site name
             </p>
           </div>
+
           <div>
             <Label htmlFor="heroSubtitle">Hero Subtitle</Label>
             <Textarea
               id="heroSubtitle"
               value={aboutContent.hero.subtitle}
-              onChange={(e) => setAboutContent({
-                ...aboutContent,
-                hero: { ...aboutContent.hero, subtitle: e.target.value }
-              })}
+              onChange={(e) =>
+                setAboutContent({
+                  ...aboutContent,
+                  hero: { ...aboutContent.hero, subtitle: e.target.value },
+                })
+              }
               rows={3}
             />
+          </div>
+
+          {/* NEW: CTA Buttons */}
+          <div className="space-y-4">
+            <Label className="text-base font-semibold">Hero CTA Buttons</Label>
+            <p className="text-sm text-gray-500">
+              Configure the call-to-action buttons that appear on the About page hero.
+            </p>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {/* Primary CTA */}
+              <div className="space-y-3">
+                <div className="flex items-center space-x-2">
+                  <input
+                    type="checkbox"
+                    id="about-primary-cta-enabled"
+                    checked={aboutContent.hero.cta?.primary?.enabled !== false}
+                    onChange={(e) =>
+                      setAboutContent((prev) => ({
+                        ...prev,
+                        hero: {
+                          ...prev.hero,
+                          cta: {
+                            ...prev.hero.cta,
+                            primary: {
+                              ...prev.hero.cta.primary,
+                              enabled: e.target.checked,
+                            },
+                          },
+                        },
+                      }))
+                    }
+                    className="w-4 h-4 text-primary"
+                  />
+                  <Label htmlFor="about-primary-cta-enabled" className="text-sm">
+                    Enable primary button
+                  </Label>
+                </div>
+
+                {aboutContent.hero.cta?.primary?.enabled !== false && (
+                  <>
+                    <div>
+                      <Label htmlFor="about-primary-cta-text" className="text-xs">
+                        Button Text
+                      </Label>
+                      <Input
+                        id="about-primary-cta-text"
+                        value={aboutContent.hero.cta?.primary?.text || 'Get Free Quote'}
+                        onChange={(e) =>
+                          setAboutContent((prev) => ({
+                            ...prev,
+                            hero: {
+                              ...prev.hero,
+                              cta: {
+                                ...prev.hero.cta,
+                                primary: {
+                                  ...prev.hero.cta.primary,
+                                  text: e.target.value,
+                                },
+                              },
+                            },
+                          }))
+                        }
+                        placeholder="Get Free Quote"
+                      />
+                    </div>
+
+                    <div>
+                      <Label htmlFor="about-primary-cta-link" className="text-xs">
+                        Button Link
+                      </Label>
+                      <Input
+                        id="about-primary-cta-link"
+                        value={aboutContent.hero.cta?.primary?.link || '/contact'}
+                        onChange={(e) =>
+                          setAboutContent((prev) => ({
+                            ...prev,
+                            hero: {
+                              ...prev.hero,
+                              cta: {
+                                ...prev.hero.cta,
+                                primary: {
+                                  ...prev.hero.cta.primary,
+                                  link: e.target.value,
+                                },
+                              },
+                            },
+                          }))
+                        }
+                        placeholder="/contact"
+                      />
+                    </div>
+
+                    {/* Colors */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div>
+                        <Label className="text-xs">Primary Button Color</Label>
+                        <Select
+                          value={aboutContent.hero.cta?.primary?.color || 'primary'}
+                          onValueChange={(value) =>
+                            setAboutContent((prev) => ({
+                              ...prev,
+                              hero: {
+                                ...prev.hero,
+                                cta: {
+                                  ...prev.hero.cta,
+                                  primary: {
+                                    ...prev.hero.cta.primary,
+                                    color: value as any,
+                                  },
+                                },
+                              },
+                            }))
+                          }
+                        >
+                          <SelectTrigger>
+                            <SelectValue placeholder="Select button color" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectItem value="primary">Primary</SelectItem>
+                            <SelectItem value="secondary">Secondary</SelectItem>
+                            <SelectItem value="accent">Accent</SelectItem>
+                            <SelectItem value="white">White</SelectItem>
+                            <SelectItem value="outline">Outline</SelectItem>
+                          </SelectContent>
+                        </Select>
+                      </div>
+
+                      <div>
+                        <Label className="text-xs">Primary Button Text Color</Label>
+                        <Select
+                          value={aboutContent.hero.cta?.primary?.textColor || 'white'}
+                          onValueChange={(value) =>
+                            setAboutContent((prev) => ({
+                              ...prev,
+                              hero: {
+                                ...prev.hero,
+                                cta: {
+                                  ...prev.hero.cta,
+                                  primary: {
+                                    ...prev.hero.cta.primary,
+                                    textColor: value as any,
+                                  },
+                                },
+                              },
+                            }))
+                          }
+                        >
+                          <SelectTrigger>
+                            <SelectValue placeholder="Select text color" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectItem value="white">White</SelectItem>
+                            <SelectItem value="black">Black</SelectItem>
+                            <SelectItem value="primary">Primary</SelectItem>
+                            <SelectItem value="secondary">Secondary</SelectItem>
+                          </SelectContent>
+                        </Select>
+                      </div>
+                    </div>
+                  </>
+                )}
+              </div>
+
+              {/* Secondary CTA */}
+              <div className="space-y-3">
+                <div className="flex items-center space-x-2">
+                  <input
+                    type="checkbox"
+                    id="about-secondary-cta-enabled"
+                    checked={aboutContent.hero.cta?.secondary?.enabled !== false}
+                    onChange={(e) =>
+                      setAboutContent((prev) => ({
+                        ...prev,
+                        hero: {
+                          ...prev.hero,
+                          cta: {
+                            ...prev.hero.cta,
+                            secondary: {
+                              ...prev.hero.cta.secondary,
+                              enabled: e.target.checked,
+                            },
+                          },
+                        },
+                      }))
+                    }
+                    className="w-4 h-4 text-primary"
+                  />
+                  <Label htmlFor="about-secondary-cta-enabled" className="text-sm">
+                    Enable secondary button
+                  </Label>
+                </div>
+
+                {aboutContent.hero.cta?.secondary?.enabled !== false && (
+                  <>
+                    <div>
+                      <Label htmlFor="about-secondary-cta-text" className="text-xs">
+                        Button Text
+                      </Label>
+                      <Input
+                        id="about-secondary-cta-text"
+                        value={aboutContent.hero.cta?.secondary?.text || 'Contact Us'}
+                        onChange={(e) =>
+                          setAboutContent((prev) => ({
+                            ...prev,
+                            hero: {
+                              ...prev.hero,
+                              cta: {
+                                ...prev.hero.cta,
+                                secondary: {
+                                  ...prev.hero.cta.secondary,
+                                  text: e.target.value,
+                                },
+                              },
+                            },
+                          }))
+                        }
+                        placeholder="Contact Us"
+                      />
+                    </div>
+
+                    <div>
+                      <Label htmlFor="about-secondary-cta-link" className="text-xs">
+                        Button Link
+                      </Label>
+                      <Input
+                        id="about-secondary-cta-link"
+                        value={aboutContent.hero.cta?.secondary?.link || '/contact'}
+                        onChange={(e) =>
+                          setAboutContent((prev) => ({
+                            ...prev,
+                            hero: {
+                              ...prev.hero,
+                              cta: {
+                                ...prev.hero.cta,
+                                secondary: {
+                                  ...prev.hero.cta.secondary,
+                                  link: e.target.value,
+                                },
+                              },
+                            },
+                          }))
+                        }
+                        placeholder="/contact"
+                      />
+                    </div>
+
+                    {/* Colors */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div>
+                        <Label className="text-xs">Secondary Button Color</Label>
+                        <Select
+                          value={aboutContent.hero.cta?.secondary?.color || 'outline'}
+                          onValueChange={(value) =>
+                            setAboutContent((prev) => ({
+                              ...prev,
+                              hero: {
+                                ...prev.hero,
+                                cta: {
+                                  ...prev.hero.cta,
+                                  secondary: {
+                                    ...prev.hero.cta.secondary,
+                                    color: value as any,
+                                  },
+                                },
+                              },
+                            }))
+                          }
+                        >
+                          <SelectTrigger>
+                            <SelectValue placeholder="Select button color" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectItem value="primary">Primary</SelectItem>
+                            <SelectItem value="secondary">Secondary</SelectItem>
+                            <SelectItem value="accent">Accent</SelectItem>
+                            <SelectItem value="white">White</SelectItem>
+                            <SelectItem value="outline">Outline</SelectItem>
+                          </SelectContent>
+                        </Select>
+                      </div>
+
+                      <div>
+                        <Label className="text-xs">Secondary Button Text Color</Label>
+                        <Select
+                          value={aboutContent.hero.cta?.secondary?.textColor || 'primary'}
+                          onValueChange={(value) =>
+                            setAboutContent((prev) => ({
+                              ...prev,
+                              hero: {
+                                ...prev.hero,
+                                cta: {
+                                  ...prev.hero.cta,
+                                  secondary: {
+                                    ...prev.hero.cta.secondary,
+                                    textColor: value as any,
+                                  },
+                                },
+                              },
+                            }))
+                          }
+                        >
+                          <SelectTrigger>
+                            <SelectValue placeholder="Select text color" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectItem value="white">White</SelectItem>
+                            <SelectItem value="black">Black</SelectItem>
+                            <SelectItem value="primary">Primary</SelectItem>
+                            <SelectItem value="secondary">Secondary</SelectItem>
+                          </SelectContent>
+                        </Select>
+                      </div>
+                    </div>
+                  </>
+                )}
+              </div>
+            </div>
           </div>
         </CardContent>
       </Card>
@@ -251,10 +634,12 @@ export default function AboutManager({ onSave, isLoading }: AboutManagerProps) {
             <Input
               id="storyTitle"
               value={aboutContent.story.title}
-              onChange={(e) => setAboutContent({
-                ...aboutContent,
-                story: { ...aboutContent.story, title: e.target.value }
-              })}
+              onChange={(e) =>
+                setAboutContent({
+                  ...aboutContent,
+                  story: { ...aboutContent.story, title: e.target.value },
+                })
+              }
             />
           </div>
 
@@ -303,7 +688,7 @@ export default function AboutManager({ onSave, isLoading }: AboutManagerProps) {
                       newStats[index] = { ...stat, number: e.target.value };
                       setAboutContent({
                         ...aboutContent,
-                        story: { ...aboutContent.story, stats: newStats }
+                        story: { ...aboutContent.story, stats: newStats },
                       });
                     }}
                     placeholder="500+"
@@ -315,7 +700,7 @@ export default function AboutManager({ onSave, isLoading }: AboutManagerProps) {
                       newStats[index] = { ...stat, label: e.target.value };
                       setAboutContent({
                         ...aboutContent,
-                        story: { ...aboutContent.story, stats: newStats }
+                        story: { ...aboutContent.story, stats: newStats },
                       });
                     }}
                     placeholder="Happy Customers"
@@ -345,10 +730,12 @@ export default function AboutManager({ onSave, isLoading }: AboutManagerProps) {
               <Input
                 id="teamTitle"
                 value={aboutContent.team.title}
-                onChange={(e) => setAboutContent({
-                  ...aboutContent,
-                  team: { ...aboutContent.team, title: e.target.value }
-                })}
+                onChange={(e) =>
+                  setAboutContent({
+                    ...aboutContent,
+                    team: { ...aboutContent.team, title: e.target.value },
+                  })
+                }
               />
             </div>
             <div>
@@ -356,10 +743,12 @@ export default function AboutManager({ onSave, isLoading }: AboutManagerProps) {
               <Input
                 id="teamSubtitle"
                 value={aboutContent.team.subtitle}
-                onChange={(e) => setAboutContent({
-                  ...aboutContent,
-                  team: { ...aboutContent.team, subtitle: e.target.value }
-                })}
+                onChange={(e) =>
+                  setAboutContent({
+                    ...aboutContent,
+                    team: { ...aboutContent.team, subtitle: e.target.value },
+                  })
+                }
               />
             </div>
           </div>
@@ -380,7 +769,7 @@ export default function AboutManager({ onSave, isLoading }: AboutManagerProps) {
                       <Trash2 className="h-4 w-4" />
                     </Button>
                   </div>
-                  
+
                   {/* Team Member Image */}
                   <div className="space-y-4">
                     <Label>Team Member Photo</Label>
@@ -388,21 +777,25 @@ export default function AboutManager({ onSave, isLoading }: AboutManagerProps) {
                       {/* Current Image Preview */}
                       <div className="w-16 h-16 bg-gray-200 rounded-full flex items-center justify-center overflow-hidden">
                         {member.image ? (
-                          <img 
-                            src={member.image} 
+                          <img
+                            src={member.image}
                             alt={member.name}
                             className="w-full h-full object-cover"
                             onError={(e) => {
-                              e.currentTarget.style.display = 'none';
+                              (e.currentTarget as HTMLImageElement).style.display = 'none';
                             }}
                           />
                         ) : (
                           <span className="text-sm font-bold text-gray-600">
-                            {member.initials || member.name.split(' ').map((n: string) => n[0]).join('')}
+                            {member.initials ||
+                              member.name
+                                .split(' ')
+                                .map((n: string) => n[0])
+                                .join('')}
                           </span>
                         )}
                       </div>
-                      
+
                       {/* Upload Button */}
                       <div className="flex-1">
                         <input
@@ -440,7 +833,7 @@ export default function AboutManager({ onSave, isLoading }: AboutManagerProps) {
                         </p>
                       </div>
                     </div>
-                    
+
                     {/* Manual URL Input */}
                     <div>
                       <Label htmlFor={`image-url-${index}`}>Or Enter Image URL</Label>
@@ -452,7 +845,7 @@ export default function AboutManager({ onSave, isLoading }: AboutManagerProps) {
                       />
                     </div>
                   </div>
-                  
+
                   <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
                     <div>
                       <Label htmlFor={`name-${index}`}>Name</Label>
@@ -500,9 +893,7 @@ export default function AboutManager({ onSave, isLoading }: AboutManagerProps) {
         </CardContent>
       </Card>
 
-      <Button onClick={handleSave}>
-        Save About Page
-      </Button>
+      <Button onClick={handleSave}>Save About Page</Button>
     </div>
   );
 }

@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
@@ -343,6 +344,67 @@ export default function ServicesManager({ onSave, isLoading }: ServicesManagerPr
                     />
                     <Label htmlFor="primaryCtaEnabled" className="text-sm">Enable primary button</Label>
                   </div>
+                   {/* NEW: Primary button colors */}
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div>
+        <Label className="text-xs">Primary Button Color</Label>
+        <Select
+          value={servicesConfig.heroCta?.primary?.color || 'primary'}
+          onValueChange={(value) =>
+            setServicesConfig(prev => ({
+              ...prev,
+              heroCta: {
+                ...prev.heroCta,
+                primary: {
+                  ...prev.heroCta?.primary,
+                  color: value,
+                },
+              },
+            }))
+          }
+        >
+          <SelectTrigger>
+            <SelectValue placeholder="Select button color" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="primary">Primary</SelectItem>
+            <SelectItem value="secondary">Secondary</SelectItem>
+            <SelectItem value="accent">Accent</SelectItem>
+            <SelectItem value="white">White</SelectItem>
+            <SelectItem value="outline">Outline</SelectItem>
+          </SelectContent>
+        </Select>
+      </div>
+
+      <div>
+        <Label className="text-xs">Primary Button Text Color</Label>
+        <Select
+          value={servicesConfig.heroCta?.primary?.textColor || 'white'}
+          onValueChange={(value) =>
+            setServicesConfig(prev => ({
+              ...prev,
+              heroCta: {
+                ...prev.heroCta,
+                primary: {
+                  ...prev.heroCta?.primary,
+                  textColor: value,
+                },
+              },
+            }))
+          }
+        >
+          <SelectTrigger>
+            <SelectValue placeholder="Select text color" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="white">White</SelectItem>
+            <SelectItem value="black">Black</SelectItem>
+            <SelectItem value="primary">Primary</SelectItem>
+            <SelectItem value="secondary">Secondary</SelectItem>
+          </SelectContent>
+        </Select>
+      </div>
+    </div>
                   
                   {servicesConfig.heroCta?.primary?.enabled !== false && (
                     <>
@@ -410,6 +472,67 @@ export default function ServicesManager({ onSave, isLoading }: ServicesManagerPr
                     />
                     <Label htmlFor="secondaryCtaEnabled" className="text-sm">Enable secondary button</Label>
                   </div>
+                   {/* NEW: Secondary button colors */}
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div>
+        <Label className="text-xs">Secondary Button Color</Label>
+        <Select
+          value={servicesConfig.heroCta?.secondary?.color || 'outline'}
+          onValueChange={(value) =>
+            setServicesConfig(prev => ({
+              ...prev,
+              heroCta: {
+                ...prev.heroCta,
+                secondary: {
+                  ...prev.heroCta?.secondary,
+                  color: value,
+                },
+              },
+            }))
+          }
+        >
+          <SelectTrigger>
+            <SelectValue placeholder="Select button color" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="primary">Primary</SelectItem>
+            <SelectItem value="secondary">Secondary</SelectItem>
+            <SelectItem value="accent">Accent</SelectItem>
+            <SelectItem value="white">White</SelectItem>
+            <SelectItem value="outline">Outline</SelectItem>
+          </SelectContent>
+        </Select>
+      </div>
+
+      <div>
+        <Label className="text-xs">Secondary Button Text Color</Label>
+        <Select
+          value={servicesConfig.heroCta?.secondary?.textColor || 'primary'}
+          onValueChange={(value) =>
+            setServicesConfig(prev => ({
+              ...prev,
+              heroCta: {
+                ...prev.heroCta,
+                secondary: {
+                  ...prev.heroCta?.secondary,
+                  textColor: value,
+                },
+              },
+            }))
+          }
+        >
+          <SelectTrigger>
+            <SelectValue placeholder="Select text color" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="white">White</SelectItem>
+            <SelectItem value="black">Black</SelectItem>
+            <SelectItem value="primary">Primary</SelectItem>
+            <SelectItem value="secondary">Secondary</SelectItem>
+          </SelectContent>
+        </Select>
+      </div>
+    </div>
                   
                   {servicesConfig.heroCta?.secondary?.enabled !== false && (
                     <>

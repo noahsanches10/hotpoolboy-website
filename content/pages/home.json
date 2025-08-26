@@ -7,14 +7,17 @@
     "ctaLink": "/contact",
     "cta": {
       "primary": {
-        "text": "",
-        "link": "/contact",
-        "enabled": false
+        "text": "Call Now",
+        "link": "tel:7028437705",
+        "enabled": true,
+        "color": "accent",
+        "textColor": "primary"
       },
       "secondary": {
         "text": "Get Free Estimate",
         "link": "/contact",
-        "enabled": true
+        "enabled": false,
+        "textColor": "white"
       }
     },
     "trustIndicators": [
@@ -40,7 +43,7 @@
     "services": {
       "enabled": true,
       "title": "Our Services",
-      "subtitle": "Comprehensive exterior cleaning solutions to enhance your Logan and Cache Valley property's appearance and value",
+      "subtitle": "",
       "showSection": true,
       "hiddenServices": [],
       "background": "white"
@@ -48,7 +51,7 @@
     "whyChooseUs": {
       "enabled": true,
       "title": "Why Logan Chooses Mr Pane",
-      "subtitle": "We're committed to excellence in every aspect of our exterior cleaning services throughout Northern Utah",
+      "subtitle": "",
       "background": "gray",
       "items": [
         {
@@ -70,8 +73,8 @@
     },
     "testimonials": {
       "enabled": true,
-      "title": "What Cache Valley Says About Us",
-      "subtitle": "See why Logan and Northern Utah homeowners trust us with their exterior cleaning needs",
+      "title": "What Your Neighbors Say About Us",
+      "subtitle": "",
       "background": "white",
       "items": [
         {
@@ -98,29 +101,54 @@
       ]
     },
     "gallery": {
-      "enabled": false,
-      "title": "Before & After Results",
-      "subtitle": "See the dramatic difference our professional exterior cleaning makes",
+      "enabled": true,
+      "title": "See Us In Action",
+      "subtitle": "",
       "background": "white",
       "items": [
         {
-          "title": "Window Cleaning Transformation",
-          "beforeImage": "https://images.pexels.com/photos/1396122/pexels-photo-1396122.jpeg",
-          "afterImage": "https://images.pexels.com/photos/5691659/pexels-photo-5691659.jpeg",
-          "description": "Professional window cleaning restored crystal clear views"
+          "title": "",
+          "beforeImage": "/uploads/gallery-1756181268240.webp",
+          "afterImage": "",
+          "description": ""
         },
         {
-          "title": "Pressure Washing Results",
-          "beforeImage": "https://images.pexels.com/photos/257736/pexels-photo-257736.jpeg",
-          "afterImage": "https://images.pexels.com/photos/1396122/pexels-photo-1396122.jpeg",
-          "description": "Driveway and walkway pressure washing removed years of buildup"
+          "title": "",
+          "beforeImage": "/uploads/gallery-1756181282786.webp",
+          "afterImage": "",
+          "description": ""
+        },
+        {
+          "title": "",
+          "beforeImage": "/uploads/gallery-1756181295986.webp",
+          "afterImage": "",
+          "description": ""
+        },
+        {
+          "title": "",
+          "beforeImage": "/uploads/gallery-1756181309381.webp",
+          "afterImage": "",
+          "description": ""
+        },
+        {
+          "title": "",
+          "beforeImage": "/uploads/gallery-1756181321653.webp",
+          "afterImage": "",
+          "description": ""
+        },
+        {
+          "title": "",
+          "beforeImage": "/uploads/gallery-1756181336095.webp",
+          "afterImage": "",
+          "description": ""
         }
-      ]
+      ],
+      "displayStyle": "carousel"
     },
     "faq": {
       "enabled": true,
       "title": "Frequently Asked Questions",
-      "subtitle": "Get answers to common questions about our exterior cleaning services",
+      "subtitle": "",
       "background": "gray",
       "items": [
         {
@@ -136,8 +164,8 @@
           "answer": "We stand behind our work with a 100% satisfaction guarantee. If you're not completely happy with our service, we'll return within 24 hours to make it right at no additional charge."
         },
         {
-          "question": "Do you offer seasonal services like holiday lighting?",
-          "answer": "Yes! In addition to year-round cleaning services, we offer seasonal services including holiday light installation and removal, gutter guard installation, and winter exterior maintenance."
+          "question": "What types of windows do you clean?",
+          "answer": "We specialize in cleaning all types of windows, including single-pane, double-pane, and insulated glass units. Our services are suitable for both residential and commercial properties."
         }
       ]
     },
@@ -186,7 +214,9 @@
           "popular": false
         }
       ],
-      "background": "gray"
+      "background": "gray",
+      "title": "Save With Service Plans",
+      "subtitle": ""
     }
   }
 }

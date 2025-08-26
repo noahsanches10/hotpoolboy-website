@@ -1,6 +1,11 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { Wrench, Zap, Thermometer, Hammer, ArrowRight, Settings, Wifi, Shield, PenTool as Tool, Home, Car, Paintbrush, Scissors, Droplets, Wind, Lightbulb, Drill, Gauge, Flame, Snowflake, Lock, Key, Camera, Antenna, Router, Battery, Plug, Cable, Cpu, HardDrive, Monitor, Smartphone } from 'lucide-react';
+import {
+  Wrench, Zap, Thermometer, Hammer, ArrowRight, Settings, Wifi, Shield,
+  PenTool as Tool, Home, Car, Paintbrush, Scissors, Droplets, Wind, Lightbulb,
+  Drill, Gauge, Flame, Snowflake, Lock, Key, Camera, Antenna, Router, Battery,
+  Plug, Cable, Cpu, HardDrive, Monitor, Smartphone
+} from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 
@@ -11,67 +16,42 @@ interface ServicesProps {
 }
 
 const iconMap = {
-  wrench: Wrench,
-  zap: Zap,
-  thermometer: Thermometer,
-  hammer: Hammer,
-  settings: Settings,
-  wifi: Wifi,
-  shield: Shield,
-  tool: Tool,
-  home: Home,
-  car: Car,
-  paintbrush: Paintbrush,
-  scissors: Scissors,
-  droplets: Droplets,
-  wind: Wind,
-  lightbulb: Lightbulb,
-  drill: Drill,
-  gauge: Gauge,
-  flame: Flame,
-  snowflake: Snowflake,
-  lock: Lock,
-  key: Key,
-  camera: Camera,
-  antenna: Antenna,
-  router: Router,
-  battery: Battery,
-  plug: Plug,
-  cable: Cable,
-  cpu: Cpu,
-  harddrive: HardDrive,
-  monitor: Monitor,
-  smartphone: Smartphone,
+  wrench: Wrench, zap: Zap, thermometer: Thermometer, hammer: Hammer,
+  settings: Settings, wifi: Wifi, shield: Shield, tool: Tool, home: Home, car: Car,
+  paintbrush: Paintbrush, scissors: Scissors, droplets: Droplets, wind: Wind,
+  lightbulb: Lightbulb, drill: Drill, gauge: Gauge, flame: Flame, snowflake: Snowflake,
+  lock: Lock, key: Key, camera: Camera, antenna: Antenna, router: Router, battery: Battery,
+  plug: Plug, cable: Cable, cpu: Cpu, harddrive: HardDrive, monitor: Monitor, smartphone: Smartphone,
 };
 
 export default function Services({ content, servicesConfig, isHomePage = false }: ServicesProps) {
+  // 🔧 Read the home page services settings from content.sections.services
+  const homeServices = content?.sections?.services;
+
   // Get services from servicesConfig
   const services = servicesConfig?.services || [];
   const isMultiPage = servicesConfig?.pageType === 'multiple';
   const displayType = servicesConfig?.displayType || 'icons';
-  
-  // Filter services for home page based on hiddenServices
-  const displayedServices = isHomePage 
-    ? services.filter((service: any) => 
-        service.enabled !== false && !content.services?.hiddenServices?.includes(service.slug)
+
+  // Filter services for home page based on hiddenServices saved in content.sections.services
+  const displayedServices = isHomePage
+    ? services.filter((service: any) =>
+        service.enabled !== false &&
+        !(homeServices?.hiddenServices || []).includes(service.slug)
       )
     : services.filter((service: any) => service.enabled !== false);
 
   // Determine link behavior based on services config
-  const getServiceLink = (service: any) => {
-    if (isMultiPage) {
-      return `/services/${service.slug}`;
-    }
-    return '/services';
-  };
+  const getServiceLink = (service: any) => (isMultiPage ? `/services/${service.slug}` : '/services');
 
-  const sectionTitle = isHomePage 
-    ? content.services?.title || 'Our Services'
-    : servicesConfig?.title || 'Our Services';
-    
-  const sectionSubtitle = isHomePage 
-    ? content.services?.subtitle || 'Comprehensive home services'
-    : servicesConfig?.subtitle || 'Professional home services delivered with expertise and care';
+  // Use saved title/subtitle from content.sections.services on the home page
+  const sectionTitle = isHomePage
+    ? (homeServices?.title ?? 'Our Services') // use ?? so empty string stays empty if you want that
+    : (servicesConfig?.title ?? 'Our Services');
+
+  const sectionSubtitle = isHomePage
+    ? (homeServices?.subtitle ?? 'Comprehensive home services')
+    : (servicesConfig?.subtitle ?? 'Professional home services delivered with expertise and care');
 
   // Determine grid columns based on number of services
   const getGridCols = (count: number) => {
@@ -82,7 +62,7 @@ export default function Services({ content, servicesConfig, isHomePage = false }
   };
 
   return (
-    <section className={`py-20 ${isHomePage ? getBackgroundClass(content.services?.background || 'white') : 'bg-white'}`}>
+    <section className={`py-20 ${isHomePage ? getBackgroundClass(homeServices?.background || 'white') : 'bg-white'}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header - only show on home page */}
         {isHomePage && (
@@ -101,7 +81,7 @@ export default function Services({ content, servicesConfig, isHomePage = false }
           {displayedServices.map((service: any, index: number) => {
             const IconComponent = iconMap[service.icon as keyof typeof iconMap] || Wrench;
             const serviceLink = getServiceLink(service);
-            
+
             return (
               <Card key={index} className="group hover:shadow-xl transition-all duration-300 border-0 shadow-lg">
                 <CardContent className="p-6">
@@ -122,26 +102,26 @@ export default function Services({ content, servicesConfig, isHomePage = false }
                       </div>
                     )}
                   </div>
-                  
+
                   <h3 className="text-xl font-semibold text-gray-900 mb-3">
                     {service.title}
                   </h3>
-                  
+
                   <p className="text-gray-600 mb-4 leading-relaxed">
                     {service.description}
                   </p>
-                  
+
                   <div className="mt-6">
-                    <Button 
-                      variant="outline" 
+                    <Button
+                      variant="outline"
                       size="sm"
-                      className="border-primary text-primary hover:bg-primary hover:text-white transition-all duration-200 group-hover:shadow-md" 
+                      className="border-primary text-primary hover:bg-primary hover:text-white transition-all duration-200 group-hover:shadow-md"
                       asChild
                     >
-                    <Link href={serviceLink}>
-                      Learn More
-                      <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                    </Link>
+                      <Link href={serviceLink}>
+                        Learn More
+                        <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                      </Link>
                     </Button>
                   </div>
                 </CardContent>
@@ -149,7 +129,6 @@ export default function Services({ content, servicesConfig, isHomePage = false }
             );
           })}
         </div>
-
       </div>
     </section>
   );

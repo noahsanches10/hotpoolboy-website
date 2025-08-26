@@ -18,9 +18,7 @@
     "Logan",
     "Hyrum",
     "Smithfield",
-    "Richmond",
-    "Cache Valley",
-    "Northern Utah"
+    "Richmond"
   ],
   "socialMedia": {
     "facebook": "",
@@ -52,7 +50,9 @@
       "blogPosts": true,
       "about": true,
       "reviews": true
-    }
+    },
+    "primaryButtonTextColor": "primary",
+    "secondaryButtonTextColor": "primary"
   },
   "showLogoInFooter": false,
   "logoSize": 60,
@@ -60,7 +60,12 @@
   "footerTextColor": "auto",
   "fontFamily": "poppins",
   "heroBackgrounds": {
-    "home": "/uploads/hero-background-1755721892721.jpeg"
+    "home": "/uploads/hero-background-1755721892721.jpeg",
+    "service-window-cleaning": "/uploads/hero-background-1756167043123.webp",
+    "service-gutter-cleaning": "/uploads/hero-background-1756167062732.jpg",
+    "service-solar-panel-cleaning": "/uploads/hero-background-1756167092113.webp",
+    "service-house-washing": "/uploads/hero-background-1756167198579.jpg",
+    "about": "/uploads/hero-background-1756180061976.webp"
   },
   "heroStyling": {
     "backgroundType": "gradient",
@@ -81,6 +86,32 @@
       "overlayType": "dark",
       "overlayOpacity": 50,
       "overlayColor": "#000000"
+    },
+    "image-hero-background-1756167043123.webp": {
+      "overlayType": "dark",
+      "overlayOpacity": 50,
+      "overlayColor": "#000000"
+    },
+    "image-hero-background-1756167062732.jpg": {
+      "overlayType": "dark",
+      "overlayOpacity": 50,
+      "overlayColor": "#000000"
+    },
+    "image-hero-background-1756167092113.webp": {
+      "overlayType": "dark",
+      "overlayOpacity": 50,
+      "overlayColor": "#000000"
+    },
+    "image-hero-background-1756167198579.jpg": {
+      "overlayType": "dark",
+      "overlayOpacity": 50,
+      "overlayColor": "#000000"
+    },
+    "image-hero-background-1756180061976.webp": {
+      "overlayType": "dark",
+      "overlayOpacity": 50,
+      "overlayColor": "#000000"
     }
-  }
+  },
+  "headerCtaTextColor": "primary"
 }

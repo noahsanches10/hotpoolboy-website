@@ -41,14 +41,14 @@ export default function NavigationManager({ navigation, setNavigation, onSave, i
 
   const saveSiteConfig = async () => {
     if (!siteConfig) return;
-    
+
     try {
       const response = await fetch('/api/admin/content', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ type: 'site-config', data: siteConfig })
       });
-      
+
       if (response.ok) {
         alert('Settings saved successfully!');
       } else {
@@ -130,8 +130,8 @@ export default function NavigationManager({ navigation, setNavigation, onSave, i
                         value={item.label}
                         onChange={(e) => {
                           const newHeader = [...navigation.header];
-                          newHeader[index] = {...item, label: e.target.value};
-                          setNavigation({...navigation, header: newHeader});
+                          newHeader[index] = { ...item, label: e.target.value };
+                          setNavigation({ ...navigation, header: newHeader });
                         }}
                       />
                       <div className="flex space-x-2">
@@ -140,8 +140,8 @@ export default function NavigationManager({ navigation, setNavigation, onSave, i
                           value={item.href}
                           onChange={(e) => {
                             const newHeader = [...navigation.header];
-                            newHeader[index] = {...item, href: e.target.value};
-                            setNavigation({...navigation, header: newHeader});
+                            newHeader[index] = { ...item, href: e.target.value };
+                            setNavigation({ ...navigation, header: newHeader });
                           }}
                         />
                         <Button
@@ -149,7 +149,7 @@ export default function NavigationManager({ navigation, setNavigation, onSave, i
                           size="sm"
                           onClick={() => {
                             const newHeader = navigation.header.filter((_, i) => i !== index);
-                            setNavigation({...navigation, header: newHeader});
+                            setNavigation({ ...navigation, header: newHeader });
                           }}
                           className="text-red-600 hover:text-red-700 hover:bg-red-50"
                         >
@@ -162,7 +162,7 @@ export default function NavigationManager({ navigation, setNavigation, onSave, i
                     variant="outline"
                     onClick={() => {
                       const newHeader = [...navigation.header, { label: "", href: "" }];
-                      setNavigation({...navigation, header: newHeader});
+                      setNavigation({ ...navigation, header: newHeader });
                     }}
                   >
                     Add Navigation Link
@@ -182,7 +182,7 @@ export default function NavigationManager({ navigation, setNavigation, onSave, i
                         value={navigation.cta.label}
                         onChange={(e) => setNavigation({
                           ...navigation,
-                          cta: {...navigation.cta, label: e.target.value}
+                          cta: { ...navigation.cta, label: e.target.value }
                         })}
                       />
                     </div>
@@ -194,19 +194,19 @@ export default function NavigationManager({ navigation, setNavigation, onSave, i
                         value={navigation.cta.href}
                         onChange={(e) => setNavigation({
                           ...navigation,
-                          cta: {...navigation.cta, href: e.target.value}
+                          cta: { ...navigation.cta, href: e.target.value }
                         })}
                       />
                     </div>
                   </div>
-                  
+
                   <div className="grid grid-cols-2 gap-4">
                     <div className="flex items-center space-x-2">
                       <Switch
                         checked={navigation.cta.external || false}
                         onCheckedChange={(checked) => setNavigation({
                           ...navigation,
-                          cta: {...navigation.cta, external: checked}
+                          cta: { ...navigation.cta, external: checked }
                         })}
                       />
                       <Label>External Link</Label>
@@ -216,7 +216,7 @@ export default function NavigationManager({ navigation, setNavigation, onSave, i
                         checked={navigation.cta.openInNewTab || false}
                         onCheckedChange={(checked) => setNavigation({
                           ...navigation,
-                          cta: {...navigation.cta, openInNewTab: checked}
+                          cta: { ...navigation.cta, openInNewTab: checked }
                         })}
                       />
                       <Label>Open in New Tab</Label>
@@ -243,8 +243,8 @@ export default function NavigationManager({ navigation, setNavigation, onSave, i
                         value={item.label}
                         onChange={(e) => {
                           const newFooter = [...navigation.footer];
-                          newFooter[index] = {...item, label: e.target.value};
-                          setNavigation({...navigation, footer: newFooter});
+                          newFooter[index] = { ...item, label: e.target.value };
+                          setNavigation({ ...navigation, footer: newFooter });
                         }}
                       />
                       <div className="flex space-x-2">
@@ -253,8 +253,8 @@ export default function NavigationManager({ navigation, setNavigation, onSave, i
                           value={item.href}
                           onChange={(e) => {
                             const newFooter = [...navigation.footer];
-                            newFooter[index] = {...item, href: e.target.value};
-                            setNavigation({...navigation, footer: newFooter});
+                            newFooter[index] = { ...item, href: e.target.value };
+                            setNavigation({ ...navigation, footer: newFooter });
                           }}
                         />
                         <Button
@@ -262,7 +262,7 @@ export default function NavigationManager({ navigation, setNavigation, onSave, i
                           size="sm"
                           onClick={() => {
                             const newFooter = navigation.footer.filter((_, i) => i !== index);
-                            setNavigation({...navigation, footer: newFooter});
+                            setNavigation({ ...navigation, footer: newFooter });
                           }}
                           className="text-red-600 hover:text-red-700 hover:bg-red-50"
                         >
@@ -275,7 +275,7 @@ export default function NavigationManager({ navigation, setNavigation, onSave, i
                     variant="outline"
                     onClick={() => {
                       const newFooter = [...navigation.footer, { label: "", href: "" }];
-                      setNavigation({...navigation, footer: newFooter});
+                      setNavigation({ ...navigation, footer: newFooter });
                     }}
                   >
                     Add Footer Link
@@ -319,7 +319,7 @@ export default function NavigationManager({ navigation, setNavigation, onSave, i
                   </SelectContent>
                 </Select>
               </div>
-              
+
               <div>
                 <Label htmlFor="headerCtaStyle">Header CTA Button Style</Label>
                 <Select
@@ -341,7 +341,28 @@ export default function NavigationManager({ navigation, setNavigation, onSave, i
                   </SelectContent>
                 </Select>
               </div>
-              
+
+              <div>
+                <Label htmlFor="headerCtaTextColor">Header CTA Text Color</Label>
+                <Select
+                  value={siteConfig.headerCtaTextColor || 'white'}
+                  onValueChange={(value) => setSiteConfig({
+                    ...siteConfig,
+                    headerCtaTextColor: value
+                  })}
+                >
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select text color" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="white">White</SelectItem>
+                    <SelectItem value="black">Black</SelectItem>
+                    <SelectItem value="primary">Primary</SelectItem>
+                    <SelectItem value="secondary">Secondary</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+
               <div>
                 <Label htmlFor="headerTextStyle">Header Text Style</Label>
                 <Select
@@ -362,7 +383,7 @@ export default function NavigationManager({ navigation, setNavigation, onSave, i
                   </SelectContent>
                 </Select>
               </div>
-              
+
               <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
                 <p className="text-sm text-blue-800">
                   <strong>Preview:</strong> Header styling changes will be visible after saving and refreshing the page.
@@ -370,7 +391,7 @@ export default function NavigationManager({ navigation, setNavigation, onSave, i
               </div>
             </CardContent>
           </Card>
-          
+
           {/* Footer Styling */}
           <Card>
             <CardHeader>
@@ -398,7 +419,7 @@ export default function NavigationManager({ navigation, setNavigation, onSave, i
                   </SelectContent>
                 </Select>
               </div>
-              
+
               <div>
                 <Label htmlFor="footerTextColor">Footer Text Color</Label>
                 <Select
@@ -421,7 +442,7 @@ export default function NavigationManager({ navigation, setNavigation, onSave, i
                   </SelectContent>
                 </Select>
               </div>
-              
+
               <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
                 <p className="text-sm text-blue-800">
                   <strong>Note:</strong> Footer text and icon colors can be customized independently of the background style.
@@ -631,7 +652,7 @@ export default function NavigationManager({ navigation, setNavigation, onSave, i
                   </SelectContent>
                 </Select>
               </div>
-              
+
               <div>
                 <Label htmlFor="bannerLayout">Banner Layout</Label>
                 <Select
@@ -689,6 +710,31 @@ export default function NavigationManager({ navigation, setNavigation, onSave, i
                       </SelectContent>
                     </Select>
                   </div>
+
+                  <div>
+                    <Label>Primary Button Text Color</Label>
+                    <Select
+                      value={siteConfig.ctaBanner?.primaryButtonTextColor || 'white'}
+                      onValueChange={(value) => setSiteConfig({
+                        ...siteConfig,
+                        ctaBanner: {
+                          ...siteConfig.ctaBanner,
+                          primaryButtonTextColor: value
+                        }
+                      })}
+                    >
+                      <SelectTrigger>
+                        <SelectValue placeholder="Select text color" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="white">White</SelectItem>
+                        <SelectItem value="black">Black</SelectItem>
+                        <SelectItem value="primary">Primary</SelectItem>
+                        <SelectItem value="secondary">Secondary</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+
                   <div>
                     <Label htmlFor="bannerSecondaryButtonColor">Secondary Button Color</Label>
                     <Select
@@ -710,6 +756,30 @@ export default function NavigationManager({ navigation, setNavigation, onSave, i
                         <SelectItem value="accent">Accent Color</SelectItem>
                         <SelectItem value="white">White</SelectItem>
                         <SelectItem value="outline">Outline (Transparent)</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+
+                  <div>
+                    <Label>Secondary Button Text Color</Label>
+                    <Select
+                      value={siteConfig.ctaBanner?.secondaryButtonTextColor || 'white'}
+                      onValueChange={(value) => setSiteConfig({
+                        ...siteConfig,
+                        ctaBanner: {
+                          ...siteConfig.ctaBanner,
+                          secondaryButtonTextColor: value
+                        }
+                      })}
+                    >
+                      <SelectTrigger>
+                        <SelectValue placeholder="Select text color" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="white">White</SelectItem>
+                        <SelectItem value="black">Black</SelectItem>
+                        <SelectItem value="primary">Primary</SelectItem>
+                        <SelectItem value="secondary">Secondary</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
@@ -747,7 +817,7 @@ export default function NavigationManager({ navigation, setNavigation, onSave, i
                   />
                 </div>
               </div>
-              
+
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <Label htmlFor="bannerSecondaryText">Secondary Button Text</Label>
@@ -778,7 +848,7 @@ export default function NavigationManager({ navigation, setNavigation, onSave, i
                   />
                 </div>
               </div>
-              
+
               <div className="grid grid-cols-2 gap-4">
                 <div className="flex items-center space-x-2">
                   <Switch
@@ -807,10 +877,10 @@ export default function NavigationManager({ navigation, setNavigation, onSave, i
                   <Label className="text-sm">Enable secondary button</Label>
                 </div>
               </div>
-              
+
               <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
                 <p className="text-sm text-blue-800">
-                  <strong>Note:</strong> These settings control the CTA banners that appear at the bottom of pages. 
+                  <strong>Note:</strong> These settings control the CTA banners that appear at the bottom of pages.
                   You can customize the button colors and toggle banners on/off for each page type.
                 </p>
               </div>

@@ -32,18 +32,44 @@ export default function CtaBanner({ siteConfig }: CtaBannerProps) {
   };
 
   const getPrimaryButtonClasses = () => {
+    const buttonClasses = ['transition-opacity'];
+    
+    // Background color classes
     switch (siteConfig.ctaBanner?.primaryButtonColor) {
       case 'primary':
-        return 'bg-primary hover:bg-primary/90 text-white';
+        buttonClasses.push('bg-primary hover:bg-primary/90');
+        break;
       case 'secondary':
-        return 'bg-secondary hover:bg-secondary/90 text-white';
+        buttonClasses.push('bg-secondary hover:bg-secondary/90');
+        break;
       case 'accent':
-        return 'text-white hover:opacity-90 transition-opacity';
+        buttonClasses.push('hover:opacity-90');
+        break;
       case 'white':
-        return 'bg-white text-gray-900 hover:bg-gray-100';
+        buttonClasses.push('bg-white hover:bg-gray-100');
+        break;
       default:
-        return 'text-white hover:opacity-90 transition-opacity';
+        buttonClasses.push('hover:opacity-90');
     }
+    
+    // Text color classes
+    switch (siteConfig.ctaBanner?.primaryButtonTextColor) {
+      case 'black':
+        buttonClasses.push('text-gray-900');
+        break;
+      case 'primary':
+        buttonClasses.push('text-primary');
+        break;
+      case 'secondary':
+        buttonClasses.push('text-secondary');
+        break;
+      case 'white':
+      default:
+        buttonClasses.push('text-white');
+        break;
+    }
+    
+    return buttonClasses.join(' ');
   };
 
   const getPrimaryButtonStyle = () => {
@@ -54,19 +80,46 @@ export default function CtaBanner({ siteConfig }: CtaBannerProps) {
   };
 
   const getSecondaryButtonClasses = () => {
+    const buttonClasses = ['transition-opacity'];
+    
+    // Background and border color classes
     switch (siteConfig.ctaBanner?.secondaryButtonColor) {
       case 'primary':
-        return 'bg-primary hover:bg-primary/90 text-white border-primary';
+        buttonClasses.push('bg-primary hover:bg-primary/90 border-primary');
+        break;
       case 'secondary':
-        return 'bg-secondary hover:bg-secondary/90 text-white border-secondary';
+        buttonClasses.push('bg-secondary hover:bg-secondary/90 border-secondary');
+        break;
       case 'accent':
-        return 'text-white hover:opacity-90 transition-opacity border-transparent';
+        buttonClasses.push('hover:opacity-90 border-transparent');
+        break;
       case 'white':
-        return 'bg-white text-gray-900 hover:bg-gray-100 border-white';
+        buttonClasses.push('bg-white hover:bg-gray-100 border-white');
+        break;
       case 'outline':
       default:
-        return 'bg-white/10 border-white/20 text-white hover:bg-white/20';
+        buttonClasses.push('bg-white/10 border-white/20 hover:bg-white/20');
+        break;
     }
+    
+    // Text color classes
+    switch (siteConfig.ctaBanner?.secondaryButtonTextColor) {
+      case 'black':
+        buttonClasses.push('text-gray-900');
+        break;
+      case 'primary':
+        buttonClasses.push('text-primary');
+        break;
+      case 'secondary':
+        buttonClasses.push('text-secondary');
+        break;
+      case 'white':
+      default:
+        buttonClasses.push('text-white');
+        break;
+    }
+    
+    return buttonClasses.join(' ');
   };
 
   const getSecondaryButtonStyle = () => {

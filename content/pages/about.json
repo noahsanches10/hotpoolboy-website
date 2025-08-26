@@ -1,7 +1,23 @@
 {
   "hero": {
-    "title": "About Mr Pane Window Cleaning",
-    "subtitle": "Your trusted partner for professional exterior cleaning services in Logan and Cache Valley, with a commitment to quality and customer satisfaction."
+    "title": "About Us",
+    "subtitle": "",
+    "cta": {
+      "primary": {
+        "enabled": false,
+        "text": "Get Free Quote",
+        "link": "/contact",
+        "color": "accent",
+        "textColor": "primary"
+      },
+      "secondary": {
+        "enabled": false,
+        "text": "Contact Us",
+        "link": "/contact",
+        "color": "outline",
+        "textColor": "primary"
+      }
+    }
   },
   "story": {
     "title": "Our Story",

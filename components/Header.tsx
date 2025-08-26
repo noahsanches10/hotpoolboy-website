@@ -68,19 +68,46 @@ export default function Header({ siteConfig, navigation, servicesConfig, enabled
   };
   
   const getCtaButtonClasses = () => {
+    const buttonClasses: string[] = [];
+    
+    // Background color classes
     switch (siteConfig.headerCtaStyle) {
       case 'secondary':
-        return 'bg-secondary hover:bg-secondary/90 text-white';
+        buttonClasses.push('bg-secondary hover:bg-secondary/90');
+        break;
       case 'accent':
-        return 'text-white hover:opacity-90';
+        buttonClasses.push('hover:opacity-90');
+        break;
       case 'white':
-        return 'bg-white text-gray-900 hover:bg-gray-100';
+        buttonClasses.push('bg-white hover:bg-gray-100');
+        break;
       case 'outline':
-        return 'border-2 bg-transparent hover:bg-white/10';
+        buttonClasses.push('border-2 bg-transparent hover:bg-white/10');
+        break;
       case 'primary':
       default:
-        return 'bg-primary hover:bg-primary/90 text-white';
+        buttonClasses.push('bg-primary hover:bg-primary/90');
+        break;
     }
+    
+    // Text color classes
+    switch (siteConfig.headerCtaTextColor) {
+      case 'black':
+        buttonClasses.push('text-gray-900');
+        break;
+      case 'primary':
+        buttonClasses.push('text-primary');
+        break;
+      case 'secondary':
+        buttonClasses.push('text-secondary');
+        break;
+      case 'white':
+      default:
+        buttonClasses.push('text-white');
+        break;
+    }
+    
+    return buttonClasses.join(' ');
   };
   
   const getCtaButtonStyle = () => {
@@ -90,17 +117,21 @@ export default function Header({ siteConfig, navigation, servicesConfig, enabled
     return {};
   };
 
-  // Close dropdown when clicking outside
+  // Close dropdown when clicking outside (desktop only, and use 'click' not 'mousedown')
   React.useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
+    const isDesktop = () => window.matchMedia('(min-width: 768px)').matches;
+
+    const handleDocClick = (event: MouseEvent) => {
+      if (!isDesktop()) return; // Don't auto-close on mobile
       const target = event.target as Element;
-      if (!target.closest('.services-dropdown')) {
+      // Anything inside an element marked as part of the services dropdown is "inside"
+      if (!target.closest('[data-services-dropdown="true"]')) {
         setIsServicesOpen(false);
       }
     };
 
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
+    document.addEventListener('click', handleDocClick);
+    return () => document.removeEventListener('click', handleDocClick);
   }, []);
 
   // Check if services should have dropdown
@@ -119,7 +150,7 @@ export default function Header({ siteConfig, navigation, servicesConfig, enabled
                 className="object-contain py-1"
                 style={{ height: `${siteConfig.logoSize || 48}px` }}
                 onError={(e) => {
-                  e.currentTarget.style.display = 'none';
+                  (e.currentTarget as HTMLImageElement).style.display = 'none';
                 }}
               />
             ) : (
@@ -137,7 +168,11 @@ export default function Header({ siteConfig, navigation, servicesConfig, enabled
               // Handle services dropdown
               if (item.label.toLowerCase() === 'services' && hasServicesDropdown) {
                 return (
-                  <div key={item.href} className="relative services-dropdown">
+                  <div
+                    key={item.href}
+                    className="relative services-dropdown"
+                    data-services-dropdown="true"
+                  >
                     <button
                       className={`flex items-center space-x-1 ${getTextClasses()} transition-colors font-medium`}
                       onClick={() => setIsServicesOpen(!isServicesOpen)}
@@ -148,16 +183,18 @@ export default function Header({ siteConfig, navigation, servicesConfig, enabled
                     {isServicesOpen && (
                       <div
                         className="absolute top-full left-0 mt-1 w-48 bg-white rounded-md shadow-lg border border-gray-200 py-1 z-50"
+                        data-services-dropdown="true"
                       >
                         {servicesConfig?.showAllServicesPage !== false && (
                           <>
                             <Link
                               href="/services"
                               className="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-primary transition-colors"
+                              data-services-dropdown="true"
                             >
                               All Services
                             </Link>
-                            <div className="border-t border-gray-100 my-1"></div>
+                            <div className="border-t border-gray-100 my-1" />
                           </>
                         )}
                         {enabledServices.map((service: any) => (
@@ -165,6 +202,7 @@ export default function Header({ siteConfig, navigation, servicesConfig, enabled
                             key={service.slug}
                             href={`/services/${service.slug}`}
                             className="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-primary transition-colors"
+                            data-services-dropdown="true"
                           >
                             {service.title}
                           </Link>
@@ -225,7 +263,11 @@ export default function Header({ siteConfig, navigation, servicesConfig, enabled
                 // Handle services dropdown for mobile
                 if (item.label.toLowerCase() === 'services' && hasServicesDropdown) {
                   return (
-                    <div key={item.href} className="space-y-2">
+                    <div
+                      key={item.href}
+                      className="space-y-2"
+                      data-services-dropdown="true"
+                    >
                       <button
                         className={`${getTextClasses()} transition-colors font-medium flex items-center space-x-1`}
                         onClick={() => setIsServicesOpen(!isServicesOpen)}
@@ -234,30 +276,35 @@ export default function Header({ siteConfig, navigation, servicesConfig, enabled
                         <ChevronDown className={`h-4 w-4 transition-transform ${isServicesOpen ? 'rotate-180' : ''}`} />
                       </button>
                       {isServicesOpen && (
-                        <div className="space-y-2 pl-4 border-l-2 border-gray-100">
-                      {servicesConfig?.showAllServicesPage !== false && (
-                        <Link
-                          href="/services"
-                          className={`${getTextClasses()} transition-colors font-medium`}
-                          onClick={() => setIsMenuOpen(false)}
+                        <div
+                          className="space-y-2 pl-4 border-l-2 border-gray-100"
+                          data-services-dropdown="true"
                         >
-                          All Services
-                        </Link>
-                      )}
-                        {enabledServices.map((service: any) => (
-                          <Link
-                            key={service.slug}
-                            href={`/services/${service.slug}`}
-                            className={`block ${getTextClasses()} transition-colors`}
-                            onClick={() => {
-                              setIsMenuOpen(false);
-                              setIsServicesOpen(false);
-                            }}
-                          >
-                            {service.title}
-                          </Link>
-                        ))}
-                      </div>
+                          {servicesConfig?.showAllServicesPage !== false && (
+                            <Link
+                              href="/services"
+                              className={`${getTextClasses()} transition-colors font-medium`}
+                              onClick={() => setIsMenuOpen(false)}
+                              data-services-dropdown="true"
+                            >
+                              All Services
+                            </Link>
+                          )}
+                          {enabledServices.map((service: any) => (
+                            <Link
+                              key={service.slug}
+                              href={`/services/${service.slug}`}
+                              className={`block ${getTextClasses()} transition-colors`}
+                              onClick={() => {
+                                setIsMenuOpen(false);
+                                setIsServicesOpen(false);
+                              }}
+                              data-services-dropdown="true"
+                            >
+                              {service.title}
+                            </Link>
+                          ))}
+                        </div>
                       )}
                     </div>
                   );
