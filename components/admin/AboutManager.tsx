@@ -41,6 +41,7 @@ export default function AboutManager({ onSave, isLoading }: AboutManagerProps) {
     },
     story: {
       title: 'Our Story',
+      image: '',
       content: [
         'Founded with a simple mission: to provide homeowners with reliable, professional service they can trust. We understand that your home is your most valuable investment, and we treat it with the care and respect it deserves.',
         "What started as a small local business has grown into a trusted name in home services, but we've never forgotten our roots. We still believe in old-fashioned values like showing up on time, doing quality work, and standing behind our services.",
@@ -96,9 +97,10 @@ export default function AboutManager({ onSave, isLoading }: AboutManagerProps) {
       members: [
         {
           name: 'John Doe',
-          title: 'Master Plumber',
-          description: '15+ years experience in residential and commercial plumbing systems.',
-          initials: 'JD',
+            title: 'Master Plumber',
+            description: '15+ years experience in residential and commercial plumbing systems.',
+            initials: 'JD',
+            image: '',
         },
         {
           name: 'Sarah Martinez',
@@ -212,6 +214,7 @@ export default function AboutManager({ onSave, isLoading }: AboutManagerProps) {
             title: '',
             description: '',
             initials: '',
+            image: '',
           },
         ],
       },
@@ -270,85 +273,77 @@ export default function AboutManager({ onSave, isLoading }: AboutManagerProps) {
           <CardTitle>About Page Hero</CardTitle>
         </CardHeader>
         <CardContent className="space-y-6">
-          <div>
-            <Label htmlFor="heroTitle">Hero Title</Label>
-            <Input
-              id="heroTitle"
-              value={aboutContent.hero.title}
+          <div className="flex items-center space-x-2 mb-4">
+            <input
+              type="checkbox"
+              id="hero-enabled"
+              checked={aboutContent.hero?.enabled !== false}
               onChange={(e) =>
                 setAboutContent({
                   ...aboutContent,
-                  hero: { ...aboutContent.hero, title: e.target.value },
+                  hero: {
+                    ...aboutContent.hero,
+                    enabled: e.target.checked,
+                  },
                 })
               }
-              placeholder="About {siteName}"
+              className="w-4 h-4 text-primary border-gray-300 rounded"
             />
-            <p className="text-sm text-gray-500 mt-1">
-              Use {`{siteName}`} to automatically insert your site name
-            </p>
+            <Label htmlFor="hero-enabled" className="text-sm font-medium cursor-pointer">
+              Show hero section
+            </Label>
           </div>
 
-          <div>
-            <Label htmlFor="heroSubtitle">Hero Subtitle</Label>
-            <Textarea
-              id="heroSubtitle"
-              value={aboutContent.hero.subtitle}
-              onChange={(e) =>
-                setAboutContent({
-                  ...aboutContent,
-                  hero: { ...aboutContent.hero, subtitle: e.target.value },
-                })
-              }
-              rows={3}
-            />
-          </div>
+          {aboutContent.hero?.enabled !== false && (
+            <>
+              <div>
+                <Label htmlFor="heroTitle">Hero Title</Label>
+                <Input
+                  id="heroTitle"
+                  value={aboutContent.hero.title}
+                  onChange={(e) =>
+                    setAboutContent({
+                      ...aboutContent,
+                      hero: { ...aboutContent.hero, title: e.target.value },
+                    })
+                  }
+                  placeholder="About {siteName}"
+                />
+                <p className="text-sm text-gray-500 mt-1">
+                  Use {`{siteName}`} to automatically insert your site name
+                </p>
+              </div>
 
-          {/* NEW: CTA Buttons */}
-          <div className="space-y-4">
-            <Label className="text-base font-semibold">Hero CTA Buttons</Label>
-            <p className="text-sm text-gray-500">
-              Configure the call-to-action buttons that appear on the About page hero.
-            </p>
+              <div>
+                <Label htmlFor="heroSubtitle">Hero Subtitle</Label>
+                <Textarea
+                  id="heroSubtitle"
+                  value={aboutContent.hero.subtitle}
+                  onChange={(e) =>
+                    setAboutContent({
+                      ...aboutContent,
+                      hero: { ...aboutContent.hero, subtitle: e.target.value },
+                    })
+                  }
+                  rows={3}
+                />
+              </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {/* Primary CTA */}
-              <div className="space-y-3">
-                <div className="flex items-center space-x-2">
-                  <input
-                    type="checkbox"
-                    id="about-primary-cta-enabled"
-                    checked={aboutContent.hero.cta?.primary?.enabled !== false}
-                    onChange={(e) =>
-                      setAboutContent((prev) => ({
-                        ...prev,
-                        hero: {
-                          ...prev.hero,
-                          cta: {
-                            ...prev.hero.cta,
-                            primary: {
-                              ...prev.hero.cta.primary,
-                              enabled: e.target.checked,
-                            },
-                          },
-                        },
-                      }))
-                    }
-                    className="w-4 h-4 text-primary"
-                  />
-                  <Label htmlFor="about-primary-cta-enabled" className="text-sm">
-                    Enable primary button
-                  </Label>
-                </div>
+              {/* NEW: CTA Buttons */}
+              <div className="space-y-4">
+                <Label className="text-base font-semibold">Hero CTA Buttons</Label>
+                <p className="text-sm text-gray-500">
+                  Configure the call-to-action buttons that appear on the About page hero.
+                </p>
 
-                {aboutContent.hero.cta?.primary?.enabled !== false && (
-                  <>
-                    <div>
-                      <Label htmlFor="about-primary-cta-text" className="text-xs">
-                        Button Text
-                      </Label>
-                      <Input
-                        id="about-primary-cta-text"
-                        value={aboutContent.hero.cta?.primary?.text || 'Get Free Quote'}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {/* Primary CTA */}
+                  <div className="space-y-3">
+                    <div className="flex items-center space-x-2">
+                      <input
+                        type="checkbox"
+                        id="about-primary-cta-enabled"
+                        checked={aboutContent.hero.cta?.primary?.enabled !== false}
                         onChange={(e) =>
                           setAboutContent((prev) => ({
                             ...prev,
@@ -358,23 +353,151 @@ export default function AboutManager({ onSave, isLoading }: AboutManagerProps) {
                                 ...prev.hero.cta,
                                 primary: {
                                   ...prev.hero.cta.primary,
-                                  text: e.target.value,
+                                  enabled: e.target.checked,
                                 },
                               },
                             },
                           }))
                         }
-                        placeholder="Get Free Quote"
+                        className="w-4 h-4 text-primary"
                       />
+                      <Label htmlFor="about-primary-cta-enabled" className="text-sm">
+                        Enable primary button
+                      </Label>
                     </div>
 
-                    <div>
-                      <Label htmlFor="about-primary-cta-link" className="text-xs">
-                        Button Link
-                      </Label>
-                      <Input
-                        id="about-primary-cta-link"
-                        value={aboutContent.hero.cta?.primary?.link || '/contact'}
+                    {aboutContent.hero.cta?.primary?.enabled !== false && (
+                      <>
+                        <div>
+                          <Label htmlFor="about-primary-cta-text" className="text-xs">
+                            Button Text
+                          </Label>
+                          <Input
+                            id="about-primary-cta-text"
+                            value={aboutContent.hero.cta?.primary?.text || 'Get Free Quote'}
+                            onChange={(e) =>
+                              setAboutContent((prev) => ({
+                                ...prev,
+                                hero: {
+                                  ...prev.hero,
+                                  cta: {
+                                    ...prev.hero.cta,
+                                    primary: {
+                                      ...prev.hero.cta.primary,
+                                      text: e.target.value,
+                                    },
+                                  },
+                                },
+                              }))
+                            }
+                            placeholder="Get Free Quote"
+                          />
+                        </div>
+
+                        <div>
+                          <Label htmlFor="about-primary-cta-link" className="text-xs">
+                            Button Link
+                          </Label>
+                          <Input
+                            id="about-primary-cta-link"
+                            value={aboutContent.hero.cta?.primary?.link || '/contact'}
+                            onChange={(e) =>
+                              setAboutContent((prev) => ({
+                                ...prev,
+                                hero: {
+                                  ...prev.hero,
+                                  cta: {
+                                    ...prev.hero.cta,
+                                    primary: {
+                                      ...prev.hero.cta.primary,
+                                      link: e.target.value,
+                                    },
+                                  },
+                                },
+                              }))
+                            }
+                            placeholder="/contact"
+                          />
+                        </div>
+
+                        {/* Colors */}
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                          <div>
+                            <Label className="text-xs">Primary Button Color</Label>
+                            <Select
+                              value={aboutContent.hero.cta?.primary?.color || 'primary'}
+                              onValueChange={(value) =>
+                                setAboutContent((prev) => ({
+                                  ...prev,
+                                  hero: {
+                                    ...prev.hero,
+                                    cta: {
+                                      ...prev.hero.cta,
+                                      primary: {
+                                        ...prev.hero.cta.primary,
+                                        color: value as any,
+                                      },
+                                    },
+                                  },
+                                }))
+                              }
+                            >
+                              <SelectTrigger>
+                                <SelectValue placeholder="Select button color" />
+                              </SelectTrigger>
+                              <SelectContent>
+                                <SelectItem value="primary">Primary</SelectItem>
+                                <SelectItem value="secondary">Secondary</SelectItem>
+                                <SelectItem value="accent">Accent</SelectItem>
+                                <SelectItem value="white">White</SelectItem>
+                                <SelectItem value="outline">Outline</SelectItem>
+                              </SelectContent>
+                            </Select>
+                          </div>
+
+                          <div>
+                            <Label className="text-xs">Primary Button Text Color</Label>
+                            <Select
+                              value={aboutContent.hero.cta?.primary?.textColor || 'white'}
+                              onValueChange={(value) =>
+                                setAboutContent((prev) => ({
+                                  ...prev,
+                                  hero: {
+                                    ...prev.hero,
+                                    cta: {
+                                      ...prev.hero.cta,
+                                      primary: {
+                                        ...prev.hero.cta.primary,
+                                        textColor: value as any,
+                                      },
+                                    },
+                                  },
+                                }))
+                              }
+                            >
+                              <SelectTrigger>
+                                <SelectValue placeholder="Select text color" />
+                              </SelectTrigger>
+                              <SelectContent>
+                                <SelectItem value="white">White</SelectItem>
+                                <SelectItem value="black">Black</SelectItem>
+                                <SelectItem value="primary">Primary</SelectItem>
+                                <SelectItem value="secondary">Secondary</SelectItem>
+                              </SelectContent>
+                            </Select>
+                          </div>
+                        </div>
+                      </>
+                    )}
+                  </div>
+
+                  {/* Secondary CTA */}
+                  <div className="space-y-3">
+                    <div className="flex items-center space-x-2">
+                      <input
+                        type="checkbox"
+                        id="about-secondary-cta-enabled"
+                        checked={aboutContent.hero.cta?.secondary?.enabled !== false}
                         onChange={(e) =>
                           setAboutContent((prev) => ({
                             ...prev,
@@ -382,244 +505,149 @@ export default function AboutManager({ onSave, isLoading }: AboutManagerProps) {
                               ...prev.hero,
                               cta: {
                                 ...prev.hero.cta,
-                                primary: {
-                                  ...prev.hero.cta.primary,
-                                  link: e.target.value,
+                                secondary: {
+                                  ...prev.hero.cta.secondary,
+                                  enabled: e.target.checked,
                                 },
                               },
                             },
                           }))
                         }
-                        placeholder="/contact"
+                        className="w-4 h-4 text-primary"
                       />
+                      <Label htmlFor="about-secondary-cta-enabled" className="text-sm">
+                        Enable secondary button
+                      </Label>
                     </div>
 
-                    {/* Colors */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      <div>
-                        <Label className="text-xs">Primary Button Color</Label>
-                        <Select
-                          value={aboutContent.hero.cta?.primary?.color || 'primary'}
-                          onValueChange={(value) =>
-                            setAboutContent((prev) => ({
-                              ...prev,
-                              hero: {
-                                ...prev.hero,
-                                cta: {
-                                  ...prev.hero.cta,
-                                  primary: {
-                                    ...prev.hero.cta.primary,
-                                    color: value as any,
+                    {aboutContent.hero.cta?.secondary?.enabled !== false && (
+                      <>
+                        <div>
+                          <Label htmlFor="about-secondary-cta-text" className="text-xs">
+                            Button Text
+                          </Label>
+                          <Input
+                            id="about-secondary-cta-text"
+                            value={aboutContent.hero.cta?.secondary?.text || 'Contact Us'}
+                            onChange={(e) =>
+                              setAboutContent((prev) => ({
+                                ...prev,
+                                hero: {
+                                  ...prev.hero,
+                                  cta: {
+                                    ...prev.hero.cta,
+                                    secondary: {
+                                      ...prev.hero.cta.secondary,
+                                      text: e.target.value,
+                                    },
                                   },
                                 },
-                              },
-                            }))
-                          }
-                        >
-                          <SelectTrigger>
-                            <SelectValue placeholder="Select button color" />
-                          </SelectTrigger>
-                          <SelectContent>
-                            <SelectItem value="primary">Primary</SelectItem>
-                            <SelectItem value="secondary">Secondary</SelectItem>
-                            <SelectItem value="accent">Accent</SelectItem>
-                            <SelectItem value="white">White</SelectItem>
-                            <SelectItem value="outline">Outline</SelectItem>
-                          </SelectContent>
-                        </Select>
-                      </div>
+                              }))
+                            }
+                            placeholder="Contact Us"
+                          />
+                        </div>
 
-                      <div>
-                        <Label className="text-xs">Primary Button Text Color</Label>
-                        <Select
-                          value={aboutContent.hero.cta?.primary?.textColor || 'white'}
-                          onValueChange={(value) =>
-                            setAboutContent((prev) => ({
-                              ...prev,
-                              hero: {
-                                ...prev.hero,
-                                cta: {
-                                  ...prev.hero.cta,
-                                  primary: {
-                                    ...prev.hero.cta.primary,
-                                    textColor: value as any,
+                        <div>
+                          <Label htmlFor="about-secondary-cta-link" className="text-xs">
+                            Button Link
+                          </Label>
+                          <Input
+                            id="about-secondary-cta-link"
+                            value={aboutContent.hero.cta?.secondary?.link || '/contact'}
+                            onChange={(e) =>
+                              setAboutContent((prev) => ({
+                                ...prev,
+                                hero: {
+                                  ...prev.hero,
+                                  cta: {
+                                    ...prev.hero.cta,
+                                    secondary: {
+                                      ...prev.hero.cta.secondary,
+                                      link: e.target.value,
+                                    },
                                   },
                                 },
-                              },
-                            }))
-                          }
-                        >
-                          <SelectTrigger>
-                            <SelectValue placeholder="Select text color" />
-                          </SelectTrigger>
-                          <SelectContent>
-                            <SelectItem value="white">White</SelectItem>
-                            <SelectItem value="black">Black</SelectItem>
-                            <SelectItem value="primary">Primary</SelectItem>
-                            <SelectItem value="secondary">Secondary</SelectItem>
-                          </SelectContent>
-                        </Select>
-                      </div>
-                    </div>
-                  </>
-                )}
-              </div>
+                              }))
+                            }
+                            placeholder="/contact"
+                          />
+                        </div>
 
-              {/* Secondary CTA */}
-              <div className="space-y-3">
-                <div className="flex items-center space-x-2">
-                  <input
-                    type="checkbox"
-                    id="about-secondary-cta-enabled"
-                    checked={aboutContent.hero.cta?.secondary?.enabled !== false}
-                    onChange={(e) =>
-                      setAboutContent((prev) => ({
-                        ...prev,
-                        hero: {
-                          ...prev.hero,
-                          cta: {
-                            ...prev.hero.cta,
-                            secondary: {
-                              ...prev.hero.cta.secondary,
-                              enabled: e.target.checked,
-                            },
-                          },
-                        },
-                      }))
-                    }
-                    className="w-4 h-4 text-primary"
-                  />
-                  <Label htmlFor="about-secondary-cta-enabled" className="text-sm">
-                    Enable secondary button
-                  </Label>
+                        {/* Colors */}
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                          <div>
+                            <Label className="text-xs">Secondary Button Color</Label>
+                            <Select
+                              value={aboutContent.hero.cta?.secondary?.color || 'outline'}
+                              onValueChange={(value) =>
+                                setAboutContent((prev) => ({
+                                  ...prev,
+                                  hero: {
+                                    ...prev.hero,
+                                    cta: {
+                                      ...prev.hero.cta,
+                                      secondary: {
+                                        ...prev.hero.cta.secondary,
+                                        color: value as any,
+                                      },
+                                    },
+                                  },
+                                }))
+                              }
+                            >
+                              <SelectTrigger>
+                                <SelectValue placeholder="Select button color" />
+                              </SelectTrigger>
+                              <SelectContent>
+                                <SelectItem value="primary">Primary</SelectItem>
+                                <SelectItem value="secondary">Secondary</SelectItem>
+                                <SelectItem value="accent">Accent</SelectItem>
+                                <SelectItem value="white">White</SelectItem>
+                                <SelectItem value="outline">Outline</SelectItem>
+                              </SelectContent>
+                            </Select>
+                          </div>
+
+                          <div>
+                            <Label className="text-xs">Secondary Button Text Color</Label>
+                            <Select
+                              value={aboutContent.hero.cta?.secondary?.textColor || 'primary'}
+                              onValueChange={(value) =>
+                                setAboutContent((prev) => ({
+                                  ...prev,
+                                  hero: {
+                                    ...prev.hero,
+                                    cta: {
+                                      ...prev.hero.cta,
+                                      secondary: {
+                                        ...prev.hero.cta.secondary,
+                                        textColor: value as any,
+                                      },
+                                    },
+                                  },
+                                }))
+                              }
+                            >
+                              <SelectTrigger>
+                                <SelectValue placeholder="Select text color" />
+                              </SelectTrigger>
+                              <SelectContent>
+                                <SelectItem value="white">White</SelectItem>
+                                <SelectItem value="black">Black</SelectItem>
+                                <SelectItem value="primary">Primary</SelectItem>
+                                <SelectItem value="secondary">Secondary</SelectItem>
+                              </SelectContent>
+                            </Select>
+                          </div>
+                        </div>
+                      </>
+                    )}
+                  </div>
                 </div>
-
-                {aboutContent.hero.cta?.secondary?.enabled !== false && (
-                  <>
-                    <div>
-                      <Label htmlFor="about-secondary-cta-text" className="text-xs">
-                        Button Text
-                      </Label>
-                      <Input
-                        id="about-secondary-cta-text"
-                        value={aboutContent.hero.cta?.secondary?.text || 'Contact Us'}
-                        onChange={(e) =>
-                          setAboutContent((prev) => ({
-                            ...prev,
-                            hero: {
-                              ...prev.hero,
-                              cta: {
-                                ...prev.hero.cta,
-                                secondary: {
-                                  ...prev.hero.cta.secondary,
-                                  text: e.target.value,
-                                },
-                              },
-                            },
-                          }))
-                        }
-                        placeholder="Contact Us"
-                      />
-                    </div>
-
-                    <div>
-                      <Label htmlFor="about-secondary-cta-link" className="text-xs">
-                        Button Link
-                      </Label>
-                      <Input
-                        id="about-secondary-cta-link"
-                        value={aboutContent.hero.cta?.secondary?.link || '/contact'}
-                        onChange={(e) =>
-                          setAboutContent((prev) => ({
-                            ...prev,
-                            hero: {
-                              ...prev.hero,
-                              cta: {
-                                ...prev.hero.cta,
-                                secondary: {
-                                  ...prev.hero.cta.secondary,
-                                  link: e.target.value,
-                                },
-                              },
-                            },
-                          }))
-                        }
-                        placeholder="/contact"
-                      />
-                    </div>
-
-                    {/* Colors */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      <div>
-                        <Label className="text-xs">Secondary Button Color</Label>
-                        <Select
-                          value={aboutContent.hero.cta?.secondary?.color || 'outline'}
-                          onValueChange={(value) =>
-                            setAboutContent((prev) => ({
-                              ...prev,
-                              hero: {
-                                ...prev.hero,
-                                cta: {
-                                  ...prev.hero.cta,
-                                  secondary: {
-                                    ...prev.hero.cta.secondary,
-                                    color: value as any,
-                                  },
-                                },
-                              },
-                            }))
-                          }
-                        >
-                          <SelectTrigger>
-                            <SelectValue placeholder="Select button color" />
-                          </SelectTrigger>
-                          <SelectContent>
-                            <SelectItem value="primary">Primary</SelectItem>
-                            <SelectItem value="secondary">Secondary</SelectItem>
-                            <SelectItem value="accent">Accent</SelectItem>
-                            <SelectItem value="white">White</SelectItem>
-                            <SelectItem value="outline">Outline</SelectItem>
-                          </SelectContent>
-                        </Select>
-                      </div>
-
-                      <div>
-                        <Label className="text-xs">Secondary Button Text Color</Label>
-                        <Select
-                          value={aboutContent.hero.cta?.secondary?.textColor || 'primary'}
-                          onValueChange={(value) =>
-                            setAboutContent((prev) => ({
-                              ...prev,
-                              hero: {
-                                ...prev.hero,
-                                cta: {
-                                  ...prev.hero.cta,
-                                  secondary: {
-                                    ...prev.hero.cta.secondary,
-                                    textColor: value as any,
-                                  },
-                                },
-                              },
-                            }))
-                          }
-                        >
-                          <SelectTrigger>
-                            <SelectValue placeholder="Select text color" />
-                          </SelectTrigger>
-                          <SelectContent>
-                            <SelectItem value="white">White</SelectItem>
-                            <SelectItem value="black">Black</SelectItem>
-                            <SelectItem value="primary">Primary</SelectItem>
-                            <SelectItem value="secondary">Secondary</SelectItem>
-                          </SelectContent>
-                        </Select>
-                      </div>
-                    </div>
-                  </>
-                )}
               </div>
-            </div>
-          </div>
+            </>
+          )}
         </CardContent>
       </Card>
 
@@ -641,6 +669,88 @@ export default function AboutManager({ onSave, isLoading }: AboutManagerProps) {
                 })
               }
             />
+          </div>
+
+          {/* Story Image */}
+          <div className="space-y-4">
+            <Label>Story Image</Label>
+            <div className="flex items-center space-x-4">
+              {/* Image Preview */}
+              {aboutContent.story.image && (
+                <div className="w-32 h-24 bg-gray-100 rounded-lg overflow-hidden">
+                  <img
+                    src={aboutContent.story.image}
+                    alt="Our Story"
+                    className="w-full h-full object-cover"
+                    onError={(e) => {
+                      (e.currentTarget as HTMLImageElement).style.display = 'none';
+                    }}
+                  />
+                </div>
+              )}
+
+              {/* Upload Button */}
+              <div className="flex-1">
+                <input
+                  type="file"
+                  accept="image/*"
+                  onChange={async (e) => {
+                    const file = e.target.files?.[0];
+                    if (file) {
+                      try {
+                        const formData = new FormData();
+                        formData.append('file', file);
+                        formData.append('type', 'about');
+
+                        const response = await fetch('/api/admin/upload', {
+                          method: 'POST',
+                          body: formData,
+                        });
+
+                        if (response.ok) {
+                          const result = await response.json();
+                          setAboutContent({
+                            ...aboutContent,
+                            story: {
+                              ...aboutContent.story,
+                              image: result.path,
+                            },
+                          });
+                        } else {
+                          alert('Failed to upload image');
+                        }
+                      } catch (error) {
+                        console.error('Error uploading image:', error);
+                        alert('Failed to upload image');
+                      }
+                    }
+                  }}
+                  className="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-primary file:text-white hover:file:bg-primary/90"
+                />
+                <p className="text-xs text-gray-500 mt-1">
+                  Upload an image to display alongside your story
+                </p>
+              </div>
+            </div>
+
+            {/* Manual URL Input */}
+            <div>
+              <Label htmlFor="story-image-url">Or Enter Image URL</Label>
+              <Input
+                id="story-image-url"
+                value={aboutContent.story.image || ''}
+                onChange={(e) =>
+                  setAboutContent({
+                    ...aboutContent,
+                    story: {
+                      ...aboutContent.story,
+                      image: e.target.value,
+                    },
+                  })
+                }
+                placeholder="https://example.com/image.jpg"
+              />
+            </div>
           </div>
 
           <div>
@@ -770,28 +880,48 @@ export default function AboutManager({ onSave, isLoading }: AboutManagerProps) {
                     </Button>
                   </div>
 
-                  {/* Team Member Image */}
+                    {/* Team Member Image */}
                   <div className="space-y-4">
                     <Label>Team Member Photo</Label>
                     <div className="flex items-center space-x-4">
                       {/* Current Image Preview */}
-                      <div className="w-16 h-16 bg-gray-200 rounded-full flex items-center justify-center overflow-hidden">
+                      <div className="w-24 h-24 bg-gray-200 rounded-full flex items-center justify-center overflow-hidden relative">
                         {member.image ? (
-                          <img
-                            src={member.image}
-                            alt={member.name}
-                            className="w-full h-full object-cover"
-                            onError={(e) => {
-                              (e.currentTarget as HTMLImageElement).style.display = 'none';
-                            }}
-                          />
+                          <>
+                            <img
+                              src={member.image}
+                              alt={member.name || 'Team member'}
+                              className="w-full h-full object-cover"
+                              onError={(e) => {
+                                (e.currentTarget as HTMLImageElement).style.display = 'none';
+                                const parent = e.currentTarget.parentElement;
+                                if (parent) {
+                                  const fallback = document.createElement('span');
+                                  fallback.className = 'text-sm font-bold text-gray-600';
+                                  fallback.textContent = member.initials || '';
+                                  parent.appendChild(fallback);
+                                }
+                              }}
+                            />
+                            <Button
+                              type="button"
+                              variant="destructive"
+                              size="sm"
+                              className="absolute -top-1 -right-1 h-6 w-6 rounded-full p-0"
+                              onClick={() => updateTeamMember(index, 'image', '')}
+                            >
+                              ×
+                            </Button>
+                          </>
                         ) : (
                           <span className="text-sm font-bold text-gray-600">
                             {member.initials ||
-                              member.name
-                                .split(' ')
-                                .map((n: string) => n[0])
-                                .join('')}
+                              (member.name
+                                ? member.name
+                                    .split(' ')
+                                    .map((n: string) => n[0])
+                                    .join('')
+                                : '')}
                           </span>
                         )}
                       </div>
@@ -818,7 +948,9 @@ export default function AboutManager({ onSave, isLoading }: AboutManagerProps) {
                                   const result = await response.json();
                                   updateTeamMember(index, 'image', result.path);
                                 } else {
-                                  alert('Failed to upload image');
+                                  const error = await response.text();
+                                  console.error('Upload failed:', error);
+                                  alert('Failed to upload image: ' + error);
                                 }
                               } catch (error) {
                                 console.error('Error uploading image:', error);
@@ -843,10 +975,11 @@ export default function AboutManager({ onSave, isLoading }: AboutManagerProps) {
                         onChange={(e) => updateTeamMember(index, 'image', e.target.value)}
                         placeholder="https://example.com/photo.jpg"
                       />
+                      <p className="text-xs text-gray-500 mt-1">
+                        Enter a direct URL to an image, or use the upload button above
+                      </p>
                     </div>
-                  </div>
-
-                  <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+                  </div>                  <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
                     <div>
                       <Label htmlFor={`name-${index}`}>Name</Label>
                       <Input

@@ -10,7 +10,7 @@
   "headerStyle": "primary",
   "footerStyle": "primary",
   "contact": {
-    "phone": "(702) 843-7705",
+    "phone": "(435) 999-2425",
     "email": "matt@mrpanewindows.com",
     "address": ""
   },
@@ -36,7 +36,7 @@
     "primaryText": "Get Free Estimate",
     "secondaryText": "Call Now",
     "primaryLink": "/contact",
-    "secondaryLink": "tel:(702) 843-7705",
+    "secondaryLink": "tel:(435) 999-2425",
     "primaryEnabled": true,
     "primaryButtonColor": "accent",
     "style": "gradient",
@@ -64,8 +64,7 @@
     "service-window-cleaning": "/uploads/hero-background-1756167043123.webp",
     "service-gutter-cleaning": "/uploads/hero-background-1756167062732.jpg",
     "service-solar-panel-cleaning": "/uploads/hero-background-1756167092113.webp",
-    "service-house-washing": "/uploads/hero-background-1756167198579.jpg",
-    "about": "/uploads/hero-background-1756227360458.png"
+    "service-house-washing": "/uploads/hero-background-1756167198579.jpg"
   },
   "heroStyling": {
     "backgroundType": "gradient",

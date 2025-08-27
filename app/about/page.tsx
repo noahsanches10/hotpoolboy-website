@@ -28,8 +28,9 @@ export default async function AboutPage() {
       />
       <main>
         {/* Hero Section */}
-        <Hero content={aboutContent} siteConfig={siteConfig} pageType="about" />
-        
+        {aboutContent.hero?.enabled !== false && (
+          <Hero content={aboutContent} siteConfig={siteConfig} pageType="about" />
+        )}
 
         {/* Story Section */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
@@ -39,12 +40,25 @@ export default async function AboutPage() {
             </h2>
           </div>
           
-          <div className="max-w-4xl mx-auto space-y-8 mb-16">
-            {aboutContent.story.content.map((paragraph: string, index: number) => (
-              <p key={index} className="text-lg text-gray-700 leading-relaxed text-center">
-                {paragraph}
-              </p>
-            ))}
+          <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 md:items-stretch items-center mb-16">
+            <div className="space-y-8">
+              {aboutContent.story.content.map((paragraph: string, index: number) => (
+                <p key={index} className="text-lg text-gray-700 leading-relaxed">
+                  {paragraph}
+                </p>
+              ))}
+            </div>
+            {aboutContent.story.image && (
+              <div className="relative h-72 md:h-full md:min-h-[480px] rounded-lg overflow-hidden">
+                <Image
+                  src={aboutContent.story.image}
+                  alt="Our Story"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
+              </div>
+            )}
           </div>
           
           {/* Statistics */}

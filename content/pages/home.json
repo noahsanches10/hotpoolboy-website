@@ -8,7 +8,7 @@
     "cta": {
       "primary": {
         "text": "Call Now",
-        "link": "tel:7028437705",
+        "link": "tel:(435) 999-2425",
         "enabled": true,
         "color": "accent",
         "textColor": "primary"

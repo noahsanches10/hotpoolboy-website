@@ -17,7 +17,8 @@
         "color": "outline",
         "textColor": "primary"
       }
-    }
+    },
+    "enabled": false
   },
   "story": {
     "title": "Our Story",
@@ -39,7 +40,8 @@
         "number": "100%",
         "label": "Satisfaction Guarantee"
       }
-    ]
+    ],
+    "image": "/uploads/about-1756254955296.png"
   },
   "values": {
     "title": "Why Cache Valley Chooses Us",
