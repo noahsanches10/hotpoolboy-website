@@ -7,7 +7,7 @@ import Testimonials from '@/components/Testimonials';
 export default async function ReviewsPage() {
   const siteConfig = getSiteConfig();
   const navigation = getNavigation();
-  const homeContent = getPageContent('home'); // Using home content for testimonials
+  const reviewsContent = getPageContent('reviews'); // Using dedicated reviews content
   const servicesConfig = getPageContent('services');
   
   // Get enabled services for header dropdown
@@ -22,7 +22,7 @@ export default async function ReviewsPage() {
         enabledServices={enabledServices}
       />
       <main>
-        <Testimonials content={homeContent} />
+        <Testimonials content={reviewsContent} />
       </main>
       
       {siteConfig.ctaBanner?.showOnPages?.reviews !== false && (

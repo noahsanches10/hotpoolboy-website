@@ -17,10 +17,10 @@ import DesignManager from '@/components/admin/DesignManager';
 import MediaManager from '@/components/admin/MediaManager';
 import ContactManager from '@/components/admin/ContactManager';
 import ServicesManager from '@/components/admin/ServicesManager';
-
 import AboutManager from '@/components/admin/AboutManager';
 import ReviewsManager from '@/components/admin/ReviewsManager';
 import { Wrench } from 'lucide-react';
+
 // Simple password check - in production, you'd want this in an environment variable
 const ADMIN_PASSWORD = 'admin123';
 
@@ -169,6 +169,8 @@ export default function AdminPage() {
 
   const saveContent = async (type: string, data: any) => {
     try {
+      console.log(`Saving ${type} content:`, data);
+      
       const response = await fetch('/api/admin/content', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -177,14 +179,29 @@ export default function AdminPage() {
       
       if (response.ok) {
         alert('Content saved successfully!');
+        // Reload content to ensure consistency
+        if (type === 'site-config') {
+          setSiteConfig(data);
+        } else if (type === 'navigation') {
+          setNavigation(data);
+        } else if (type === 'home') {
+          setHomeContent(data);
+        }
       } else {
-        throw new Error('Failed to save');
+        const errorText = await response.text();
+        console.error('Save response error:', errorText);
+        throw new Error(`Failed to save: ${response.status}`);
       }
     } catch (error) {
       console.error('Failed to save content:', error);
-      alert('Failed to save content. Changes are temporary until saved to files.');
+      alert(`Failed to save content: ${error instanceof Error ? error.message : 'Unknown error'}. Please check the console for details.`);
     }
   };
+
+  // Wrapper functions for components that expect specific parameter order
+  const handleSiteSave = () => saveContent('site-config', siteConfig);
+  const handleNavigationSave = () => saveContent('navigation', navigation);
+  const handleHomeSave = () => saveContent('home', homeContent);
 
   if (!isAuthenticated) {
     return (
@@ -281,13 +298,13 @@ export default function AdminPage() {
               <SiteSettings
                 siteConfig={siteConfig}
                 setSiteConfig={setSiteConfig}
-                onSave={() => saveContent('site-config', siteConfig)}
+                onSave={handleSiteSave}
                 isLoading={isLoadingContent}
               />
               <SocialMediaManager
                 siteConfig={siteConfig}
                 setSiteConfig={setSiteConfig}
-                onSave={() => saveContent('site-config', siteConfig)}
+                onSave={handleSiteSave}
                 isLoading={isLoadingContent}
               />
             </div>
@@ -298,7 +315,7 @@ export default function AdminPage() {
             <NavigationManager
               navigation={navigation}
               setNavigation={setNavigation}
-              onSave={() => saveContent('navigation', navigation)}
+              onSave={handleNavigationSave}
               isLoading={isLoadingContent}
             />
           </TabsContent>
@@ -308,7 +325,7 @@ export default function AdminPage() {
             <HomeContentManager
               homeContent={homeContent}
               setHomeContent={setHomeContent}
-              onSave={() => saveContent('home', homeContent)}
+              onSave={handleHomeSave}
               isLoading={isLoadingContent}
             />
           </TabsContent>
@@ -362,7 +379,7 @@ export default function AdminPage() {
             <DesignManager
               siteConfig={siteConfig}
               setSiteConfig={setSiteConfig}
-              onSave={() => saveContent('site-config', siteConfig)}
+              onSave={handleSiteSave}
               isLoading={isLoadingContent}
             />
           </TabsContent>

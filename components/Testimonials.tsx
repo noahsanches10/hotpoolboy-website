@@ -25,7 +25,69 @@ export default function Testimonials({ content }: TestimonialsProps) {
   // Check if testimonials section exists and is enabled
   const testimonialsData = content?.sections?.testimonials;
   
-  if (!testimonialsData?.enabled || !testimonialsData?.items?.length) {
+  if (!testimonialsData?.enabled) {
+    return null;
+  }
+
+  // If using iframe/embed, check for iframe URL instead of items
+  if (testimonialsData.useEmbed) {
+    if (!testimonialsData.iframeUrl) {
+      return null;
+    }
+
+    // Parse the height value to ensure it's a valid CSS value
+    const getIframeHeight = (height: string | undefined) => {
+      if (!height) return '600px';
+      
+      // If it's just a number, add 'px'
+      if (/^\d+$/.test(height)) {
+        return `${height}px`;
+      }
+      
+      // If it already has units or is a valid CSS value, use as-is
+      return height;
+    };
+
+    const iframeHeight = getIframeHeight(testimonialsData.iframeHeight);
+
+    return (
+      <section className={`py-20 ${getBackgroundClass(testimonialsData.background || 'primary-light')}`}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Header */}
+          <div className="text-center mb-16">
+            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+              {testimonialsData.title || 'What Our Customers Say'}
+            </h2>
+            {testimonialsData.subtitle && (
+              <p className="text-xl text-gray-600">
+                {testimonialsData.subtitle}
+              </p>
+            )}
+          </div>
+
+          {/* Iframe Container */}
+          <div className="max-w-6xl mx-auto">
+            <div className="relative w-full">
+              <iframe
+                src={testimonialsData.iframeUrl}
+                className="w-full border-0 rounded-lg"
+                style={{ 
+                  height: iframeHeight,
+                  minHeight: 'unset' // Remove any minimum height restrictions
+                }}
+                allowFullScreen
+                loading="lazy"
+                title="Customer Reviews"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  // Original manual testimonials logic
+  if (!testimonialsData?.items?.length) {
     return null;
   }
 
@@ -37,9 +99,11 @@ export default function Testimonials({ content }: TestimonialsProps) {
           <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
             {testimonialsData.title}
           </h2>
-          <p className="text-xl text-gray-600">
-            {testimonialsData.subtitle}
-          </p>
+          {testimonialsData.subtitle && (
+            <p className="text-xl text-gray-600">
+              {testimonialsData.subtitle}
+            </p>
+          )}
         </div>
 
         {/* Testimonials Grid */}

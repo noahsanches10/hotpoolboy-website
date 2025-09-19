@@ -100,7 +100,9 @@
         }
       ],
       "useEmbed": true,
-      "embedCode": "<script src=\"https://elfsightcdn.com/platform.js\" async></script>\n<div class=\"elfsight-app-893eac12-ce22-4682-9d4b-759a3336e8d5\" data-elfsight-app-lazy></div>"
+      "embedCode": "<script src=\"https://elfsightcdn.com/platform.js\" async></script>\n<div class=\"elfsight-app-893eac12-ce22-4682-9d4b-759a3336e8d5\" data-elfsight-app-lazy></div>",
+      "iframeUrl": "https://893eac12ce2246829d4b759a3336e8d5.elf.site",
+      "iframeHeight": "275px"
     },
     "gallery": {
       "enabled": true,

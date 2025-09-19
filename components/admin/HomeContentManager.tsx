@@ -684,59 +684,84 @@ export default function HomeContentManager({ homeContent, setHomeContent, onSave
                         }
                       })}
                     />
-                    <Label>Use Custom Embed Code</Label>
+                    <Label>Use External Reviews (Iframe)</Label>
                   </div>
 
                   {sections.testimonials?.useEmbed ? (
-                    <div className="space-y-2">
-                      <Label htmlFor="testimonialsEmbed">Embed Code</Label>
-                      <Textarea
-                        id="testimonialsEmbed"
-                        value={sections.testimonials?.embedCode || ''}
-                        onChange={(e) => setHomeContent({
-                          ...homeContent,
-                          sections: {
-                            ...sections,
-                            testimonials: { ...sections.testimonials, embedCode: e.target.value }
-                          }
-                        })}
-                        placeholder="<!-- Paste your embed code here (e.g., Elfsight widget code) -->"
-                        className="min-h-[150px] font-mono text-sm"
-                      />
-                      <p className="text-sm text-gray-500">
-                        You can paste any embed code here, including Elfsight widgets or other third-party review systems.
-                      </p>
+                    <div className="space-y-4">
+                      <div>
+                        <Label htmlFor="testimonialsIframeUrl">Reviews Widget URL</Label>
+                        <Input
+                          id="testimonialsIframeUrl"
+                          value={sections.testimonials?.iframeUrl || ''}
+                          onChange={(e) => setHomeContent({
+                            ...homeContent,
+                            sections: {
+                              ...sections,
+                              testimonials: { ...sections.testimonials, iframeUrl: e.target.value }
+                            }
+                          })}
+                          placeholder="https://893eac12ce2246829d4b759a3336e8d5.elf.site"
+                          className="font-mono text-sm"
+                        />
+                        <p className="text-sm text-gray-500 mt-1">
+                          Enter the URL of your external reviews widget (e.g., Elfsight, Trustpilot, etc.)
+                        </p>
+                      </div>
+                      
+                      <div>
+                        <Label htmlFor="testimonialsIframeHeight">Iframe Height</Label>
+                        <Input
+                          id="testimonialsIframeHeight"
+                          value={sections.testimonials?.iframeHeight || '600px'}
+                          onChange={(e) => setHomeContent({
+                            ...homeContent,
+                            sections: {
+                              ...sections,
+                              testimonials: { ...sections.testimonials, iframeHeight: e.target.value }
+                            }
+                          })}
+                          placeholder="600px"
+                        />
+                        <p className="text-sm text-gray-500 mt-1">
+                          Set the height of the iframe (e.g., 600px, 500px)
+                        </p>
+                      </div>
+                      
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                          <Label htmlFor="testimonialsTitle">Section Title</Label>
+                          <Input
+                            id="testimonialsTitle"
+                            value={sections.testimonials?.title ?? 'What Our Customers Say'}
+                            onChange={(e) => setHomeContent({
+                              ...homeContent,
+                              sections: {
+                                ...sections,
+                                testimonials: { ...sections.testimonials, title: e.target.value }
+                              }
+                            })}
+                          />
+                        </div>
+                        <div>
+                          <Label htmlFor="testimonialsSubtitle">Section Subtitle</Label>
+                          <Input
+                            id="testimonialsSubtitle"
+                            value={sections.testimonials?.subtitle ?? 'Don\'t just take our word for it'}
+                            onChange={(e) => setHomeContent({
+                              ...homeContent,
+                              sections: {
+                                ...sections,
+                                testimonials: { ...sections.testimonials, subtitle: e.target.value }
+                              }
+                            })}
+                          />
+                        </div>
+                      </div>
                     </div>
                   ) : (
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      <div>
-                        <Label htmlFor="testimonialsTitle">Section Title</Label>
-                        <Input
-                          id="testimonialsTitle"
-                          value={sections.testimonials?.title ?? 'What Our Customers Say'}
-                          onChange={(e) => setHomeContent({
-                            ...homeContent,
-                            sections: {
-                              ...sections,
-                              testimonials: { ...sections.testimonials, title: e.target.value }
-                            }
-                          })}
-                        />
-                      </div>
-                      <div>
-                        <Label htmlFor="testimonialsSubtitle">Section Subtitle</Label>
-                        <Input
-                          id="testimonialsSubtitle"
-                          value={sections.testimonials?.subtitle ?? 'Don\'t just take our word for it'}
-                          onChange={(e) => setHomeContent({
-                            ...homeContent,
-                            sections: {
-                              ...sections,
-                              testimonials: { ...sections.testimonials, subtitle: e.target.value }
-                            }
-                          })}
-                        />
-                      </div>
+                    <div className="text-center py-6 text-gray-500">
+                      <p>Enable iframe mode to use external reviews widget, or manage individual testimonials in the Reviews section.</p>
                     </div>
                   )}
                 </>

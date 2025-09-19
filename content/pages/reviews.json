@@ -1,0 +1,22 @@
+{
+  "sections": {
+    "testimonials": {
+      "enabled": true,
+      "title": "What Your Neighbors Say About Us",
+      "subtitle": "",
+      "background": "white",
+      "useEmbed": true,
+      "iframeUrl": "https://893eac12ce2246829d4b759a3336e8d5.elf.site",
+      "iframeHeight": "400px",
+      "items": [
+        {
+          "name": "John Doe",
+          "location": "Downtown",
+          "rating": 5,
+          "text": "TESTING",
+          "avatar": ""
+        }
+      ]
+    }
+  }
+}
