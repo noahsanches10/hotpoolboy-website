@@ -11,7 +11,7 @@
   "footerStyle": "light",
   "contact": {
     "phone": "(512) 359-8746",
-    "email": "lonestarshineexteriorcleaning@gmail.com",
+    "email": "",
     "address": ""
   },
   "serviceAreas": [
@@ -62,11 +62,11 @@
   "footerTextColor": "accent",
   "fontFamily": "poppins",
   "heroBackgrounds": {
-    "service-window-cleaning": "/uploads/hero-background-1756167043123.webp",
     "service-gutter-cleaning": "/uploads/hero-background-1756167062732.jpg",
-    "service-solar-panel-cleaning": "/uploads/hero-background-1756167092113.webp",
     "service-house-washing": "/uploads/hero-background-1756167198579.jpg",
-    "home": "/uploads/hero-background-1758398410580.png"
+    "home": "/uploads/hero-background-1758832307785.jpg",
+    "service-pressure-washing": "/uploads/hero-background-1758833088377.png",
+    "service-window-cleaning": "/uploads/hero-background-1758833060814.jpg"
   },
   "heroStyling": {
     "backgroundType": "accent",
@@ -98,7 +98,7 @@
       "overlayType": "dark",
       "overlayOpacity": 50,
       "overlayColor": "#000000",
-      "videoPosition": 50
+      "videoPosition": 23
     },
     "image-hero-background-1756167092113.webp": {
       "overlayType": "dark",
@@ -163,27 +163,33 @@
       "overlayOpacity": 50,
       "overlayColor": "#000000",
       "videoPosition": 50
+    },
+    "image-hero-background-1758832307785.jpg": {
+      "overlayType": "dark",
+      "overlayOpacity": 50,
+      "overlayColor": "#000000",
+      "videoPosition": 50
+    },
+    "image-hero-background-1758833088377.png": {
+      "overlayType": "dark",
+      "overlayOpacity": 50,
+      "overlayColor": "#000000",
+      "videoPosition": 50
+    },
+    "image-hero-background-1758833060814.jpg": {
+      "overlayType": "dark",
+      "overlayOpacity": 50,
+      "overlayColor": "#000000",
+      "videoPosition": 50
     }
   },
   "headerCtaTextColor": "white",
   "heroOverlayByPath": {
-    "/uploads/hero-background-1756167043123.webp": {
-      "overlayType": "dark",
-      "overlayOpacity": 50,
-      "overlayColor": "#000000",
-      "videoPosition": 23
-    },
     "/uploads/hero-background-1756167062732.jpg": {
       "overlayType": "dark",
       "overlayOpacity": 50,
       "overlayColor": "#000000",
-      "videoPosition": 50
-    },
-    "/uploads/hero-background-1756167092113.webp": {
-      "overlayType": "dark",
-      "overlayOpacity": 50,
-      "overlayColor": "#000000",
-      "videoPosition": 50
+      "videoPosition": 23
     },
     "/uploads/hero-background-1756167198579.jpg": {
       "overlayType": "dark",
@@ -191,7 +197,19 @@
       "overlayColor": "#000000",
       "videoPosition": 50
     },
-    "/uploads/hero-background-1758398410580.png": {
+    "/uploads/hero-background-1758832307785.jpg": {
+      "overlayType": "dark",
+      "overlayOpacity": 50,
+      "overlayColor": "#000000",
+      "videoPosition": 50
+    },
+    "/uploads/hero-background-1758833088377.png": {
+      "overlayType": "dark",
+      "overlayOpacity": 50,
+      "overlayColor": "#000000",
+      "videoPosition": 50
+    },
+    "/uploads/hero-background-1758833060814.jpg": {
       "overlayType": "dark",
       "overlayOpacity": 50,
       "overlayColor": "#000000",

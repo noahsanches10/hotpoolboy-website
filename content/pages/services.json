@@ -9,7 +9,7 @@
       "title": "Window Cleaning",
       "description": "Crystal clear windows inside and out using professional techniques and purified water systems",
       "icon": "droplets",
-      "image": "/uploads/service-1755721649490.webp",
+      "image": "/uploads/service-1758832593765.jpg",
       "slug": "window-cleaning",
       "enabled": true,
       "showOtherServices": true,
@@ -68,33 +68,33 @@
       ]
     },
     {
-      "title": "Solar Panel Cleaning",
-      "description": "Professional solar panel cleaning to maximize energy efficiency and protect your investment",
+      "title": "Pressure Washing",
+      "description": "Professional pressure washing to restore curb appeal and protect your property.",
       "icon": "wrench",
-      "image": "/uploads/service-1755721798169.webp",
-      "slug": "solar-panel-cleaning",
+      "image": "/uploads/service-1758833007596.png",
+      "slug": "pressure-washing",
       "enabled": true,
       "showOtherServices": true,
       "showThumbnailInHero": false,
       "showContentInHero": false,
       "contentImage": "",
-      "longDescription": "Dirty solar panels can reduce energy output by up to 25%. Our specialized solar panel cleaning service uses purified water and soft-bristle brushes to safely remove dirt, dust, bird droppings, and other debris without damaging your panels. We clean panels, check connections, and ensure optimal performance to maximize your energy savings.",
+      "longDescription": "Over time, dirt, mold, mildew, and grime build up on exterior surfaces, leaving them stained and weathered. Our professional pressure washing service uses high-powered, eco-friendly techniques to safely clean driveways, patios, siding, fences, and more. We remove tough buildup, prevent long-term damage, and restore your property’s original look—boosting both curb appeal and property value.",
       "benefits": [
         {
-          "title": "Maximize Energy Output",
-          "description": "Clean panels can increase energy production by up to 25% compared to dirty panels."
+          "title": "Restore Curb Appeal",
+          "description": "Remove years of dirt, stains, and grime to make your property look new again."
         },
         {
-          "title": "Safe Cleaning Methods",
-          "description": "We use purified water and soft brushes designed specifically for solar panels."
+          "title": "Protect Surfaces",
+          "description": "Gentle yet powerful cleaning prevents damage and extends the life of siding, decks, and concrete."
         },
         {
-          "title": "Panel Inspection",
-          "description": "Visual inspection of panels and connections to identify any potential issues."
+          "title": "Health & Safety",
+          "description": "Eliminate slippery mold, algae, and mildew that can cause slips and health hazards."
         },
         {
-          "title": "Protect Your Investment",
-          "description": "Regular cleaning extends panel life and maintains warranty compliance."
+          "title": "Boost Property Value",
+          "description": "A well-maintained exterior increases home value and leaves a lasting impression."
         }
       ]
     },
@@ -141,7 +141,7 @@
     "secondary": {
       "text": "Call Now",
       "link": "tel:(512) 359-8746",
-      "enabled": true
+      "enabled": false
     }
   }
 }

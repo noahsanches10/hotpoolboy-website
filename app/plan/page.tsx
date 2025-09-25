@@ -205,39 +205,43 @@ export default async function PlanPage() {
       </section>
     ),
     benefits: () => planContent.benefits?.enabled && (
-      <section className="py-20 px-4 bg-gray-50">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-              {planContent.benefits.title}
-            </h2>
-            {planContent.benefits.description && (
-              <p className="text-lg text-gray-600">
-                {planContent.benefits.description}
+  <section className="py-20 bg-gray-50">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Header */}
+      <div className="text-center mb-16">
+        <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+          {planContent.benefits.title}
+        </h2>
+        {planContent.benefits.description && (
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            {planContent.benefits.description}
+          </p>
+        )}
+      </div>
+
+      {/* Benefits Grid */}
+      <div className="flex flex-wrap justify-center gap-8 max-w-6xl mx-auto">
+        {planContent.benefits.items.map((benefit, index) => (
+          <Card key={index} className="text-center border-0 shadow-lg hover:shadow-xl transition-shadow duration-300 w-full sm:w-64 flex-shrink-0">
+            <CardContent className="p-6">
+              <div className="w-16 h-16 bg-primary-light rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <div className="text-primary">
+                  {renderIcon(benefit.icon)}
+                </div>
+              </div>
+              <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                {benefit.title}
+              </h3>
+              <p className="text-gray-600 text-sm leading-relaxed">
+                {benefit.description}
               </p>
-            )}
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {planContent.benefits.items.map((benefit, index) => (
-              <Card key={index} className="text-center">
-                <CardContent className="pt-6">
-                  <div className="text-primary mb-4 flex justify-center">
-                    {renderIcon(benefit.icon)}
-                  </div>
-                  <h3 className="text-xl font-semibold text-gray-900 mb-3">
-                    {benefit.title}
-                  </h3>
-                  <p className="text-gray-600">
-                    {benefit.description}
-                  </p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-    ),
+            </CardContent>
+          </Card>
+        ))}
+      </div>
+    </div>
+  </section>
+),
     guarantee: () => planContent.guarantee?.enabled && (
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -270,103 +274,135 @@ export default async function PlanPage() {
         </div>
       </section>
     ),
-    pricing: () => planContent.pricing?.enabled && (
-      planContent.pricing.displayStyle === 'cards' ? (
-        <Pricing content={{ sections: { pricing: planContent.pricing } }} />
-      ) : (
-        <section className="py-16 bg-gray-50">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">
-                {planContent.pricing.title}
-              </h2>
-              {planContent.pricing.subtitle && (
-                <p className="text-lg text-gray-600">
-                  {planContent.pricing.subtitle}
-                </p>
-              )}
-            </div>
+   pricing: () => planContent.pricing?.enabled && (
+  planContent.pricing.displayStyle === 'cards' ? (
+    <Pricing content={{ sections: { pricing: planContent.pricing } }} />
+  ) : (
+    <section className="py-16 bg-gray-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Section Title + Subtitle */}
+        <div className="text-center mb-12">
+          <h2 className="text-3xl font-bold text-gray-900 mb-4">
+            {planContent.pricing.title}
+          </h2>
+          {planContent.pricing.subtitle && (
+            <p className="text-lg text-gray-600">
+              {planContent.pricing.subtitle}
+            </p>
+          )}
+        </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-              {planContent.pricing.plans.map((plan: any, index: number) => (
-                <Card key={index} className="border-0 shadow-lg overflow-hidden h-full flex flex-col">
-                  <CardContent className="p-0 flex-1 flex flex-col">
-                    {/* Plan Header */}
-                    <div className="bg-primary text-white p-6 text-center">
-                      <h3 className="text-2xl font-bold mb-2">
-                        {plan.name}
-                      </h3>
-                      {plan.description && (
-                        <p className="text-primary-foreground/80 text-sm">
-                          {plan.description}
-                        </p>
-                      )}
-                    </div>
+        {/* Plan Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          {planContent.pricing.plans.map((plan: any, index: number) => {
+            const features = Array.isArray(plan.features)
+              ? plan.features
+              : (plan.features || '').split('\n').filter((f: string) => f.trim());
 
-                    {/* Plan Content */}
-                    <div className="p-6 flex-1">
-                      {plan.features && plan.features.length > 0 && (
-                        <div className="space-y-3">
-                          {plan.features.map((feature: string, featureIndex: number) => {
-                            // Try to parse price from feature (look for patterns like "$40 per month")
-                            const priceMatch = feature.match(/\$[\d,]+(?:\.\d{2})?/);
-                            const price = priceMatch ? priceMatch[0] : null;
-                            
-                            // Extract period (per month, per service, etc.)
-                            const periodMatch = feature.match(/per\s+\w+/i);
-                            const period = periodMatch ? periodMatch[0] : '';
-                            
-                            // Get description (everything else)
-                            let description = feature;
-                            if (price) description = description.replace(price, '').trim();
-                            if (period) description = description.replace(new RegExp(period, 'i'), '').trim();
-                            description = description.replace(/^[-\s]+|[-\s]+$/g, ''); // Clean up dashes and spaces
-                            
-                            return (
-                              <div key={featureIndex} className="flex items-start justify-between p-3 bg-gray-50 rounded-lg">
-                                <div className="flex items-start space-x-3 flex-1">
-                                  <CheckCircle className="h-5 w-5 text-accent mt-0.5 flex-shrink-0" />
-                                  <div className="flex-1">
-                                    <p className="text-gray-900 font-medium text-sm">
-                                      {description || feature}
-                                    </p>
-                                    {period && (
-                                      <p className="text-xs text-gray-500 mt-1">
-                                        {period}
-                                      </p>
-                                    )}
-                                  </div>
-                                </div>
-                                {price && (
-                                  <div className="text-right ml-3">
-                                    <div className="text-lg font-bold text-primary">
-                                      {price}
-                                    </div>
-                                  </div>
+            return (
+              <Card
+                key={index}
+                className={`border-0 shadow-lg overflow-hidden h-full flex flex-col ${
+                  plan.popular ? 'ring-2 ring-primary scale-[1.02]' : ''
+                }`}
+              >
+                <CardContent className="p-0 flex-1 flex flex-col">
+                  {/* Plan Header */}
+                  <div
+                    className={`p-6 text-center ${
+                      plan.popular ? 'bg-primary text-white' : 'bg-gray-100'
+                    }`}
+                  >
+                    <h3 className="text-2xl font-bold mb-2">
+                      {plan.name}
+                    </h3>
+                    {plan.description && (
+                      <p
+                        className={`text-sm ${
+                          plan.popular ? 'text-white/80' : 'text-gray-600'
+                        }`}
+                      >
+                        {plan.description}
+                      </p>
+                    )}
+                    {plan.popular && (
+                      <span className="mt-3 inline-block text-xs font-semibold bg-white/20 rounded-full px-3 py-1">
+                        Most Popular
+                      </span>
+                    )}
+                  </div>
+
+                  {/* Plan Content */}
+                  <div className="p-6 flex-1">
+                    {features.length > 0 && (
+                      <div className="space-y-3">
+                        {features.map((feature: string, featureIndex: number) => {
+                          const priceMatch = feature.match(/\$[\d,]+(?:\.\d{2})?/);
+                          const price = priceMatch ? priceMatch[0] : null;
+
+                          const periodMatch = feature.match(/per\s+\w+/i);
+                          const period = periodMatch ? periodMatch[0] : '';
+
+                          let description = feature;
+                          if (price) description = description.replace(price, '').trim();
+                          if (period) description = description.replace(new RegExp(period, 'i'), '').trim();
+                          description = description.replace(/^[-\s]+|[-\s]+$/g, '');
+
+                          return (
+                            <div
+                              key={featureIndex}
+                              className="flex items-start justify-between p-3 bg-gray-50 rounded-lg"
+                            >
+                              <div className="flex-1">
+                                <p className="text-gray-900 font-medium text-sm">
+                                  {description || feature}
+                                </p>
+                                {period && (
+                                  <p className="text-xs text-gray-500 mt-1">
+                                    {period}
+                                  </p>
                                 )}
                               </div>
-                            );
-                          })}
-                        </div>
-                      )}
-                    </div>
+                              {price && (
+                                <div className="text-right ml-3">
+                                  <div className="text-lg font-bold text-primary">
+                                    {price}
+                                  </div>
+                                </div>
+                              )}
+                            </div>
+                          );
+                        })}
+                      </div>
+                    )}
+                  </div>
 
-                    {/* Get Started Button */}
-                    <div className="p-6 pt-0">
-                      <Button size="lg" className="w-full" asChild>
-                        <Link href="/contact">
-                          Get Started
-                        </Link>
-                      </Button>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </section>
-      )
-    ),
+                  {/* Get Started Button */}
+                  <div className="p-6 pt-0">
+                    <Button
+                      size="lg"
+                      className={`w-full ${
+                        plan.popular
+                          ? 'bg-primary text-white hover:bg-primary/90'
+                          : 'bg-gray-200 text-gray-800 hover:bg-gray-300'
+                      }`}
+                      asChild
+                    >
+                      <Link href="/contact">
+                        Get Started
+                      </Link>
+                    </Button>
+                  </div>
+                </CardContent>
+              </Card>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  )
+),
+
   };
 
   return (

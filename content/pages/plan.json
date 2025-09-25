@@ -53,22 +53,22 @@
   "benefits": {
     "enabled": true,
     "title": "Why Choose Our Plan",
-    "description": "Benefits you can count on",
+    "description": "",
     "items": [
       {
-        "title": "Professional Service",
-        "description": "Expert technicians with years of experience",
+        "title": "Long-Lasting Protection",
+        "description": "Specialized treatments that keep glass cleaner between visits.",
         "icon": "shield"
       },
       {
-        "title": "Quality Guarantee",
-        "description": "100% satisfaction guaranteed",
-        "icon": "award"
+        "title": "Hassle-Free Scheduling",
+        "description": "Flexible service plans that work around your calendar.",
+        "icon": "clock"
       },
       {
-        "title": "Competitive Pricing",
-        "description": "Fair prices for premium service",
-        "icon": "dollar"
+        "title": "Guaranteed Peace of Mind",
+        "description": "If the weather or hard water strikes, we’ve got you covered.",
+        "icon": "thumbsup"
       }
     ]
   },
@@ -98,44 +98,35 @@
     "plans": [
       {
         "name": "Bi-Annual",
-        "price": "$99",
+        "price": "$50",
         "period": "per visit",
         "description": "",
-        "features": [
-          "Feature 1",
-          "Feature 2"
-        ],
-        "exclusions": [
-          "NOT INCLUDED"
-        ],
+        "features": "Satisfaction Guarantee\n",
+        "exclusions": "7 Day Weather Guarantee\nFREE Hard Water Removal\nProtective Nanocoat",
         "popular": false
       },
       {
         "name": "Quarterly",
-        "price": "$99",
+        "price": "$100",
         "period": "per visit",
         "description": "",
-        "features": [
-          "Feature 1",
-          "Feature 2"
-        ],
-        "exclusions": [],
+        "features": "Satisfaction Guarantee\n7 Day Weather Guarantee\nFREE Hard Water Removal\nProtective Nanocoat",
+        "exclusions": "",
         "popular": true
       },
       {
         "name": "Monthly",
-        "price": "$99",
+        "price": "$150",
         "period": "per visit",
         "description": "",
-        "features": [
-          "Feature 1",
-          "Feature 2"
-        ],
-        "exclusions": [],
+        "features": "Satisfaction Guarantee\n7 Day Weather Guarantee\nFREE Hard Water Removal\nProtective Nanocoat",
+        "exclusions": "",
         "popular": false
       }
     ],
-    "displayStyle": "list"
+    "displayStyle": "cards",
+    "title": "Flexible Plans For Your Needs",
+    "subtitle": ""
   },
   "sectionOrder": [
     "process",

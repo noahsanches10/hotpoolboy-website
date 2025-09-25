@@ -187,7 +187,8 @@
           "popular": false,
           "exclusions": [
             "7 Day Rain Guarantee",
-            "FREE Hard Water Removal"
+            "FREE Hard Water Removal",
+            "Protective Nanocoat"
           ]
         },
         {
@@ -197,8 +198,9 @@
           "description": "",
           "features": [
             "Satisfaction Guarantee",
-            "7 Day Rain Guarantee",
-            "FREE Hard Water Removal"
+            "7 Day Weather Guarantee",
+            "FREE Hard Water Removal",
+            "Protective Nanocoat"
           ],
           "popular": true
         },
@@ -209,8 +211,9 @@
           "description": "",
           "features": [
             "Satisfaction Guarantee",
-            "7 Day Rain Guarantee",
-            "FREE Hard Water Removal"
+            "7 Day Weather Guarantee",
+            "FREE Hard Water Removal",
+            "Protective Nanocoat"
           ],
           "popular": false
         }

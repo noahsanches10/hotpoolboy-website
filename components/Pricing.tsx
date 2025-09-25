@@ -19,7 +19,7 @@ function getBackgroundClass(background: string) {
     case 'accent-light':
       return 'bg-accent-light';
     default:
-      return 'bg-white';
+      return 'bg-gray-50';
   }
 }
 
@@ -77,20 +77,32 @@ export default function Pricing({ content }: PricingProps) {
               <CardContent className="pt-0">
                 <div className="space-y-3 mb-8">
                   {/* Features */}
-                  {plan.features?.map((feature: string, featureIndex: number) => (
-                    <li key={featureIndex} className="flex items-center space-x-3">
-                      <CheckCircle className="h-5 w-5 text-accent flex-shrink-0" />
-                      <span className="text-gray-700">{feature}</span>
-                    </li>
-                  ))}
+                  {(() => {
+                    const features = Array.isArray(plan.features)
+                      ? plan.features
+                      : (plan.features || '').split('\n').filter((f: string) => f.trim());
+                    
+                    return features.map((feature: string, featureIndex: number) => (
+                      <li key={featureIndex} className="flex items-center space-x-3">
+                        <CheckCircle className="h-5 w-5 text-accent flex-shrink-0" />
+                        <span className="text-gray-700">{feature}</span>
+                      </li>
+                    ));
+                  })()}
                   
                   {/* Exclusions */}
-                  {plan.exclusions?.map((exclusion: string, exclusionIndex: number) => (
-                    <li key={`exclusion-${exclusionIndex}`} className="flex items-center space-x-3">
-                      <X className="h-5 w-5 text-red-500 flex-shrink-0" />
-                      <span className="text-gray-500 line-through">{exclusion}</span>
-                    </li>
-                  ))}
+                  {(() => {
+                    const exclusions = Array.isArray(plan.exclusions)
+                      ? plan.exclusions
+                      : (plan.exclusions || '').split('\n').filter((e: string) => e.trim());
+                    
+                    return exclusions.map((exclusion: string, exclusionIndex: number) => (
+                      <li key={`exclusion-${exclusionIndex}`} className="flex items-center space-x-3">
+                        <X className="h-5 w-5 text-red-500 flex-shrink-0" />
+                        <span className="text-gray-500 line-through">{exclusion}</span>
+                      </li>
+                    ));
+                  })()}
                 </div>
                 
                 <Button 

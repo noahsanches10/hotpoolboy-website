@@ -434,68 +434,63 @@ export default function PlanManager({ onSave, isLoading }: PlanManagerProps) {
 
   // CTA Section Handlers - removed since using CtaBanner component
 
-  // Pricing Section Handlers
-  const updatePricingField = (field: keyof PlanContent['pricing'], value: any) => {
-    setPlanContent(prev => ({
+ // Pricing Section Handlers
+const updatePricingField = (field: keyof PlanContent['pricing'], value: any) => {
+  setPlanContent(prev => ({
+    ...prev,
+    pricing: {
+      ...prev.pricing,
+      [field]: value
+    }
+  }));
+};
+
+const addPricingPlan = () => {
+  const newPlan = {
+    name: 'New Plan',
+    price: '$99',
+    period: 'per visit',
+    description: 'Plan description',
+    features: '',      // store as raw string while editing
+    exclusions: '',    // same here
+    popular: false
+  };
+
+  setPlanContent(prev => ({
+    ...prev,
+    pricing: {
+      ...prev.pricing,
+      plans: [...(prev.pricing?.plans || []), newPlan]
+    }
+  }));
+};
+
+const removePricingPlan = (index: number) => {
+  setPlanContent(prev => ({
+    ...prev,
+    pricing: {
+      ...prev.pricing,
+      plans: (prev.pricing?.plans || []).filter((_, i) => i !== index)
+    }
+  }));
+};
+
+const updatePricingPlan = (index: number, field: string, value: any) => {
+  setPlanContent(prev => {
+    const newPlans = [...(prev.pricing?.plans || [])];
+    if (newPlans[index]) {
+      newPlans[index] = { ...newPlans[index], [field]: value };
+    }
+
+    return {
       ...prev,
       pricing: {
         ...prev.pricing,
-        [field]: value
+        plans: newPlans
       }
-    }));
-  };
-
-  const addPricingPlan = () => {
-    const newPlan = {
-      name: 'New Plan',
-      price: '$99',
-      period: 'per visit',
-      description: 'Plan description',
-      features: ['Feature 1', 'Feature 2'],
-      exclusions: [],
-      popular: false
     };
-
-    setPlanContent(prev => ({
-      ...prev,
-      pricing: {
-        ...prev.pricing,
-        plans: [...(prev.pricing?.plans || []), newPlan]
-      }
-    }));
-  };
-
-  const removePricingPlan = (index: number) => {
-    setPlanContent(prev => ({
-      ...prev,
-      pricing: {
-        ...prev.pricing,
-        plans: (prev.pricing?.plans || []).filter((_, i) => i !== index)
-      }
-    }));
-  };
-
-  const updatePricingPlan = (index: number, field: string, value: any) => {
-    setPlanContent(prev => {
-      const newPlans = [...(prev.pricing?.plans || [])];
-      if (newPlans[index]) {
-        if (field === 'features' || field === 'exclusions') {
-          newPlans[index] = { ...newPlans[index], [field]: value.split('\n').filter((item: string) => item.trim()) };
-        } else {
-          newPlans[index] = { ...newPlans[index], [field]: value };
-        }
-      }
-      
-      return {
-        ...prev,
-        pricing: {
-          ...prev.pricing,
-          plans: newPlans
-        }
-      };
-    });
-  };
-
+  });
+};
   // Section Order Handlers
   const updateSectionOrder = (newOrder: string[]) => {
     setPlanContent(prev => ({
@@ -1233,139 +1228,131 @@ export default function PlanManager({ onSave, isLoading }: PlanManagerProps) {
           </div>
 
           {planContent.pricing?.enabled && (
-            <>
-              <div className="flex items-center justify-between">
-                <h3 className="text-lg font-medium">Pricing Plans ({planContent.pricing?.plans?.length || 0})</h3>
-                <Button onClick={addPricingPlan}>
-                  <Plus className="h-4 w-4 mr-2" />
-                  Add Plan
+  <>
+    <div className="flex items-center justify-between">
+      <h3 className="text-lg font-medium">
+        Pricing Plans ({planContent.pricing?.plans?.length || 0})
+      </h3>
+      <Button onClick={addPricingPlan}>
+        <Plus className="h-4 w-4 mr-2" />
+        Add Plan
+      </Button>
+    </div>
+
+    <div className="space-y-4">
+      {(planContent.pricing?.plans || []).map((plan: any, index: number) => (
+        <Card key={index} className="p-4">
+          <div className="space-y-4">
+            <div className="flex items-center justify-between">
+              <Label className="font-medium">Plan {index + 1}</Label>
+              <div className="flex items-center space-x-2">
+                <input
+                  type="checkbox"
+                  checked={plan.popular}
+                  onChange={(e) => updatePricingPlan(index, 'popular', e.target.checked)}
+                  className="w-4 h-4 text-primary"
+                />
+                <Label className="text-sm">Popular</Label>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => removePricingPlan(index)}
+                  className="text-red-600 hover:text-red-700"
+                >
+                  <Trash2 className="h-4 w-4" />
                 </Button>
               </div>
+            </div>
 
-              <div className="space-y-4">
-                {(planContent.pricing?.plans || []).map((plan: any, index: number) => (
-                  <Card key={index} className="p-4">
-                    <div className="space-y-4">
-                      <div className="flex items-center justify-between">
-                        <Label className="font-medium">Plan {index + 1}</Label>
-                        <div className="flex items-center space-x-2">
-                          <input
-                            type="checkbox"
-                            checked={plan.popular}
-                            onChange={(e) => updatePricingPlan(index, 'popular', e.target.checked)}
-                            className="w-4 h-4 text-primary"
-                          />
-                          <Label className="text-sm">Popular</Label>
-                          <Button
-                            variant="outline"
-                            size="sm"
-                            onClick={() => removePricingPlan(index)}
-                            className="text-red-600 hover:text-red-700"
-                          >
-                            <Trash2 className="h-4 w-4" />
-                          </Button>
-                        </div>
-                      </div>
-                      
-                      {planContent.pricing?.displayStyle === 'list' && (
-                        <div className="bg-blue-50 p-4 rounded-lg mb-4">
-                          <p className="text-sm text-blue-800">
-                            <strong>List Format:</strong> Each feature should include the service description and price. 
-                            Example: "Basic maintenance check - $40 per month" or "Emergency service - $125 per call"
-                          </p>
-                        </div>
-                      )}
-                      
-                      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                        <div>
-                          <Label htmlFor={`plan-name-${index}`}>Plan Name</Label>
-                          <Input
-                            id={`plan-name-${index}`}
-                            value={plan.name}
-                            onChange={(e) => updatePricingPlan(index, 'name', e.target.value)}
-                            placeholder="Plan name"
-                          />
-                        </div>
-                        {planContent.pricing?.displayStyle === 'cards' && (
-                          <>
-                            <div>
-                              <Label htmlFor={`plan-price-${index}`}>Price</Label>
-                              <Input
-                                id={`plan-price-${index}`}
-                                value={plan.price}
-                                onChange={(e) => updatePricingPlan(index, 'price', e.target.value)}
-                                placeholder="$99 or Free"
-                              />
-                            </div>
-                            <div>
-                              <Label htmlFor={`plan-period-${index}`}>Period</Label>
-                              <Input
-                                id={`plan-period-${index}`}
-                                value={plan.period}
-                                onChange={(e) => updatePricingPlan(index, 'period', e.target.value)}
-                                placeholder="per visit"
-                              />
-                            </div>
-                          </>
-                        )}
-                        <div>
-                          <Label htmlFor={`plan-description-${index}`}>Description</Label>
-                          <Textarea
-                            id={`plan-description-${index}`}
-                            value={plan.description}
-                            onChange={(e) => updatePricingPlan(index, 'description', e.target.value)}
-                            placeholder="Plan description"
-                            rows={2}
-                          />
-                        </div>
-                      </div>
-
-                      <div>
-                        <Label>
-                          {planContent.pricing?.displayStyle === 'list' 
-                            ? 'Services & Pricing (one per line - include description and price)' 
-                            : 'Features (one per line)'}
-                        </Label>
-                        <Textarea
-                          value={plan.features?.join('\n') || ''}
-                          onChange={(e) => updatePricingPlan(index, 'features', e.target.value)}
-                          placeholder={
-                            planContent.pricing?.displayStyle === 'list'
-                              ? "Basic maintenance check - $40 per month\nEmergency service - $125 per call\nAnnual inspection - $200 per year"
-                              : "Feature 1\nFeature 2\nFeature 3"
-                          }
-                          rows={6}
-                        />
-                        {planContent.pricing?.displayStyle === 'list' && (
-                          <p className="text-sm text-gray-500 mt-1">
-                            Include both service description and pricing. The price will be automatically extracted and displayed.
-                          </p>
-                        )}
-                      </div>
-
-                      {planContent.pricing?.displayStyle === 'cards' && (
-                        <>
-                          <div>
-                            <Label htmlFor={`exclusions-${index}`}>Not Included (one per line)</Label>
-                            <Textarea
-                              id={`exclusions-${index}`}
-                              value={plan.exclusions?.join('\n') || ''}
-                              onChange={(e) => updatePricingPlan(index, 'exclusions', e.target.value)}
-                              rows={4}
-                              placeholder="Not included item 1&#10;Not included item 2"
-                            />
-                            <p className="text-sm text-gray-500 mt-1">
-                              Items that are not included in this plan (will show with X icon)
-                            </p>
-                          </div>
-                        </>
-                      )}
-                    </div>
-                  </Card>
-                ))}
+            {planContent.pricing?.displayStyle === 'list' && (
+              <div className="bg-blue-50 p-4 rounded-lg mb-4">
+                <p className="text-sm text-blue-800">
+                  <strong>List Format:</strong> Each feature should include the service description and price.
+                  Example: "Basic maintenance check - $40 per month"
+                </p>
               </div>
-            </>
-          )}
+            )}
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div>
+                <Label htmlFor={`plan-name-${index}`}>Plan Name</Label>
+                <Input
+                  id={`plan-name-${index}`}
+                  value={plan.name}
+                  onChange={(e) => updatePricingPlan(index, 'name', e.target.value)}
+                  placeholder="Plan name"
+                />
+              </div>
+              {planContent.pricing?.displayStyle === 'cards' && (
+                <>
+                  <div>
+                    <Label htmlFor={`plan-price-${index}`}>Price</Label>
+                    <Input
+                      id={`plan-price-${index}`}
+                      value={plan.price}
+                      onChange={(e) => updatePricingPlan(index, 'price', e.target.value)}
+                      placeholder="$99 or Free"
+                    />
+                  </div>
+                  <div>
+                    <Label htmlFor={`plan-period-${index}`}>Period</Label>
+                    <Input
+                      id={`plan-period-${index}`}
+                      value={plan.period}
+                      onChange={(e) => updatePricingPlan(index, 'period', e.target.value)}
+                      placeholder="per visit"
+                    />
+                  </div>
+                </>
+              )}
+              <div>
+                <Label htmlFor={`plan-description-${index}`}>Description</Label>
+                <Textarea
+                  id={`plan-description-${index}`}
+                  value={plan.description}
+                  onChange={(e) => updatePricingPlan(index, 'description', e.target.value)}
+                  placeholder="Plan description"
+                  rows={2}
+                />
+              </div>
+            </div>
+
+            <div>
+              <Label>
+                {planContent.pricing?.displayStyle === 'list'
+                  ? 'Services & Pricing (one per line - include description and price)'
+                  : 'Features (one per line)'}
+              </Label>
+              <Textarea
+                value={plan.features}
+                onChange={(e) => updatePricingPlan(index, 'features', e.target.value)}
+                placeholder={
+                  planContent.pricing?.displayStyle === 'list'
+                    ? "Basic maintenance check - $40 per month\nEmergency service - $125 per call"
+                    : "Feature 1\nFeature 2\nFeature 3"
+                }
+                rows={6}
+              />
+            </div>
+
+            {planContent.pricing?.displayStyle === 'cards' && (
+              <div>
+                <Label htmlFor={`exclusions-${index}`}>Not Included (one per line)</Label>
+                <Textarea
+                  id={`exclusions-${index}`}
+                  value={plan.exclusions}
+                  onChange={(e) => updatePricingPlan(index, 'exclusions', e.target.value)}
+                  rows={4}
+                  placeholder="Not included item 1&#10;Not included item 2"
+                />
+              </div>
+            )}
+          </div>
+        </Card>
+      ))}
+    </div>
+  </>
+)}
         </CardContent>
       </Card>
 
