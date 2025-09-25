@@ -1,14 +1,14 @@
 {
   "hero": {
-    "title": "Sparkle Bright with Austin’s Top Exterior Cleaning",
-    "subtitle": "Lone Star Shine Exterior Cleaning brings unmatched care and quality to every home and business in Austin, making your property shine like never before.",
+    "title": "Clear Views, Clear Minds",
+    "subtitle": "The best Premium Window Cleaning Service on the market. Clearing your minds with clear views. Let PureVue brighten your day!",
     "image": "",
     "ctaText": "Get Free Estimate",
     "ctaLink": "/contact",
     "cta": {
       "primary": {
         "text": "Call Now",
-        "link": "tel:(512) 359-8746",
+        "link": "tel:(262) 721-5753",
         "enabled": true,
         "color": "accent",
         "textColor": "white"
@@ -50,19 +50,19 @@
     },
     "whyChooseUs": {
       "enabled": true,
-      "title": "Why Austin Chooses Lone Star",
+      "title": "Why Milwaukee Chooses PureVue",
       "subtitle": "",
       "background": "secondary-light",
       "items": [
         {
           "icon": "award",
           "title": "Locally Owned, Community Trusted",
-          "description": "As Austin natives, Mateo and Logan pour heart into every exterior cleaning job, building trust with neighbors through reliable, friendly service."
+          "description": "As a Milwaukee natives, we pour heart into every exterior cleaning job, building trust with neighbors through reliable, friendly service."
         },
         {
           "icon": "droplets",
           "title": "Professional Results, Every Time",
-          "description": "Our skilled team delivers sparkling Austin window cleaning and powerful pressure washing that transforms your property with precision and care."
+          "description": "Our skilled team delivers sparkling Milwaukee window cleaning and powerful pressure washing that transforms your property with precision and care."
         },
         {
           "icon": "users",
@@ -101,7 +101,7 @@
       ],
       "useEmbed": true,
       "embedCode": "<script src=\"https://elfsightcdn.com/platform.js\" async></script>\n<div class=\"elfsight-app-893eac12-ce22-4682-9d4b-759a3336e8d5\" data-elfsight-app-lazy></div>",
-      "iframeUrl": "https://e5c4e539a3814d408d24484ef9199c7e.elf.site",
+      "iframeUrl": "https://f7f02d61028d4eb4b0096f04e2a58890.elf.site",
       "iframeHeight": "275px"
     },
     "gallery": {
@@ -112,37 +112,25 @@
       "items": [
         {
           "title": "",
-          "beforeImage": "/uploads/gallery-1758398512706.png",
+          "beforeImage": "/uploads/gallery-1758843630208.jpg",
           "afterImage": "",
           "description": ""
         },
         {
           "title": "",
-          "beforeImage": "/uploads/gallery-1758398522693.png",
+          "beforeImage": "/uploads/gallery-1758843650021.jpg",
           "afterImage": "",
           "description": ""
         },
         {
           "title": "",
-          "beforeImage": "/uploads/gallery-1758398533937.png",
+          "beforeImage": "/uploads/gallery-1758843670048.jpg",
           "afterImage": "",
           "description": ""
         },
         {
           "title": "",
-          "beforeImage": "/uploads/gallery-1758398553010.png",
-          "afterImage": "",
-          "description": ""
-        },
-        {
-          "title": "",
-          "beforeImage": "/uploads/gallery-1758398568534.png",
-          "afterImage": "",
-          "description": ""
-        },
-        {
-          "title": "",
-          "beforeImage": "/uploads/gallery-1758398579579.png",
+          "beforeImage": "/uploads/gallery-1758843689173.jpg",
           "afterImage": "",
           "description": ""
         }

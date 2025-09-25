@@ -1,9 +1,9 @@
 {
   "hero": {
-    "title": "Lone Star Shine Service Plan",
+    "title": "PureVue Service Plan",
     "subtitle": "",
     "image": "",
-    "videoUrl": "https://vvcjevhuydxbcwwibkra.supabase.co/storage/v1/object/sign/website-assets-clients/Lone%20Star/serviceplan.mov?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8xOTUxN2U0YS02N2JlLTQyYTItYjJhZi0xYjI3ZGRlM2NhYTUiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJ3ZWJzaXRlLWFzc2V0cy1jbGllbnRzL0xvbmUgU3Rhci9zZXJ2aWNlcGxhbi5tb3YiLCJpYXQiOjE3NTg3NDk5MzIsImV4cCI6MTc5MDI4NTkzMn0.UweXXGpRU3Rc5yph1WrO9DCN45kP07SEx6xngiJDTaQ",
+    "videoUrl": "",
     "useVideo": true,
     "cta": {
       "primary": {
@@ -26,7 +26,7 @@
     "enabled": true,
     "title": "How It Works",
     "description": "Your windows now stay crystal-clear, protected, and warrantied all year round!",
-    "image": "/uploads/1758761363488.jpg",
+    "image": "",
     "steps": [
       {
         "step": 1,

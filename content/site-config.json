@@ -1,29 +1,31 @@
 {
-  "siteName": "Lone Star Shine Exterior Cleaning",
-  "tagline": "Austin's Top Exterior Cleaning",
-  "logo": "/uploads/1758393241841.png",
+  "siteName": "PureVue Window Cleaning",
+  "tagline": "Clear Views, Clear Minds",
+  "logo": "/uploads/1758842142485.png",
   "brandColors": {
-    "primary": "#E1081F",
+    "primary": "#0478CB",
     "secondary": "#E1E1E1",
-    "accent": "#013792"
+    "accent": "#3BB4FD"
   },
-  "headerStyle": "transparent",
-  "footerStyle": "light",
+  "headerStyle": "default",
+  "footerStyle": "default",
   "contact": {
-    "phone": "(512) 359-8746",
-    "email": "",
+    "phone": "(262) 721-5753",
+    "email": "admin@purevuecleanings.com",
     "address": ""
   },
   "serviceAreas": [
-    "Austin",
-    "Round Rock",
-    "Lakeway",
-    "Elgin",
-    "Dripping Springs"
+    "Milwaukee",
+    "Racine",
+    "Bristol",
+    "Brookfield",
+    "Franklin",
+    "Oak Creek",
+    "Whitefish Bay"
   ],
   "socialMedia": {
-    "facebook": "https://www.facebook.com/732023893316894?ref=pl_edit_xav_ig_profile_page_web",
-    "instagram": "https://www.instagram.com/lonestar.shine",
+    "facebook": "https://www.facebook.com/profile.php?id=61569309758816",
+    "instagram": "https://www.instagram.com/purevuecleanings",
     "nextdoor": "",
     "google": ""
   },
@@ -58,15 +60,15 @@
   },
   "showLogoInFooter": true,
   "logoSize": 60,
-  "favicon": "/uploads/1758393265973.png",
-  "footerTextColor": "accent",
+  "favicon": "/uploads/1758842167905.png",
+  "footerTextColor": "white",
   "fontFamily": "poppins",
   "heroBackgrounds": {
     "service-gutter-cleaning": "/uploads/hero-background-1756167062732.jpg",
     "service-house-washing": "/uploads/hero-background-1756167198579.jpg",
-    "home": "/uploads/hero-background-1758832307785.jpg",
     "service-pressure-washing": "/uploads/hero-background-1758833088377.png",
-    "service-window-cleaning": "/uploads/hero-background-1758833060814.jpg"
+    "service-window-cleaning": "/uploads/hero-background-1758833060814.jpg",
+    "home": "/uploads/hero-background-1758842205226.png"
   },
   "heroStyling": {
     "backgroundType": "accent",
@@ -181,6 +183,12 @@
       "overlayOpacity": 50,
       "overlayColor": "#000000",
       "videoPosition": 50
+    },
+    "image-hero-background-1758842205226.png": {
+      "overlayType": "dark",
+      "overlayOpacity": 50,
+      "overlayColor": "#000000",
+      "videoPosition": 50
     }
   },
   "headerCtaTextColor": "white",
@@ -197,12 +205,6 @@
       "overlayColor": "#000000",
       "videoPosition": 50
     },
-    "/uploads/hero-background-1758832307785.jpg": {
-      "overlayType": "dark",
-      "overlayOpacity": 50,
-      "overlayColor": "#000000",
-      "videoPosition": 50
-    },
     "/uploads/hero-background-1758833088377.png": {
       "overlayType": "dark",
       "overlayOpacity": 50,
@@ -210,6 +212,12 @@
       "videoPosition": 50
     },
     "/uploads/hero-background-1758833060814.jpg": {
+      "overlayType": "dark",
+      "overlayOpacity": 50,
+      "overlayColor": "#000000",
+      "videoPosition": 50
+    },
+    "/uploads/hero-background-1758842205226.png": {
       "overlayType": "dark",
       "overlayOpacity": 50,
       "overlayColor": "#000000",
