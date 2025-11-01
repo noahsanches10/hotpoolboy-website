@@ -1,7 +1,7 @@
 {
   "siteName": "PureVue Window Cleaning",
   "tagline": "Clear Views, Clear Minds",
-  "logo": "/uploads/1761516931242.png",
+  "logo": "/uploads/1762018102416.png",
   "brandColors": {
     "primary": "#0478CB",
     "secondary": "#E1E1E1",
@@ -39,7 +39,7 @@
     "primaryText": "Get Free Estimate",
     "secondaryText": "Call Now",
     "primaryLink": "/contact",
-    "secondaryLink": "tel:(435) 999-2425",
+    "secondaryLink": "tel:(262)721-5753",
     "primaryEnabled": true,
     "primaryButtonColor": "primary",
     "style": "accent",
@@ -60,12 +60,10 @@
   },
   "showLogoInFooter": false,
   "logoSize": 60,
-  "favicon": "/uploads/1761516989123.png",
+  "favicon": "/uploads/1762018114883.png",
   "footerTextColor": "white",
   "fontFamily": "poppins",
   "heroBackgrounds": {
-    "service-gutter-cleaning": "/uploads/hero-background-1756167062732.jpg",
-    "service-pressure-washing": "/uploads/hero-background-1758833088377.png",
     "service-window-cleaning": "/uploads/hero-background-1758833060814.jpg",
     "home": "https://vvcjevhuydxbcwwibkra.supabase.co/storage/v1/object/sign/website-assets-clients/PureVue/herovideo.mp4?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8xOTUxN2U0YS02N2JlLTQyYTItYjJhZi0xYjI3ZGRlM2NhYTUiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJ3ZWJzaXRlLWFzc2V0cy1jbGllbnRzL1B1cmVWdWUvaGVyb3ZpZGVvLm1wNCIsImlhdCI6MTc2MTUxNzI0MSwiZXhwIjoxNzkzMDUzMjQxfQ.wV05qya9jNGWhtZl-qS5A93uh-aB46n1RI0GZhAwc6I",
     "service-painting": "/uploads/hero-background-1761518540845.png"
@@ -205,18 +203,6 @@
   },
   "headerCtaTextColor": "white",
   "heroOverlayByPath": {
-    "/uploads/hero-background-1756167062732.jpg": {
-      "overlayType": "dark",
-      "overlayOpacity": 50,
-      "overlayColor": "#000000",
-      "videoPosition": 50
-    },
-    "/uploads/hero-background-1758833088377.png": {
-      "overlayType": "dark",
-      "overlayOpacity": 50,
-      "overlayColor": "#000000",
-      "videoPosition": 50
-    },
     "/uploads/hero-background-1758833060814.jpg": {
       "overlayType": "dark",
       "overlayOpacity": 50,

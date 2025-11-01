@@ -201,7 +201,9 @@ export default function Hero({ content, siteConfig, pageType = 'home' }: HeroPro
         <div className={getOverlayClasses()} style={getOverlayStyle()}></div>
       )}
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
+      <div className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ${
+        pageType === 'home' ? 'py-40 lg:py-64' : 'py-20 lg:py-32'
+      }`}>
         <div
           className={
             (content.hero.image || (content.hero.useVideo && content.hero.videoUrl))

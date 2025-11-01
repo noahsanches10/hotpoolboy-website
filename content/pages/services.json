@@ -37,68 +37,6 @@
       ]
     },
     {
-      "title": "Gutter Cleaning",
-      "description": "Professional gutter cleaning and maintenance to protect your home from water damage and foundation issues",
-      "icon": "wrench",
-      "image": "/uploads/service-1755721787761.jpg",
-      "slug": "gutter-cleaning",
-      "enabled": true,
-      "showOtherServices": true,
-      "showThumbnailInHero": false,
-      "showContentInHero": false,
-      "contentImage": "",
-      "longDescription": "Our comprehensive gutter cleaning service removes leaves, debris, and blockages that can cause water damage to your home. We clean gutters, downspouts, and check for proper drainage while inspecting for any damage or maintenance needs. Regular gutter cleaning prevents costly water damage to your foundation, siding, and landscaping.",
-      "benefits": [
-        {
-          "title": "Complete Debris Removal",
-          "description": "We remove all leaves, twigs, and debris from gutters and downspouts for optimal water flow."
-        },
-        {
-          "title": "Downspout Cleaning",
-          "description": "Thorough cleaning of downspouts to ensure proper drainage away from your foundation."
-        },
-        {
-          "title": "Damage Inspection",
-          "description": "We inspect gutters for damage, loose brackets, and proper slope during cleaning."
-        },
-        {
-          "title": "Cleanup Included",
-          "description": "Complete cleanup of all debris with proper disposal - your property stays clean."
-        }
-      ]
-    },
-    {
-      "title": "Pressure Washing",
-      "description": "Professional pressure washing to restore curb appeal and protect your property.",
-      "icon": "wrench",
-      "image": "/uploads/service-1758833007596.png",
-      "slug": "pressure-washing",
-      "enabled": true,
-      "showOtherServices": true,
-      "showThumbnailInHero": false,
-      "showContentInHero": false,
-      "contentImage": "",
-      "longDescription": "Over time, dirt, mold, mildew, and grime build up on exterior surfaces, leaving them stained and weathered. Our professional pressure washing service uses high-powered, eco-friendly techniques to safely clean driveways, patios, siding, fences, and more. We remove tough buildup, prevent long-term damage, and restore your property’s original look—boosting both curb appeal and property value.",
-      "benefits": [
-        {
-          "title": "Restore Curb Appeal",
-          "description": "Remove years of dirt, stains, and grime to make your property look new again."
-        },
-        {
-          "title": "Protect Surfaces",
-          "description": "Gentle yet powerful cleaning prevents damage and extends the life of siding, decks, and concrete."
-        },
-        {
-          "title": "Health & Safety",
-          "description": "Eliminate slippery mold, algae, and mildew that can cause slips and health hazards."
-        },
-        {
-          "title": "Boost Property Value",
-          "description": "A well-maintained exterior increases home value and leaves a lasting impression."
-        }
-      ]
-    },
-    {
       "title": "Painting",
       "description": "Professional exterior painting services that enhance and protect your Wisconsin home with premium-quality finishes",
       "icon": "wrench",

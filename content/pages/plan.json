@@ -99,28 +99,28 @@
       {
         "name": "Bi-Annual",
         "price": "$50",
-        "period": "per visit",
+        "period": "per cleaning",
         "description": "",
-        "features": "Satisfaction Guarantee\n",
-        "exclusions": "7 Day Weather Guarantee\nFREE Hard Water Removal\nProtective Nanocoat",
+        "features": "7 Day Rain Guarantee\n",
+        "exclusions": "FREE Protective Nanocoat\nFREE Screen Cleaning",
         "popular": false
       },
       {
         "name": "Quarterly",
         "price": "$100",
-        "period": "per visit",
+        "period": "per cleaning",
         "description": "",
-        "features": "Satisfaction Guarantee\n7 Day Weather Guarantee\nFREE Hard Water Removal\nProtective Nanocoat",
+        "features": "7 Day Rain Guarantee\nFREE Protective Nanocoat\nFREE Screen Cleaning",
         "exclusions": "",
         "popular": true
       },
       {
-        "name": "Monthly",
-        "price": "$150",
-        "period": "per visit",
+        "name": "Tri-Annual",
+        "price": "$75",
+        "period": "per cleaning",
         "description": "",
-        "features": "Satisfaction Guarantee\n7 Day Weather Guarantee\nFREE Hard Water Removal\nProtective Nanocoat",
-        "exclusions": "",
+        "features": "7 Day Rain Guarantee\nFREE Protective Nanocoat",
+        "exclusions": "FREE Screen Cleaning",
         "popular": false
       }
     ],

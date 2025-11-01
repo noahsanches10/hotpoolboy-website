@@ -112,30 +112,31 @@
       "items": [
         {
           "title": "",
-          "beforeImage": "/uploads/gallery-1758843630208.jpg",
+          "beforeImage": "/uploads/gallery-1762021279578.png",
           "afterImage": "",
           "description": ""
         },
         {
           "title": "",
-          "beforeImage": "/uploads/gallery-1758843650021.jpg",
+          "beforeImage": "/uploads/gallery-1762021328067.png",
           "afterImage": "",
           "description": ""
         },
         {
           "title": "",
-          "beforeImage": "/uploads/gallery-1761519533377.jpg",
+          "beforeImage": "/uploads/gallery-1762021381925.png",
           "afterImage": "",
           "description": ""
         },
         {
           "title": "",
-          "beforeImage": "/uploads/gallery-1761517693283.jpg",
+          "beforeImage": "/uploads/gallery-1762021419630.png",
           "afterImage": "",
           "description": ""
         }
       ],
-      "displayStyle": "grid"
+      "displayStyle": "grid",
+      "autoRotateInterval": "5"
     },
     "faq": {
       "enabled": true,
@@ -175,43 +176,42 @@
         {
           "name": "Bi-Annual",
           "price": "$50",
-          "period": "off per visit",
+          "period": "off per cleaning",
           "description": "",
           "features": [
-            "Satisfaction Guarantee"
+            "7 Day Rain Guarantee"
           ],
           "popular": false,
           "exclusions": [
-            "7 Day Rain Guarantee",
-            "FREE Hard Water Removal",
-            "Protective Nanocoat"
+            "FREE Protective Nanocoat",
+            "FREE Screen Cleaning"
           ]
         },
         {
           "name": "Quarterly",
           "price": "$100",
-          "period": "off per visit",
+          "period": "off per cleaning",
           "description": "",
           "features": [
-            "Satisfaction Guarantee",
-            "7 Day Weather Guarantee",
-            "FREE Hard Water Removal",
-            "Protective Nanocoat"
+            "7 Day Rain Guarantee",
+            "FREE Protective Nanocoat",
+            "FREE Screen Cleaning"
           ],
           "popular": true
         },
         {
-          "name": "Monthly",
-          "price": "$150",
-          "period": "off per visit",
+          "name": "Tri-Annual",
+          "price": "$75",
+          "period": "off per cleaning",
           "description": "",
           "features": [
-            "Satisfaction Guarantee",
-            "7 Day Weather Guarantee",
-            "FREE Hard Water Removal",
-            "Protective Nanocoat"
+            "7 Day Rain Guarantee",
+            "FREE Protective Nanocoat"
           ],
-          "popular": false
+          "popular": false,
+          "exclusions": [
+            "FREE Screen Cleaning"
+          ]
         }
       ],
       "background": "secondary-light",

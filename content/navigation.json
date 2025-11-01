@@ -5,8 +5,12 @@
       "href": "/plan"
     },
     {
-      "label": "Services",
-      "href": "/services"
+      "label": "Window Cleaning",
+      "href": "/services/window-cleaning"
+    },
+    {
+      "label": "Painting",
+      "href": "/services/painting"
     },
     {
       "label": "About",
@@ -21,12 +25,12 @@
   },
   "footer": [
     {
-      "label": "About",
-      "href": "/about"
+      "label": "Service Plan",
+      "href": "/plan"
     },
     {
-      "label": "Plan",
-      "href": "/plan"
+      "label": "About",
+      "href": "/about"
     },
     {
       "label": "Blog",
