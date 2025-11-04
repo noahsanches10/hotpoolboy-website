@@ -1,8 +1,12 @@
 {
   "header": [
     {
-      "label": "Services",
-      "href": "/services"
+      "label": "Pool Services",
+      "href": "/services/pool-services"
+    },
+    {
+      "label": "Spa Services",
+      "href": "/services/spa-services"
     },
     {
       "label": "About",

@@ -60,7 +60,9 @@
   "footerTextColor": "white",
   "fontFamily": "poppins",
   "heroBackgrounds": {
-    "home": "/uploads/hero-background-1762270095072.webp"
+    "home": "/uploads/hero-background-1762270095072.webp",
+    "service-spa-services": "/uploads/hero-background-1762296971901.jpg",
+    "service-pool-services": "/uploads/hero-background-1762297247570.jpg"
   },
   "heroStyling": {
     "backgroundType": "gradient",
@@ -199,6 +201,24 @@
       "overlayOpacity": 50,
       "overlayColor": "#000000",
       "videoPosition": 36
+    },
+    "image-hero-background-1762296971901.jpg": {
+      "overlayType": "dark",
+      "overlayOpacity": 50,
+      "overlayColor": "#000000",
+      "videoPosition": 50
+    },
+    "image-hero-background-1762297165915.jpg": {
+      "overlayType": "dark",
+      "overlayOpacity": 50,
+      "overlayColor": "#000000",
+      "videoPosition": 50
+    },
+    "image-hero-background-1762297247570.jpg": {
+      "overlayType": "dark",
+      "overlayOpacity": 50,
+      "overlayColor": "#000000",
+      "videoPosition": 50
     }
   },
   "headerCtaTextColor": "white",
@@ -208,6 +228,18 @@
       "overlayOpacity": 50,
       "overlayColor": "#000000",
       "videoPosition": 36
+    },
+    "/uploads/hero-background-1762296971901.jpg": {
+      "overlayType": "dark",
+      "overlayOpacity": 50,
+      "overlayColor": "#000000",
+      "videoPosition": 50
+    },
+    "/uploads/hero-background-1762297247570.jpg": {
+      "overlayType": "dark",
+      "overlayOpacity": 50,
+      "overlayColor": "#000000",
+      "videoPosition": 50
     }
   },
   "heroVideos": {}
