@@ -1,10 +1,10 @@
 {
   "hero": {
-    "title": "PureVue Service Plan",
+    "title": "Hot Pool Boys Service Plan",
     "subtitle": "",
     "image": "",
-    "videoUrl": "https://vvcjevhuydxbcwwibkra.supabase.co/storage/v1/object/sign/website-assets-clients/PureVue/serviceplans.mp4?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8xOTUxN2U0YS02N2JlLTQyYTItYjJhZi0xYjI3ZGRlM2NhYTUiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJ3ZWJzaXRlLWFzc2V0cy1jbGllbnRzL1B1cmVWdWUvc2VydmljZXBsYW5zLm1wNCIsImlhdCI6MTc2MTUxNzU3MCwiZXhwIjoxNzkzMDUzNTcwfQ.c_uYdR-kaI70KQW6w5Y3qdHfUQUG5qjaKEwemHovW2s",
-    "useVideo": true,
+    "videoUrl": "",
+    "useVideo": false,
     "cta": {
       "primary": {
         "enabled": true,
@@ -14,16 +14,16 @@
         "textColor": "white"
       },
       "secondary": {
-        "enabled": true,
+        "enabled": false,
         "text": "Call Now",
-        "link": "tel:(262) 721-5753",
+        "link": "",
         "color": "white",
         "textColor": "primary"
       }
     }
   },
   "process": {
-    "enabled": true,
+    "enabled": false,
     "title": "How It Works",
     "description": "Your windows now stay crystal-clear, protected, and warrantied all year round!",
     "image": "",
@@ -51,7 +51,7 @@
     ]
   },
   "benefits": {
-    "enabled": true,
+    "enabled": false,
     "title": "Why Choose Our Plan",
     "description": "",
     "items": [
@@ -94,7 +94,7 @@
     "buttonLink": "/contact"
   },
   "pricing": {
-    "enabled": true,
+    "enabled": false,
     "plans": [
       {
         "name": "Bi-Annual",

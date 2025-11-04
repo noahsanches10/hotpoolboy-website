@@ -6,64 +6,64 @@
   "displayType": "images",
   "services": [
     {
-      "title": "Window Cleaning",
-      "description": "Crystal clear windows inside and out using premium techniques and purified water systems",
+      "title": "Pool Services",
+      "description": "Professional pool care that handles cleaning, chemical balancing, and algae prevention — all season long.",
       "icon": "droplets",
-      "image": "/uploads/service-1758832593765.jpg",
-      "slug": "window-cleaning",
+      "image": "https://images.squarespace-cdn.com/content/v1/6817cf45ffdb0a3685ab3e42/1746426022581-L57LSWKXTHZDW72EEBN0/unsplash-image-N3z-oIHLL3w.jpg?format=2500w",
+      "slug": "pool-services",
       "enabled": true,
       "showOtherServices": true,
       "showThumbnailInHero": false,
       "showContentInHero": false,
       "contentImage": "",
-      "longDescription": "Our premium window cleaning service delivers streak-free, crystal clear results using advanced purified water systems and professional-grade squeegees. We clean both interior and exterior surfaces, including screens and sills, ensuring your windows provide the clearest possible view while enhancing your home's curb appeal.",
+      "longDescription": "From seasonal opening and closing to weekly maintenance, we provide expert pool care to keep your water pristine and your equipment running smoothly. Our team handles brushing, skimming, chemical balancing, equipment checks, and algae prevention — ensuring your pool is always swim-ready with minimal effort on your part.",
       "benefits": [
         {
-          "title": "Purified Water System",
-          "description": "We use advanced water purification technology for spot-free, streak-free results."
+          "title": "Comprehensive Cleaning",
+          "description": "Regular brushing, skimming, and vacuuming for crystal-clear water"
         },
         {
-          "title": "Interior & Exterior",
-          "description": "Complete window cleaning service including screens, sills, and frames."
+          "title": "Chemical Balance",
+          "description": "Expert water testing and chemistry maintenance for safe swimming conditions"
         },
         {
-          "title": "Professional Equipment",
-          "description": "Commercial-grade squeegees and tools for superior cleaning results."
+          "title": "Equipment Care",
+          "description": "Professional maintenance of filters, pumps, and other pool equipment"
         },
         {
-          "title": "Satisfaction Guarantee",
-          "description": "100% satisfaction guarantee - we'll return if you're not completely happy."
+          "title": "Seasonal Services",
+          "description": "Expert pool opening and closing services with thorough preparation"
         }
       ]
     },
     {
-      "title": "Painting",
-      "description": "Professional exterior & interior painting that enhances & protects your Wisconsin Home.",
+      "title": "Spa Services",
+      "description": "Professional hot tub care that prevents buildup, preserves insulation, and keeps your spa fresh, safe, and ready to enjoy.",
       "icon": "wrench",
-      "image": "https://5.imimg.com/data5/FG/KM/MY-8797479/commercial-painting-services.jpg",
-      "slug": "painting",
+      "image": "https://images.squarespace-cdn.com/content/v1/6817cf45ffdb0a3685ab3e42/83793b5d-a992-403d-8595-110b58704d1e/outdoor-hot-tub-design-ideas.jpg?format=2500w",
+      "slug": "spa-services",
       "enabled": true,
       "showOtherServices": true,
       "showThumbnailInHero": false,
       "showContentInHero": false,
       "contentImage": "",
-      "longDescription": "Our professional exterior painting service transforms your home's appearance while protecting it against Wisconsin's harsh weather conditions. We handle everything from surface preparation to final coat application, using premium-grade paints and proven techniques to deliver exceptional quality and durability. PureVue Painting, Coated to Last.",
+      "longDescription": "We go beyond basic cleaning to keep your spa fresh, efficient, and long-lasting. From water chemistry and biofilm removal to cover care and equipment maintenance, our expert team ensures your hot tub stays clean, safe, and perfectly heated — so it’s ready whenever you are.",
       "benefits": [
         {
-          "title": "Premium Paint Quality",
-          "description": "We use only premium, weather-resistant exterior paints specifically formulated to withstand Wisconsin's freeze-thaw cycles and UV exposure."
+          "title": "Complete Maintenance",
+          "description": "Thorough cleaning of shell, jets, and cover with expert chemical balancing"
         },
         {
-          "title": "Expert Surface Preparation",
-          "description": "Proper preparation is key to lasting results. We thoroughly prepare all surfaces, including power washing, scraping, sanding, and priming as needed."
+          "title": "Water Quality",
+          "description": "Professional testing and adjustment of pH, alkalinity, and sanitizer levels"
         },
         {
-          "title": "Professional Application",
-          "description": "Our skilled painters use professional techniques and equipment to ensure even coverage, clean lines, and a flawless finish that lasts."
+          "title": "System Care",
+          "description": "Regular filter cleaning, jet maintenance, and biofilm removal"
         },
         {
-          "title": "Color Consultation",
-          "description": "Our team helps you choose the perfect color to enhance your home's curb appeal and architectural features with expert design guidance."
+          "title": "Cover Protection",
+          "description": "Proper cleaning and conditioning of your spa cover for longevity"
         }
       ]
     }

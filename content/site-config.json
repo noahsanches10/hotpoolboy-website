@@ -1,52 +1,45 @@
 {
-  "siteName": "PureVue Window Cleaning",
-  "tagline": "Clear Views, Clear Minds",
-  "logo": "/uploads/1762018102416.png",
+  "siteName": "The Hot Pool Boys",
+  "tagline": "Utah's Best Pool & Spa Services",
+  "logo": "/uploads/1762269529627.png",
   "brandColors": {
-    "primary": "#0478CB",
-    "secondary": "#E1E1E1",
-    "accent": "#3BB4FD"
+    "primary": "#013b6f",
+    "secondary": "#23b7b7",
+    "accent": "#ee8327"
   },
-  "headerStyle": "default",
-  "footerStyle": "default",
+  "headerStyle": "transparent",
+  "footerStyle": "primary",
   "contact": {
-    "phone": "(262) 721-5753",
-    "email": "admin@purevuecleanings.com",
+    "phone": "(385) 228-2374",
+    "email": "willthehotpoolboy@gmail.com",
     "address": ""
   },
   "serviceAreas": [
-    "Milwaukee",
-    "Racine",
-    "Kenosha",
-    "New Berlin",
-    "Waukesha",
-    "Bristol",
-    "Brookfield",
-    "Franklin",
-    "Oak Creek",
-    "Whitefish Bay"
+    "Utah County",
+    "Salt Lake County",
+    "Davis County"
   ],
   "socialMedia": {
-    "facebook": "https://www.facebook.com/profile.php?id=61569309758816",
-    "instagram": "https://www.instagram.com/purevuecleanings",
+    "facebook": "https://www.facebook.com/profile.php?id=61571469332413",
+    "instagram": "https://www.instagram.com/thehotpoolboys_llc",
     "nextdoor": "",
     "google": ""
   },
-  "headerTextStyle": "auto",
+  "headerTextStyle": "primary",
   "headerCtaStyle": "primary",
   "bannerLayout": "contained",
   "bannerStyle": "secondary",
   "ctaBanner": {
-    "title": "Ready for a Sparkling Clean Exterior?",
-    "subtitle": "Contact us today for a free estimate and see the difference professional cleaning makes.",
+    "title": "Ready for Hassle-Free Pool & Spa Care?",
+    "subtitle": "Contact us today for expert pool and spa maintenance that lets you relax and enjoy!",
     "primaryText": "Get Free Estimate",
     "secondaryText": "Call Now",
     "primaryLink": "/contact",
-    "secondaryLink": "tel:(262)721-5753",
+    "secondaryLink": "tel:(385) 228-2374",
     "primaryEnabled": true,
-    "primaryButtonColor": "primary",
-    "style": "accent",
-    "layout": "fullwidth",
+    "primaryButtonColor": "accent",
+    "style": "gradient",
+    "layout": "contained",
     "secondaryButtonColor": "white",
     "showOnPages": {
       "home": true,
@@ -63,16 +56,14 @@
   },
   "showLogoInFooter": false,
   "logoSize": 60,
-  "favicon": "/uploads/1762018114883.png",
+  "favicon": "/uploads/1762269546105.png",
   "footerTextColor": "white",
   "fontFamily": "poppins",
   "heroBackgrounds": {
-    "service-window-cleaning": "/uploads/hero-background-1758833060814.jpg",
-    "home": "https://vvcjevhuydxbcwwibkra.supabase.co/storage/v1/object/sign/website-assets-clients/PureVue/herovideo.mp4?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8xOTUxN2U0YS02N2JlLTQyYTItYjJhZi0xYjI3ZGRlM2NhYTUiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJ3ZWJzaXRlLWFzc2V0cy1jbGllbnRzL1B1cmVWdWUvaGVyb3ZpZGVvLm1wNCIsImlhdCI6MTc2MTUxNzI0MSwiZXhwIjoxNzkzMDUzMjQxfQ.wV05qya9jNGWhtZl-qS5A93uh-aB46n1RI0GZhAwc6I",
-    "service-painting": "/uploads/hero-background-1761518540845.png"
+    "home": "/uploads/hero-background-1762270095072.webp"
   },
   "heroStyling": {
-    "backgroundType": "accent",
+    "backgroundType": "gradient",
     "backgroundImage": ""
   },
   "heroOverlays": {
@@ -202,30 +193,22 @@
       "overlayOpacity": 50,
       "overlayColor": "#000000",
       "videoPosition": 50
-    }
-  },
-  "headerCtaTextColor": "white",
-  "heroOverlayByPath": {
-    "/uploads/hero-background-1758833060814.jpg": {
-      "overlayType": "dark",
-      "overlayOpacity": 50,
-      "overlayColor": "#000000",
-      "videoPosition": 50
     },
-    "https://vvcjevhuydxbcwwibkra.supabase.co/storage/v1/object/sign/website-assets-clients/PureVue/herovideo.mp4?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8xOTUxN2U0YS02N2JlLTQyYTItYjJhZi0xYjI3ZGRlM2NhYTUiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJ3ZWJzaXRlLWFzc2V0cy1jbGllbnRzL1B1cmVWdWUvaGVyb3ZpZGVvLm1wNCIsImlhdCI6MTc2MTUxNzI0MSwiZXhwIjoxNzkzMDUzMjQxfQ.wV05qya9jNGWhtZl-qS5A93uh-aB46n1RI0GZhAwc6I": {
+    "image-hero-background-1762270095072.webp": {
       "overlayType": "dark",
       "overlayOpacity": 50,
       "overlayColor": "#000000",
       "videoPosition": 36
-    },
-    "/uploads/hero-background-1761518540845.png": {
+    }
+  },
+  "headerCtaTextColor": "white",
+  "heroOverlayByPath": {
+    "/uploads/hero-background-1762270095072.webp": {
       "overlayType": "dark",
       "overlayOpacity": 50,
       "overlayColor": "#000000",
-      "videoPosition": 50
+      "videoPosition": 36
     }
   },
-  "heroVideos": {
-    "video-1761517273780": "https://vvcjevhuydxbcwwibkra.supabase.co/storage/v1/object/sign/website-assets-clients/PureVue/herovideo.mp4?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8xOTUxN2U0YS02N2JlLTQyYTItYjJhZi0xYjI3ZGRlM2NhYTUiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJ3ZWJzaXRlLWFzc2V0cy1jbGllbnRzL1B1cmVWdWUvaGVyb3ZpZGVvLm1wNCIsImlhdCI6MTc2MTUxNzI0MSwiZXhwIjoxNzkzMDUzMjQxfQ.wV05qya9jNGWhtZl-qS5A93uh-aB46n1RI0GZhAwc6I"
-  }
+  "heroVideos": {}
 }

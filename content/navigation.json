@@ -1,16 +1,8 @@
 {
   "header": [
     {
-      "label": "Service Plan",
-      "href": "/plan"
-    },
-    {
-      "label": "Window Cleaning",
-      "href": "/services/window-cleaning"
-    },
-    {
-      "label": "Painting",
-      "href": "/services/painting"
+      "label": "Services",
+      "href": "/services"
     },
     {
       "label": "About",
@@ -24,10 +16,6 @@
     "openInNewTab": false
   },
   "footer": [
-    {
-      "label": "Service Plan",
-      "href": "/plan"
-    },
     {
       "label": "About",
       "href": "/about"

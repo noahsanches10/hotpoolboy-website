@@ -31,6 +31,11 @@ export default function Pricing({ content }: PricingProps) {
   if (!section?.enabled || !section?.plans?.length) {
     return null;
   }
+  const plans = section.plans || [];
+  const cols = Math.min(3, plans.length || 1);
+  const colsClass = `md:grid-cols-${cols}`;
+  const cardWidthClass = cols === 2 ? 'md:max-w-lg' : '';
+  const gapClass = cols === 2 ? 'gap-8 md:gap-6' : 'gap-12 md:gap-8';
 
   return (
     <section className={`py-20 ${getBackgroundClass(section.background || 'white')}`}>
@@ -46,11 +51,11 @@ export default function Pricing({ content }: PricingProps) {
         </div>
 
         {/* Pricing Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8 max-w-5xl mx-auto">
-          {section.plans.map((plan: any, index: number) => (
+  <div className={`grid grid-cols-1 ${colsClass} ${gapClass} max-w-5xl mx-auto`}>
+          {plans.map((plan: any, index: number) => (
             <Card 
               key={index} 
-              className={`relative shadow-lg transition-all duration-300 hover:-translate-y-2 h-full flex flex-col ${
+              className={`relative shadow-lg transition-all duration-300 hover:-translate-y-2 h-full flex flex-col ${cardWidthClass} ${
                 plan.popular ? 'border-2 border-primary' : 'border-0'
               }`}
               style={{

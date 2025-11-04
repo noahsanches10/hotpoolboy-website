@@ -40,7 +40,7 @@ export default async function AboutPage() {
             </h2>
           </div>
           
-          <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 md:items-stretch items-center mb-16">
+          <div className={`max-w-6xl mx-auto gap-8 mb-16 ${aboutContent.story.image ? 'grid grid-cols-1 md:grid-cols-2 md:items-stretch items-center' : ''}`}>
             <div className="space-y-8">
               {aboutContent.story.content.map((paragraph: string, index: number) => (
                 <p key={index} className="text-lg text-gray-700 leading-relaxed">
@@ -93,38 +93,80 @@ export default async function AboutPage() {
         </p>
       </div>
       
-      <div className="flex flex-wrap justify-center gap-8 max-w-5xl mx-auto">
+      <div className={aboutContent.team.displayStyle === 'alternating' ? 'space-y-8' : 'flex flex-wrap justify-center gap-8 max-w-5xl mx-auto'}>
         {aboutContent.team.members.map((member: any, index: number) => (
-          <div key={index} className="w-full sm:w-80 lg:w-80">
-            <Card className="text-center border-0 shadow-lg hover:shadow-xl transition-shadow duration-300 h-full">
-              <CardContent className="p-8">
-                <div className="w-32 h-32 bg-gray-200 rounded-full mx-auto mb-6 flex items-center justify-center overflow-hidden">
-                  {member.image ? (
-                    <Image
-                      src={member.image}
-                      alt={member.name || 'Team member'}
-                      width={128}
-                      height={128}
-                      className="w-full h-full object-cover"
-                    />
-                  ) : (
-                    <span className="text-3xl font-bold text-gray-600">
-                      {member.initials}
-                    </span>
-                  )}
-                </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                  {member.name}
-                </h3>
-                <p className="text-primary font-medium mb-4">
-                  {member.title}
-                </p>
-                <p className="text-gray-600 leading-relaxed">
-                  {member.description}
-                </p>
-              </CardContent>
-            </Card>
-          </div>
+          aboutContent.team.displayStyle === 'alternating' ? (
+            // Alternating Layout
+            <div key={index} className="w-full">
+              <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow duration-300">
+                <CardContent className={`p-0 flex flex-col md:flex-row ${index % 2 === 1 ? 'md:flex-row-reverse' : ''}`}>
+                  <div className="w-full md:w-1/2 h-64 md:h-auto relative">
+                    {member.image ? (
+                      <Image
+                        src={member.image}
+                        alt={member.name || 'Team member'}
+                        fill
+                        className="object-cover"
+                      />
+                    ) : (
+                      <div className="w-full h-full bg-gray-200 flex items-center justify-center">
+                        <span className="text-5xl font-bold text-gray-600">
+                          {member.initials}
+                        </span>
+                      </div>
+                    )}
+                  </div>
+                  <div className="w-full md:w-1/2 p-8">
+                    <h3 className="text-2xl font-semibold text-gray-900 mb-2">
+                      {member.name}
+                    </h3>
+                    <p className="text-primary font-medium text-lg mb-4">
+                      {member.title}
+                    </p>
+                    <div className="text-gray-600 leading-relaxed text-lg space-y-4">
+  {member.description
+    .split(/\n{2,}/) // split on double line breaks (new paragraphs)
+    .map((paragraph: string, idx: number) => (
+      <p key={idx}>{paragraph}</p>
+    ))}
+</div>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+          ) : (
+            // Card Layout
+            <div key={index} className="w-full sm:w-80 lg:w-80">
+              <Card className="text-center border-0 shadow-lg hover:shadow-xl transition-shadow duration-300 h-full">
+                <CardContent className="p-8">
+                  <div className="w-32 h-32 bg-gray-200 rounded-full mx-auto mb-6 flex items-center justify-center overflow-hidden">
+                    {member.image ? (
+                      <Image
+                        src={member.image}
+                        alt={member.name || 'Team member'}
+                        width={128}
+                        height={128}
+                        className="w-full h-full object-cover"
+                      />
+                    ) : (
+                      <span className="text-3xl font-bold text-gray-600">
+                        {member.initials}
+                      </span>
+                    )}
+                  </div>
+                  <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                    {member.name}
+                  </h3>
+                  <p className="text-primary font-medium mb-4">
+                    {member.title}
+                  </p>
+                  <p className="text-gray-600 leading-relaxed">
+                    {member.description}
+                  </p>
+                </CardContent>
+              </Card>
+            </div>
+          )
         ))}
       </div>
     </div>

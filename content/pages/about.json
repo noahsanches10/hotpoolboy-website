@@ -23,24 +23,25 @@
   "story": {
     "title": "Our Story",
     "content": [
-      "At PureVue, we're more than just a window cleaning service—we're a team of ambitious students with a vision to raise the standard in exterior cleaning and painting services. Founded in Milwaukee, WI, PureVue was built on the belief that homeowners deserve premium, hassle-free service while students gain meaningful opportunities to lead, learn, and grow. We take pride in combining professional results with a fresh approach to customer care.",
-      "Choosing PureVue means choosing more than sparkling glass and beautifully painted exteriors—it means supporting a program that empowers students while delivering unmatched service to your home. From Milwaukee to Bristol and throughout Wisconsin, we bring professional care, reliable service, and the promise of a team invested in your satisfaction. With PureVue, your property shines brighter, and so does the next generation."
+      "Founded right here in Utah with a simple mission: to provide homeowners with reliable, professional pool and spa services they can trust. We understand that your pool and spa are essential parts of your home enjoyment, and we treat them with the care and expertise they deserve.",
+      "The Hot Pool Boys team combines industry expertise with a commitment to customer satisfaction. We believe in delivering crystal-clear results and maintaining your water features to the highest standards, always standing behind our services with a 100% satisfaction guarantee.",
+      "As your local pool and spa care experts, we're personally invested in ensuring your aquatic spaces are perfectly maintained. When you choose The Hot Pool Boys, you're partnering with dedicated professionals who understand the unique needs of Utah pool and spa owners."
     ],
     "stats": [
       {
         "number": "1000+",
-        "label": "Wisconsin Properties Served"
+        "label": "Utah Properties Served"
       },
       {
         "number": "3+",
-        "label": "Years Serving Wisconsin"
+        "label": "Years Serving Utah"
       },
       {
         "number": "100%",
         "label": "Satisfaction Guarantee"
       }
     ],
-    "image": "/uploads/about-1761519412210.jpg"
+    "image": ""
   },
   "values": {
     "title": "Why Wisconsin Chooses PureVue",
@@ -71,6 +72,22 @@
   "team": {
     "title": "Meet Our Team",
     "subtitle": "Professional exterior cleaning and painting specialists dedicated to serving the Wisconsin community",
-    "members": []
+    "members": [
+      {
+        "name": "Will",
+        "title": "Owner",
+        "description": "\nBorn and raised in Utah, I’ve always loved the changing seasons—especially summer, with winter coming in as a close second. Whether it’s diving into a cool pool on a scorching day or unwinding in a hot tub on a snowy night, I know how important it is to keep your water amenities in perfect shape all year round.\n\nThat’s why I make pool and spa care effortless. From balancing chemicals to tackling stubborn grime, I ensure every pool and spa is crystal-clear, stress-free, and ready for your next soak or swim. My goal? To deliver expert service with a touch of personality—because great maintenance should come with a friendly face.\n\n\"There’s always a chance you could catch me taking a quick dip before I head out—but don’t worry, I promise I’ll be out before you notice!\"\n",
+        "initials": "W",
+        "image": "https://images.squarespace-cdn.com/content/v1/6817cf45ffdb0a3685ab3e42/47388b6a-af8d-48b7-84e8-3aa086122b60/IMG_5498.JPG?format=2500w"
+      },
+      {
+        "name": "Vinny",
+        "title": "Service Tech",
+        "description": "\nBorn and raised in the Salt Lake Valley, I spend my time fine-tuning two things: my car and your pool. My ride ensures I get to your service on time and out before you notice—though, let’s be real, you’ll probably hear me a mile away. \n\nAs for the gym, that’s where I train for the real challenge—battling grime and gunk in your pool or spa. Thanks to my dedication (and maybe a few extra arm days), your water stays pristine.\n\nThe Hot Pool Boys bring muscle, precision, and top-tier service—so you can sit back, relax, and enjoy the splash!\n",
+        "initials": "V",
+        "image": "https://images.squarespace-cdn.com/content/v1/6817cf45ffdb0a3685ab3e42/d7a0310d-54e6-4d7f-b690-2a48199a96d6/IMG_8926.jpeg?format=2500w"
+      }
+    ],
+    "displayStyle": "alternating"
   }
 }

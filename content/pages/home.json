@@ -1,16 +1,16 @@
 {
   "hero": {
-    "title": "Clear Views, Clear Minds",
-    "subtitle": "The best Premium Window Cleaning & Painting Service in Wisconsin",
+    "title": "Utah's Best Pool & Spa Services",
+    "subtitle": "Professional Pool & Hot Tub Maintenance in Salt Lake, Davis & Utah Counties",
     "image": "",
     "ctaText": "Get Free Estimate",
     "ctaLink": "/contact",
     "cta": {
       "primary": {
         "text": "Call Now",
-        "link": "tel:(262) 721-5753",
+        "link": "tel:(385) 228-2374",
         "enabled": true,
-        "color": "accent",
+        "color": "secondary",
         "textColor": "white"
       },
       "secondary": {
@@ -50,24 +50,24 @@
     },
     "whyChooseUs": {
       "enabled": true,
-      "title": "Why Wisconsin Chooses PureVue",
+      "title": "Why Utah Chooses Us",
       "subtitle": "",
       "background": "secondary-light",
       "items": [
         {
           "icon": "award",
-          "title": "Locally Owned, Community Trusted",
-          "description": "As Wisconsin natives, we pour heart into every job, building trust with neighbors through a reliable, friendly service."
+          "title": "Expert Care",
+          "description": "Professional pool and spa maintenance by trained technicians. Your satisfaction guaranteed."
         },
         {
           "icon": "droplets",
-          "title": "Professional Results, Every Time",
-          "description": "Our skilled team delivers premium Wisconsin Window Cleaning and Painting that transforms your property with precision and care."
+          "title": "Water Quality",
+          "description": "Advanced water testing and treatment methods to keep your pool and spa perfectly balanced and crystal clear."
         },
         {
-          "icon": "users",
-          "title": "Customer-First Approach",
-          "description": "We prioritize your satisfaction by offering a tailored solution: clear communication, a precise walk-around, no shortcuts."
+          "icon": "clock",
+          "title": "Reliable Service",
+          "description": "Consistent, scheduled maintenance throughout the year ensuring your pool or spa is always ready to enjoy."
         }
       ]
     },
@@ -101,7 +101,7 @@
       ],
       "useEmbed": true,
       "embedCode": "<script src=\"https://elfsightcdn.com/platform.js\" async></script>\n<div class=\"elfsight-app-893eac12-ce22-4682-9d4b-759a3336e8d5\" data-elfsight-app-lazy></div>",
-      "iframeUrl": "https://f7f02d61028d4eb4b0096f04e2a58890.elf.site",
+      "iframeUrl": "https://a0aacd6d28c74322b0f342786c97232e.elf.site",
       "iframeHeight": "275px"
     },
     "gallery": {
@@ -112,25 +112,37 @@
       "items": [
         {
           "title": "",
-          "beforeImage": "/uploads/gallery-1762021279578.png",
+          "beforeImage": "/uploads/gallery-1762272622896.jpg",
           "afterImage": "",
           "description": ""
         },
         {
           "title": "",
-          "beforeImage": "/uploads/gallery-1762021328067.png",
+          "beforeImage": "/uploads/gallery-1762272638903.jpg",
           "afterImage": "",
           "description": ""
         },
         {
           "title": "",
-          "beforeImage": "/uploads/gallery-1762021381925.png",
+          "beforeImage": "/uploads/gallery-1762272649709.jpg",
           "afterImage": "",
           "description": ""
         },
         {
           "title": "",
-          "beforeImage": "/uploads/gallery-1762021419630.png",
+          "beforeImage": "/uploads/gallery-1762272662969.jpg",
+          "afterImage": "",
+          "description": ""
+        },
+        {
+          "title": "",
+          "beforeImage": "/uploads/gallery-1762272682567.jpg",
+          "afterImage": "",
+          "description": ""
+        },
+        {
+          "title": "",
+          "beforeImage": "/uploads/gallery-1762272708467.jpg",
           "afterImage": "",
           "description": ""
         }
@@ -145,24 +157,20 @@
       "background": "secondary-light",
       "items": [
         {
-          "question": "How often should I have my windows professionally cleaned?",
-          "answer": "For Wisconsin homes, we recommend professional window cleaning every 3-6 months. This ensures that your windows stay not only clean but protected year round!"
+          "question": "How often should I have my pool professionally serviced?",
+          "answer": "For pools in the Salt Lake Valley area, we recommend weekly or bi-weekly service during the swimming season (typically May through September) and monthly maintenance during the off-season. This ensures proper water chemistry, cleanliness, and equipment function year-round."
         },
         {
-          "question": "What types of windows do you clean?",
-          "answer": "We specialize in cleaning all types of windows, wood, aluminum, and vinyl framed windows. Our services are suitable for both residential and commercial properties. We also clean lead glass windows."
+          "question": "What's included in your pool and spa maintenance service?",
+          "answer": "Our comprehensive service includes water chemistry testing and balancing, cleaning and skimming, filter maintenance, equipment checks, and surface cleaning. We bring all necessary testing equipment, chemicals, and cleaning tools to keep your pool or spa in perfect condition."
         },
         {
-          "question": "Do you have a satisfaction guarantee?",
-          "answer": "Yes! We stand behind our work with a 100% satisfaction guarantee. If you're not completely happy with our service, we'll make it right at no additional charge."
+          "question": "Do you offer seasonal pool opening and closing services?",
+          "answer": "Yes! We provide complete seasonal services for pools throughout Salt Lake, Davis, and Utah counties. Our opening service includes cover removal, system startup, thorough cleaning, and initial chemical balancing. Closing service prepares your pool for Utah's winter with proper chemical treatment, equipment winterization, and secure cover installation."
         },
         {
-          "question": "How long does a fresh coat of paint last?",
-          "answer": "The lifespan of exterior paint typically ranges from 5-7 years in Wisconsin, however OUR paint products last 8-15 years depending on weather exposure, surface preparation, and number of coats. We use premium, weather-resistant paints and proper application techniques to maximize durability and ensure you're getting exactly what you're looking for."
-        },
-        {
-          "question": "What surfaces can you paint on your exterior painting service?",
-          "answer": "We paint all wood types, aluminum, vinyl (with vinyl safe paint), and any cement based projects! This includes all parts of your home or business, shutters, facia, eaves, siding, doors, inside & outside."
+          "question": "How often should hot tub water be changed?",
+          "answer": "For residential hot tubs in the Salt Lake area, we recommend changing the water every 3-4 months. However, with our professional maintenance service, proper chemical balance, and regular filter cleaning, your spa water stays cleaner longer and might require less frequent changes."
         }
       ]
     },
@@ -170,44 +178,32 @@
       "enabled": true,
       "plans": [
         {
-          "name": "Bi-Annual",
-          "price": "$50",
-          "period": "off per cleaning",
+          "name": "Bi-Weekly",
+          "price": "20%",
+          "period": "off per visit",
           "description": "",
           "features": [
-            "7 Day Rain Guarantee"
+            "Satisfaction Guarantee",
+            "Hard Water Defense",
+            "Smart Season Prep"
           ],
           "popular": false,
           "exclusions": [
-            "FREE Protective Nanocoat",
-            "FREE Screen Cleaning"
+            "FREE Chemicals"
           ]
         },
         {
-          "name": "Quarterly",
-          "price": "$100",
-          "period": "off per cleaning",
+          "name": "Weekly",
+          "price": "30%",
+          "period": "off per visit",
           "description": "",
           "features": [
-            "7 Day Rain Guarantee",
-            "FREE Protective Nanocoat",
-            "FREE Screen Cleaning"
+            "Satisfaction Guarantee",
+            "Hard Water Defense",
+            "Smart Season Prep",
+            "FREE Chemicals"
           ],
           "popular": true
-        },
-        {
-          "name": "Tri-Annual",
-          "price": "$75",
-          "period": "off per cleaning",
-          "description": "",
-          "features": [
-            "7 Day Rain Guarantee",
-            "FREE Protective Nanocoat"
-          ],
-          "popular": false,
-          "exclusions": [
-            "FREE Screen Cleaning"
-          ]
         }
       ],
       "background": "secondary-light",

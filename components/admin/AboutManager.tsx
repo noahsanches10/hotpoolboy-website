@@ -94,6 +94,7 @@ export default function AboutManager({ onSave, isLoading }: AboutManagerProps) {
     team: {
       title: 'Meet Our Team',
       subtitle: 'Experienced professionals dedicated to serving your community',
+      displayStyle: 'card', // Add default display style
       members: [
         {
           name: 'John Doe',
@@ -834,6 +835,55 @@ export default function AboutManager({ onSave, isLoading }: AboutManagerProps) {
           </div>
         </CardHeader>
         <CardContent className="space-y-6">
+          {/* Display Style Toggle */}
+          <div className="space-y-2">
+            <Label>Display Style</Label>
+            <div className="flex space-x-4">
+              <div className="flex items-center space-x-2">
+                <input
+                  type="radio"
+                  id="card-style"
+                  name="team-display-style"
+                  value="card"
+                  checked={!aboutContent.team.displayStyle || aboutContent.team.displayStyle === 'card'}
+                  onChange={(e) =>
+                    setAboutContent({
+                      ...aboutContent,
+                      team: {
+                        ...aboutContent.team,
+                        displayStyle: 'card',
+                      },
+                    })
+                  }
+                  className="text-primary"
+                />
+                <Label htmlFor="card-style" className="cursor-pointer">Card Style</Label>
+              </div>
+              <div className="flex items-center space-x-2">
+                <input
+                  type="radio"
+                  id="alternating-style"
+                  name="team-display-style"
+                  value="alternating"
+                  checked={aboutContent.team.displayStyle === 'alternating'}
+                  onChange={(e) =>
+                    setAboutContent({
+                      ...aboutContent,
+                      team: {
+                        ...aboutContent.team,
+                        displayStyle: 'alternating',
+                      },
+                    })
+                  }
+                  className="text-primary"
+                />
+                <Label htmlFor="alternating-style" className="cursor-pointer">Alternating Style</Label>
+              </div>
+            </div>
+            <p className="text-sm text-gray-500">
+              Card Style shows team members in a grid of cards. Alternating Style shows larger cards with alternating image placement.
+            </p>
+          </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
               <Label htmlFor="teamTitle">Section Title</Label>
@@ -979,34 +1029,36 @@ export default function AboutManager({ onSave, isLoading }: AboutManagerProps) {
                         Enter a direct URL to an image, or use the upload button above
                       </p>
                     </div>
-                  </div>                  <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-                    <div>
-                      <Label htmlFor={`name-${index}`}>Name</Label>
-                      <Input
-                        id={`name-${index}`}
-                        value={member.name}
-                        onChange={(e) => updateTeamMember(index, 'name', e.target.value)}
-                        placeholder="Full Name"
-                      />
-                    </div>
-                    <div>
-                      <Label htmlFor={`member-title-${index}`}>Job Title</Label>
-                      <Input
-                        id={`member-title-${index}`}
-                        value={member.title}
-                        onChange={(e) => updateTeamMember(index, 'title', e.target.value)}
-                        placeholder="Job Title"
-                      />
-                    </div>
-                    <div>
-                      <Label htmlFor={`initials-${index}`}>Initials</Label>
-                      <Input
-                        id={`initials-${index}`}
-                        value={member.initials}
-                        onChange={(e) => updateTeamMember(index, 'initials', e.target.value)}
-                        placeholder="JD"
-                        maxLength={3}
-                      />
+                  </div>                  <div className="space-y-4">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                      <div>
+                        <Label htmlFor={`name-${index}`}>Name</Label>
+                        <Input
+                          id={`name-${index}`}
+                          value={member.name}
+                          onChange={(e) => updateTeamMember(index, 'name', e.target.value)}
+                          placeholder="Full Name"
+                        />
+                      </div>
+                      <div>
+                        <Label htmlFor={`member-title-${index}`}>Job Title</Label>
+                        <Input
+                          id={`member-title-${index}`}
+                          value={member.title}
+                          onChange={(e) => updateTeamMember(index, 'title', e.target.value)}
+                          placeholder="Job Title"
+                        />
+                      </div>
+                      <div>
+                        <Label htmlFor={`initials-${index}`}>Initials</Label>
+                        <Input
+                          id={`initials-${index}`}
+                          value={member.initials}
+                          onChange={(e) => updateTeamMember(index, 'initials', e.target.value)}
+                          placeholder="JD"
+                          maxLength={3}
+                        />
+                      </div>
                     </div>
                     <div>
                       <Label htmlFor={`description-${index}`}>Description</Label>
@@ -1014,8 +1066,9 @@ export default function AboutManager({ onSave, isLoading }: AboutManagerProps) {
                         id={`description-${index}`}
                         value={member.description}
                         onChange={(e) => updateTeamMember(index, 'description', e.target.value)}
-                        placeholder="Brief description of experience"
-                        rows={2}
+                        placeholder="Enter a detailed description of the team member's experience, expertise, and role"
+                        rows={4}
+                        className="w-full"
                       />
                     </div>
                   </div>
