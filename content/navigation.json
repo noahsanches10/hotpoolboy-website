@@ -11,6 +11,10 @@
     {
       "label": "About",
       "href": "/about"
+    },
+    {
+      "label": "Customer Portal",
+      "href": "https://thehotpoolboys.mypoolportal.com"
     }
   ],
   "cta": {
